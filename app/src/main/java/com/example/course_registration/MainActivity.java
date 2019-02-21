@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -39,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewData = findViewById(R.id.showError);
-        txtusername= findViewById(R.id.editUser);
-        txtpassword = findViewById(R.id.editPassword);
+        textViewData = findViewById(R.id.text_view_data);
+        txtusername= findViewById(R.id.txtUsername);
+        txtpassword = findViewById(R.id.txtPassword);
         //loadCourses();
+
     }
 
 
