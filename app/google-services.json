@@ -59,14 +59,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "430135321542-0ugft1k8g4fqf5hu3112kiv5b39r0d5a.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.course_registration",
-            "certificate_hash": "ea6020d8b602cc47a79c66c9ce7a671121c4eb6a"
-          }
-        },
-        {
           "client_id": "430135321542-nduliodfd6vopgq3194undmu0ulq7ag8.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -81,13 +73,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "430135321542-nduliodfd6vopgq3194undmu0ulq7ag8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
