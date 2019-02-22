@@ -1,5 +1,6 @@
 package com.example.course_registration;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -69,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
                             if(txtusername.getText().toString().equals(username)&&txtpassword.getText().toString().equals(password))
                             {
-                                textViewData.setText("Success!");
-                                successorfail = true;
+                                Intent intent = new Intent(MainActivity.this, CourseList.class);
+                                startActivity(intent);
+                               //textViewData.setText("Success!");
+                               //successorfail = true;
 
                                 //Toast.makeText(MainActivity.this, "Note saved", Toast.LENGTH_SHORT).show();
                             }
