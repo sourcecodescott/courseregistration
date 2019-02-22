@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Course-Registration</string>
     <string name="login_user">Login</string>
+    <string name="detail">Detail</string>
 </resources>
