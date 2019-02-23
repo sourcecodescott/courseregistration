@@ -19,8 +19,8 @@
         android:text="Back"
         tools:layout_editor_absoluteX="98dp"
         tools:layout_editor_absoluteY="416dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="100dp" />
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="20dp" />
 
 
 </android.support.design.widget.CoordinatorLayout>
