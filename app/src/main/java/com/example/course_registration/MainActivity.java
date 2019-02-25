@@ -1,7 +1,6 @@
-package com.example.firefirecoretest;
+package com.example.course_registration;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -13,26 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-
-import com.example.firefirecoretest.ContactViewHolder;
-import com.example.firefirecoretest.Course;
+import com.example.course_registration.model.Course;
 
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.io.Console;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -187,18 +173,6 @@ public class MainActivity extends AppCompatActivity {
         //  with useful cycles...
         adapter.stopListening();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
