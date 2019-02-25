@@ -1,4 +1,4 @@
-package com.example.firefirecoretest;
+package com.example.course_registration;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
