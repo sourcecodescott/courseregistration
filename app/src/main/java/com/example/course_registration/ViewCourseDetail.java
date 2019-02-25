@@ -51,8 +51,6 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     private String courseID;
 
-    private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,32 +87,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    public void register(View v) {
 
-        Globals sharedData = Globals.getInstance();
-        saveNote(courseID, sharedData.getUsername());
-
-
-
-
-        finish();
-    }
-
-
-    public void saveNote(String course, String student) {
-
-
-        StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course,student);
-
-        noteRef.set(ccc)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-
-
-                    }
-                });
-    }
 
 
 }
