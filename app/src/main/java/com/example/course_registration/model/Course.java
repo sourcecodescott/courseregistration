@@ -1,14 +1,21 @@
-package com.example.course_registration.model;
+package com.example.firefirecoretest;
 
 import com.google.firebase.firestore.Exclude;
 
-public class Course {
+
+
+import java.io.Serializable;
+
+
+
+public class Course implements Serializable{
     private String documentId;
     private String course_day;
     private String course_description;
     private String course_name;
     private String course_time;
     private String program;
+    private String course_code;
 
 
     public Course() {
@@ -21,6 +28,14 @@ public class Course {
         this.course_name = course_description;
         this.course_time = course_description;
         this.program = course_description;
+    }
+
+    public void setCourse_code(String course_code) {
+        this.course_code = course_code;
+    }
+
+    public String getCourse_code() {
+        return course_code;
     }
 
     public String getCourse_day() {
