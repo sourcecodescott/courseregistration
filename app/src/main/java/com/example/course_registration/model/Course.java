@@ -1,4 +1,4 @@
-package com.example.firefirecoretest;
+package com.example.course_registration.model;
 
 import com.google.firebase.firestore.Exclude;
 
