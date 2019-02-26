@@ -7,6 +7,13 @@ import android.widget.TextView;
 
 
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+
+
 public class ContactViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView name;
@@ -22,6 +29,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder  {
         detailsButton = view.findViewById(R.id.goDetails);
 
     }
+
 
 
 

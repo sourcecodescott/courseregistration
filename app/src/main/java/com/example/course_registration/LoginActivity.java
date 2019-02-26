@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -69,10 +70,12 @@ public class LoginActivity extends AppCompatActivity  {
                                 sharedData.setUsername(username);
                                 sharedData.setValue("success");
 
-
+                                successorfail = true;
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 
                                 intent.putExtra("success","success");
+
+                                Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                             }
 
