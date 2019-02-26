@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.course_registration.model.Course;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,13 +47,17 @@ public class ViewCourseDetail extends AppCompatActivity {
     private TextView course_time;
     private TextView course_code;
 
+    private Button btnregisterbutton;
 
     private Intent intent;
     private Course course;
 
     private String courseID;
 
+
     private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
+
+    private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
 
 
     @Override
@@ -67,6 +72,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         program = findViewById(R.id.txtprogram);
         course_description = findViewById(R.id.txtcourse_description);
         course_time = findViewById(R.id.txtcourse_time);
+        btnregisterbutton = findViewById(R.id.btnResgister);
 
 
 
@@ -87,6 +93,67 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_description.setText("Description: "+course.getCourse_description());
         course_time.setText("Time: "+course.getCourse_time());
 
+        checkifregistered();
+
+    }
+
+    public void register(View v) {
+
+        Globals sharedData = Globals.getInstance();
+        saveCourse(courseID, sharedData.getUsername());
+
+
+
+
+
+    }
+
+
+    public void saveCourse(String course1, String student) {
+
+
+        StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1,student);
+        final String regcourse = course.getCourse_code();
+
+        noteRef.set(ccc)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ViewCourseDetail.this, "You Successfully registered for "+regcourse, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+    }
+
+
+    public void checkifregistered() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  ccc = course.getCourse_code();
+
+        checkregistration.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                           String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                           if(courseisReg.equals(ccc) && studentisReg.equals(user))
+                           {
+                               btnregisterbutton.setText("You are registered for this course.");
+                               btnregisterbutton.setEnabled(false);
+                          }
+
+
+                        }
+
+                    }
+                });
     }
 
 
