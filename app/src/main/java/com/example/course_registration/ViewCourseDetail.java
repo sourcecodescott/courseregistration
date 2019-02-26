@@ -37,7 +37,6 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference coursebookRef = db.collection("Courses");
-    //private DocumentReference courseRef = db.document("Courses/My First Course");
 
 
     private TextView name;
