@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FirestoreRecyclerAdapter adapter;
 
 
-
+    private String name;
 
 
     @Override
