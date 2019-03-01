@@ -156,7 +156,16 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
+    public void check_if_we_can_register_in_course(String student_id, String course_id, FirebaseFirestore firebase_instance){
 
+        int current_number_of_students = firebase_instance.get_rows_by_field("Courses", "course", course_id).length;
+        int  max_students = firebase_instance.get_record_attribute("Courses", course_id, "max_students");
+        if (current_number_of_students >= max_students){
+            return False;
+        }else{
+            return True;
+        }
+    }
 
 
 }
