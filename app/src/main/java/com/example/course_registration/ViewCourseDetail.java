@@ -1,5 +1,6 @@
 package com.example.course_registration;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.course_registration.model.Course;
+import com.example.course_registration.model.Interval;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,6 +35,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
 
+import java.util.Date;
+import java.util.*;
+
 public class ViewCourseDetail extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -52,6 +57,8 @@ public class ViewCourseDetail extends AppCompatActivity {
     private Course course;
 
     private String courseID;
+    private String conflict;
+    private int iscon = 0;
 
 
     private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
@@ -98,14 +105,15 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     public void register(View v) {
 
-        Globals sharedData = Globals.getInstance();
+       Globals sharedData = Globals.getInstance();
         saveCourse(courseID, sharedData.getUsername());
 
 
-
-
+        Check_For_Conflicts();
 
     }
+
+
 
 
     public void saveCourse(String course1, String student) {
@@ -155,6 +163,106 @@ public class ViewCourseDetail extends AppCompatActivity {
                 });
     }
 
+
+    public void Check_For_Conflicts() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  ccc = course.getCourse_code();
+        checkregistration.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(studentisReg.equals(user))
+                            {
+                                Course cc = getCourseByName(courseisReg);
+
+                                if(isTimeConflict(course.getStart_time(),course.getEnd_time(),course.getCourse_day(),cc.getStart_time(),cc.getEnd_time(),cc.getCourse_day()) == true)
+                                {
+                                    conflict += "Course Name: "+ course.getCourse_name()+" Start Time: "+course.getStart_time()+" End Time: "+course.getEnd_time()+" Days "+ course.getCourse_day();
+                                    conflict += "\n";
+                                    conflict += "Course Name: "+ cc.getCourse_name()+" Start Time: "+cc.getStart_time()+" End Time: "+cc.getEnd_time()+" Days "+ cc.getCourse_day();
+                                    conflict += "--------------------------------------------------------------------------------------------------\n";
+                                    iscon++;
+                                }
+                            }
+
+
+                        }
+
+                    }
+                });
+
+        if(iscon > 0)
+        {
+
+            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+            dlgAlert.setMessage(conflict);
+            dlgAlert.setTitle("Schedule Conflict");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+        }
+
+
+    }
+
+
+    public Course getCourseByName(String cName)
+    {
+        Course c = new Course();
+        return c;
+    }
+
+    static boolean isTimeConflict(String course_1_StartTime, String course_1_EndTime, String course_1_Days, String course_2_StartTime,String course_2_EndTime, String course_2_Days)
+    {
+        String interval1_time1 = course_1_StartTime;
+        String interval1_time2 = course_1_EndTime;
+        Interval time1 = new Interval(Double.parseDouble(interval1_time1.replace(':', '.')), Double.parseDouble(interval1_time2.replace(':', '.')));
+
+        String interval2_time1 = course_2_StartTime;
+        String interval2_time2 = course_2_EndTime;
+        Interval time2 = new Interval(Double.parseDouble(interval2_time1.replace(':', '.')), Double.parseDouble(interval2_time2.replace(':', '.')));
+
+
+
+
+
+        String s1=course_1_Days;
+        String s2=course_2_Days;
+        boolean m = false;
+        for(int i=0;i<s1.length();i++){
+            char c=s1.charAt(i);
+
+            for(int j=0;j<s2.length();j++){
+
+                char c2=s2.charAt(j);
+
+                if(c == c2)
+                {
+                    if(time1.intersects(time2) == true)
+                    {
+                       // System.out.println("They Overlap");
+                        m=true;
+                    }
+
+                }
+            }
+            if(m == true)
+            {
+                break;
+            }
+        }
+
+        return m;
+    }
 
 
 
