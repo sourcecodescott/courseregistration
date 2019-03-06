@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public ContactViewHolder onCreateViewHolder(ViewGroup group, int i)
+            public ViewHolder onCreateViewHolder(ViewGroup group, int i)
             {
                 View view = LayoutInflater.from(group.getContext())
                         .inflate(R.layout.contact_entry,group,false);
