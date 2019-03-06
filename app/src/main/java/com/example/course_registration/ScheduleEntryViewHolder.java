@@ -9,6 +9,7 @@ public class ScheduleEntryViewHolder extends RecyclerView.ViewHolder{
     public TextView courseName;
     public TextView courseType;
     public TextView courseLocation;
+    public TextView courseDays;
     public TextView courseTime;
 
     public ScheduleEntryViewHolder(View scheduleView){
@@ -16,6 +17,7 @@ public class ScheduleEntryViewHolder extends RecyclerView.ViewHolder{
         courseName = scheduleView.findViewById(R.id.scheduleCourseName);
         courseType = scheduleView.findViewById(R.id.scheduleCourseType);
         courseLocation = scheduleView.findViewById(R.id.scheduleCourseLocation);
+        courseDays = scheduleView.findViewById(R.id.scheduleCourseDate);
         courseTime = scheduleView.findViewById(R.id.scheduleCourseTime);
     }
 

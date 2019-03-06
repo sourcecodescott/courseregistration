@@ -9,19 +9,21 @@ public class course_schedule_course implements Serializable {
     private String courseDescription;
     private String courseProgram;
     private String courseTime;
+    private String courseLocation;
 
     public course_schedule_course(){
 
     }
 
     public course_schedule_course(String courseCode, String courseName, String courseDay, String courseDescription,
-                  String courseProgram, String courseTime){
+                  String courseProgram, String courseTime, String courseLocation){
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.courseDay = courseDay;
         this.courseDescription = courseDescription;
         this.courseProgram = courseProgram;
         this.courseTime = courseTime;
+        this.courseLocation = courseLocation;
     }
 
     public String getCourseCode(){
@@ -30,6 +32,10 @@ public class course_schedule_course implements Serializable {
 
     public String getCourseName(){
         return this.courseName;
+    }
+
+    public String getCourseLocation(){
+        return this.courseLocation;
     }
 
     public String getCourseDay(){
