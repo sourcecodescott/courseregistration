@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+//resume function to maintain status of log in
     @Override
     protected void onResume()
     {
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         islogggedin();
     }
 
-
+// login function added to see login as user
     void islogggedin()
     {
         Intent intentmymy;
