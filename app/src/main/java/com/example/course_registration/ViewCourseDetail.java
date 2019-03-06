@@ -33,6 +33,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
 
+import com.example.course_registration.MockFirestoreInstance;
+
 public class ViewCourseDetail extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -156,15 +158,20 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    public void check_if_we_can_register_in_course(String student_id, String course_id, FirebaseFirestore firebase_instance){
+    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, MockFirestoreInstance firebase_instance){
 
-        int current_number_of_students = firebase_instance.get_rows_by_field("Courses", "course", course_id).length;
-        int  max_students = firebase_instance.get_record_attribute("Courses", course_id, "max_students");
+        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+        int  max_students = Integer.parseInt(firebase_instance.get_record_attribute("Courses", course_id, "max_students"));
         if (current_number_of_students >= max_students){
-            return False;
-        }else{
-            return True;
+            return false; }
+        else{
+            return true;
         }
+    }
+
+    public static int check_number_of_students_in_course(String course_id, MockFirestoreInstance firebase_instance){
+        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+        return current_number_of_students;
     }
 
 

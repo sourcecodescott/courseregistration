@@ -1,11 +1,11 @@
 package com.example.course_registration;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-import com.example.course_registration.ViewCourseDetail;
 
-import com.example.course_registration.StudentRegisteredInCourse;
+
+
+import java.util.HashMap;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -20,26 +20,45 @@ public class ExampleUnitTest {
 
     @Test
     public void test_if_we_can_register_for_course(){
-        firebase_instance = MockFirestoreInstance();
+        HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
+        HashMap<String, HashMap<String, String>> collection = new HashMap<>();
+        HashMap<String, String> art100 = new HashMap<>();
+        art100.put("max_students", "90");
+        collection.put("MUSIC105", art100);
+        fake_database.put("Courses", collection);
 
-        output= ViewCourseDetail.check_if_we_can_register_in_course("Fld9C5XdTAPhPT85WkFl", "CS100", firebase_instance);
-        assertEquals(True, output);
-    }
 
-    @Test
-    public void test_if_database_increases_when_we_register(){
-        firebase_instance = MockFirestoreInstance();
+        HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
+        HashMap<String, String> sric_one = new HashMap<>();
+        sric_one.put("course", "MUSIC105");
+        collection.put("H3aeLS2Jenhz9PXbORsy", sric_one);
+        fake_database.put("StudentRegisteredInCourse", collection2);
 
-        output= ViewCourseDetail.check_database_increment("Fld9C5XdTAPhPT85WkFl", "CS100", firebase_instance);
-        assertEquals(True, output);
+        MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
+
+        boolean output= ViewCourseDetail.check_if_we_can_register_in_course("Fld9C5XdTAPhPT85WkFl", "MUSIC105", firebase_instance);
+        assertEquals(true, output);
     }
 
     @Test
     public void test_get_students_in_course() {
-        firebase_instance = MockFirestoreInstance();
+        HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
+        HashMap<String, HashMap<String, String>> collection = new HashMap<>();
+        HashMap<String, String> art100 = new HashMap<>();
+        art100.put("max_students", "90");
+        collection.put("MUSIC105", art100);
+        fake_database.put("Courses", collection);
+        
+        HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
+        HashMap<String, String> sric_one = new HashMap<>();
+        sric_one.put("course", "MUSIC105");
+        collection2.put("H3aeLS2Jenhz9PXbORsy", sric_one);
+        fake_database.put("StudentRegisteredInCourse", collection2);
 
-        output= ViewCourseDetail.check_number_of_students_in_course("CS100", firebase_instance);
-        assertEquals(True, output);
+        MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
+
+        int output= ViewCourseDetail.check_number_of_students_in_course("MUSIC105", firebase_instance);
+        assertEquals(1, output);
 
     }
 
