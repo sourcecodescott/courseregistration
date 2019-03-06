@@ -1,5 +1,5 @@
 package com.example.course_registration;
-
+//Taken from julianos Assignment 3
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -72,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Creates a Firestore adapter to be used with a Recycler view.
-    //We will see adapter in more details after the midterm
-    //More info on this: https://github.com/firebase/FirebaseUI-Android/blob/master/firestore/README.md
+
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
     {
         final Query query = db.collection("Courses").orderBy("course_code").limit(50);
