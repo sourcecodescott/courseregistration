@@ -45,7 +45,8 @@ public class ViewCourseDetail extends AppCompatActivity {
     private TextView course_description;
     private TextView course_time;
     private TextView course_code;
-
+    private boolean regStatus = false;
+    private String regesteredID;
     private Button btnregisterbutton;
 
     private Intent intent;
@@ -110,18 +111,30 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     public void saveCourse(String course1, String student) {
 
-
-        StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1,student);
-        final String regcourse = course.getCourse_code();
-
-        noteRef.set(ccc)
+        if(regStatus) {
+            final String regcourse = course.getCourse_code();
+            db.collection("StudentRegisteredInCourse").document(regesteredID).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ViewCourseDetail.this, "You Successfully registered for "+regcourse, Toast.LENGTH_SHORT).show();
-                        finish();
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(ViewCourseDetail.this, "You have successfully dropped " + regcourse, Toast.LENGTH_SHORT).show();
+                    finish();
                     }
-                });
+            });
+        }
+        else {
+            StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1, student);
+            final String regcourse = course.getCourse_code();
+            ccc.setId(noteRef.getId());
+            noteRef.set(ccc)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(ViewCourseDetail.this, "You Successfully registered for " + regcourse, Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    });
+        }
     }
 
 
@@ -139,14 +152,15 @@ public class ViewCourseDetail extends AppCompatActivity {
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
 
-                           String courseisReg = isreg.getCourse();
+                            String courseisReg = isreg.getCourse();
                             String studentisReg = isreg.getStudent();
 
-                           if(courseisReg.equals(ccc) && studentisReg.equals(user))
-                           {
-                               btnregisterbutton.setText("You are registered for this course.");
-                               btnregisterbutton.setEnabled(false);
-                          }
+                            if(courseisReg.equals(ccc) && studentisReg.equals(user))
+                            {
+                               btnregisterbutton.setText("Drop Course.");
+                               regesteredID = isreg.getId();
+                               regStatus = true;
+                            }
 
 
                         }

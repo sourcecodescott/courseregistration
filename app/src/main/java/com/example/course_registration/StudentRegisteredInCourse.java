@@ -7,6 +7,7 @@ public class StudentRegisteredInCourse {
 
     private String course;
     private String student;
+    private String id;
 
     public StudentRegisteredInCourse(String course, String student) {
         this.course = course;
@@ -24,6 +25,8 @@ public class StudentRegisteredInCourse {
         return student;
     }
 
+    public String getId() {return id; }
+
     public void setCourse(String course) {
         this.course = course;
     }
@@ -31,4 +34,6 @@ public class StudentRegisteredInCourse {
     public void setStudent(String student) {
         this.student = student;
     }
+
+    public void setId(String id) { this.id = id;}
 }
