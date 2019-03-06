@@ -1,13 +1,7 @@
 package com.example.course_registration.model;
 
 import com.google.firebase.firestore.Exclude;
-
-
-
 import java.io.Serializable;
-
-
-
 public class Course implements Serializable{
     private String documentId;
     private String course_day;
