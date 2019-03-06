@@ -14,13 +14,13 @@ import android.widget.TextView;
 
 //Viewholder Class to display course name and number
 
-public class ContactViewHolder extends RecyclerView.ViewHolder  {
+public class ViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView coursename;
     public TextView coursenum;
     public Button detailsButton;
 
-    public ContactViewHolder(View view)
+    public ViewHolder(View view)
     {
         super(view);
         coursename = view.findViewById(R.id.contactName);
