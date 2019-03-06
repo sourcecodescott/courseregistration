@@ -48,7 +48,7 @@ public class ExampleUnitTest {
         art100.put("max_students", "90");
         collection.put("MUSIC105", art100);
         fake_database.put("Courses", collection);
-        
+
         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
         HashMap<String, String> sric_one = new HashMap<>();
         sric_one.put("course", "MUSIC105");

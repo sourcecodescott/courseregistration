@@ -5,8 +5,8 @@ import android.content.Context;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import com.android.courseregistration.activity.MainActivity;
-
+//import com.android.courseregistration.activity.MainActivity;
+//
 public class MainActivityTest {
 
     @Test

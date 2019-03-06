@@ -3,7 +3,7 @@ package com.example.course_registration;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-public class MockFirestoreInstance {
+public class MockFirestoreInstance extends FirestoreInstance{
 
     private HashMap<String, HashMap<String, HashMap<String, String>>> database;
 

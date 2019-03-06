@@ -34,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.SetOptions;
 
 import com.example.course_registration.MockFirestoreInstance;
+import com.example.course_registration.RealFirestoreInstance;
 
 public class ViewCourseDetail extends AppCompatActivity {
 
@@ -47,6 +48,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     private TextView course_description;
     private TextView course_time;
     private TextView course_code;
+    private TextView course_enrolled;
 
     private Button btnregisterbutton;
 
@@ -72,6 +74,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_code = findViewById(R.id.txtCourseCode);
         program = findViewById(R.id.txtprogram);
         course_description = findViewById(R.id.txtcourse_description);
+        course_enrolled= findViewById(R.id.txtenrolled);
         course_time = findViewById(R.id.txtcourse_time);
         btnregisterbutton = findViewById(R.id.btnResgister);
 
@@ -79,10 +82,9 @@ public class ViewCourseDetail extends AppCompatActivity {
 
 
 
-
         intent = getIntent();
 
-
+        RealFirestoreInstance rfi = new RealFirestoreInstance(db);
 
         course = (Course)intent.getSerializableExtra("contact");
 
@@ -93,6 +95,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         program.setText("Program: "+course.getProgram());
         course_description.setText("Description: "+course.getCourse_description());
         course_time.setText("Time: "+course.getCourse_time());
+        course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi));
 
         checkifregistered();
 
@@ -158,7 +161,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, MockFirestoreInstance firebase_instance){
+    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, FirestoreInstance firebase_instance){
 
         int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
         int  max_students = Integer.parseInt(firebase_instance.get_record_attribute("Courses", course_id, "max_students"));
@@ -169,7 +172,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         }
     }
 
-    public static int check_number_of_students_in_course(String course_id, MockFirestoreInstance firebase_instance){
+    public static int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
         int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
         return current_number_of_students;
     }
