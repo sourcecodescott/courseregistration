@@ -1,5 +1,6 @@
+//Taken from julianos Assignment 3 to help create a recycler view 
 package com.example.course_registration;
-//Taken from julianos Assignment 3
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,13 +23,6 @@ import com.google.firebase.firestore.Query;
 
 
 public class MainActivity extends AppCompatActivity {
-
-
-
-    //private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    // private CollectionReference coursebookRef = db.collection("Courses");
-    //private DocumentReference courseRef = db.document("Courses/My First Course");
-
 
     private RecyclerView recyclerView;
     private Button addContactButton;
@@ -83,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options)
         {
-            //For each item in the database connect it to the view
+  
             @Override
             public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
             {
@@ -94,10 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 holder.name.setText(model.getCourse_code());
                 holder.email.setText(model.getCourse_name());
 
-                //Set the on click for the button
-                //I find this ugly :) but it is how you will see in most examples
-                // You CAN use lambadas for the listeners
-                // e.g. setOnClickListener ((View v) -> ....
+        
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -126,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    //Method called every time the activity starts.
     @Override
     protected void onStart() {
         super.onStart();
@@ -162,13 +151,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Method called every time the activity stops
+
     @Override
     protected void onStop() {
         super.onStop();
-        //Tells the adapter to stop listening since we are not using this activity
-        //  anymore. Otherwise the adapter would still exist in the background draining battery
-        //  with useful cycles...
         adapter.stopListening();
     }
 
