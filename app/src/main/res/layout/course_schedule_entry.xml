@@ -1,7 +1,3 @@
-<!-- xml code for the individual cards displayed by the course schedule's RecyclerView.
-    Contains textviews for the course name, type, location, day(s) of the week, and time
- -->
-
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"

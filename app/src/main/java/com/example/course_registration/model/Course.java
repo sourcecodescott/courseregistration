@@ -18,6 +18,7 @@ public class Course implements Serializable{
     private String course_code;
 
 
+
     public Course() {
         //public no-arg constructor needed
     }
