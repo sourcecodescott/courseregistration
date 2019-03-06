@@ -1,4 +1,6 @@
 //Taken from julianos Assignment 3 to help create a recycler view 
+// Used as Main content for Course list Main activity. 
+//
 package com.example.course_registration;
 
 import android.content.Intent;
@@ -11,11 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-
 import com.example.course_registration.model.Course;
-
-
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,37 +24,22 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Button addContactButton;
-
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter adapter;
-
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         recyclerView = findViewById(R.id.contactlist);
         database = FirebaseFirestore.getInstance();
 
         adapter = setUpAdapter(database);
         setUpRecyclerView(recyclerView,adapter);
 
-
-
-
-
-
     }
 
-
-    //Connects our recycler view with the viewholder (how we want to show our model[data])
-    // and the firestore adapter
     private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter)
     {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
@@ -64,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setAdapter(adapter);
     }
-
 
 
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
