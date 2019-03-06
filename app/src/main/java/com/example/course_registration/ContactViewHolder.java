@@ -1,6 +1,6 @@
 package com.example.course_registration;
 //viewholder guide taken form Assigment 3 
-//Creator Juliano Franz and edited by Pascha and Dan
+//Creator Juliano Franz 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-//Viewholder Class to display course Name and 
-
+//Viewholder Class to display course name and number
 
 public class ContactViewHolder extends RecyclerView.ViewHolder  {
 
@@ -30,9 +29,4 @@ public class ContactViewHolder extends RecyclerView.ViewHolder  {
         detailsButton = view.findViewById(R.id.goDetails);
 
     }
-
-
-
-
-
 }
