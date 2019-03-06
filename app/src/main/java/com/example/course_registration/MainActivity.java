@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(ViewHolder holder, int position, final Course model)
             {
-                holder.course.setText(model.getCourse_code());
+                holder.coursename.setText(model.getCourse_code());
                 holder.coursenum.setText(model.getCourse_name());
 
         
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                         intent.putExtra("course",model);
                         startActivity(intent);
-\
+
                     }
                 });
             }
