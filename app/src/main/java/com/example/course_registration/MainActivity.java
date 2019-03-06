@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = setUpAdapter(database);
         setUpRecyclerView(recyclerView,adapter);
-
     }
 
     private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter)
@@ -48,20 +47,18 @@ public class MainActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
-
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
     {
         final Query query = db.collection("Courses").orderBy("course_code").limit(50);
         FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
                 .setQuery(query,Course.class)
                 .build();
-
-
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options)
+                
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ViewHolder>(options)
         {
   
             @Override
-            public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
+            public void onBindViewHolder(ViewHolder holder, int position, final Course model)
             {
                 holder.course.setText(model.getCourse_code());
                 holder.coursenum.setText(model.getCourse_name());
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this,ViewCourseDetail.class);
 
-                        intent.putExtra("contact",model);
+                        intent.putExtra("course",model);
                         startActivity(intent);
 \
                     }
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 View view = LayoutInflater.from(group.getContext())
                         .inflate(R.layout.contact_entry,group,false);
-                return new ContactViewHolder(view);
+                return new ViewHolder(view);
 
             }
         };
@@ -123,11 +120,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
-
-
-
     }
-
 
     @Override
     protected void onStop() {
