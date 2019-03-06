@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+//Viewholder Class to display course Name and 
+
 
 public class ContactViewHolder extends RecyclerView.ViewHolder  {
 
