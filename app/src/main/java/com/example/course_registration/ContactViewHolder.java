@@ -17,15 +17,15 @@ import android.widget.TextView;
 
 public class ContactViewHolder extends RecyclerView.ViewHolder  {
 
-    public TextView name;
-    public TextView email;
+    public TextView coursename;
+    public TextView coursenum;
     public Button detailsButton;
 
     public ContactViewHolder(View view)
     {
         super(view);
-        name = view.findViewById(R.id.contactName);
-        email = view.findViewById(R.id.contactEmail);
+        coursename = view.findViewById(R.id.contactName);
+        coursenum = view.findViewById(R.id.contactEmail);
 
         detailsButton = view.findViewById(R.id.goDetails);
 
