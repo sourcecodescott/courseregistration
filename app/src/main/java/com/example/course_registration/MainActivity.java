@@ -63,12 +63,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
             {
-
-
-
-
-                holder.name.setText(model.getCourse_code());
-                holder.email.setText(model.getCourse_name());
+                holder.course.setText(model.getCourse_code());
+                holder.coursenum.setText(model.getCourse_name());
 
         
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
@@ -78,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                         intent.putExtra("contact",model);
                         startActivity(intent);
-
-
-
+\
                     }
                 });
             }
