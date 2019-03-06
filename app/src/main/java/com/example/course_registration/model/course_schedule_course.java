@@ -30,30 +30,56 @@ public class course_schedule_course implements Serializable {
         return this.courseCode;
     }
 
+    public void setCourseCode(String courseCode){
+        this.courseCode = courseCode;
+    }
+
     public String getCourseName(){
         return this.courseName;
+    }
+
+    public void setCourseName(String courseName){
+        this.courseName = courseName;
     }
 
     public String getCourseLocation(){
         return this.courseLocation;
     }
 
+    public void setCourseLocation(String courseLocation){
+        this.courseLocation = courseLocation;
+    }
+
     public String getCourseDay(){
         return this.courseDay;
+    }
+
+    public void setCourseDay(String courseDays){
+        this.courseDay = courseDays;
     }
 
     public String getCourseDescription(){
         return this.courseDescription;
     }
 
+    public void setCourseDescription(String courseDescription){
+        this.courseDescription = courseDescription;
+    }
+
     public String getCourseProgram(){
         return this.courseProgram;
+    }
+
+    public void setCourseProgram(String courseProgram){
+        this.courseProgram = courseProgram;
     }
 
     public String getCourseTime(){
         return this.courseTime;
     }
 
-
+    public void setCourseTime(String courseTime){
+        this.courseTime = courseTime;
+    }
 
 }
