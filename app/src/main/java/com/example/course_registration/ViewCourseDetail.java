@@ -22,9 +22,7 @@ import java.lang.*;
 
 public class ViewCourseDetail extends AppCompatActivity {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference coursebookRef = db.collection("Courses");
-
+    private FirebaseFirestore db;
 
     private TextView name;
     private TextView course_day;
@@ -42,14 +40,10 @@ public class ViewCourseDetail extends AppCompatActivity {
     private String courseID;
 
 
-    private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
-
-    private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_view_course_detail);
 
 
@@ -99,6 +93,7 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     public void saveCourse(String course1, String student) {
 
+        DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
 
         StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1,student);
         final String regcourse = course.getCourse_code();
@@ -119,6 +114,8 @@ public class ViewCourseDetail extends AppCompatActivity {
         Globals sharedData = Globals.getInstance();
         final String  user = sharedData.getUsername();
         final String  ccc = course.getCourse_code();
+
+        CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
 
         checkregistration.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

@@ -36,7 +36,9 @@ public class ExampleUnitTest {
 
         MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
 
-        boolean output= ViewCourseDetail.check_if_we_can_register_in_course("Fld9C5XdTAPhPT85WkFl", "MUSIC105", firebase_instance);
+        ViewCourseDetail vcd = new ViewCourseDetail();
+
+        boolean output= vcd.check_if_we_can_register_in_course("Fld9C5XdTAPhPT85WkFl", "MUSIC105", firebase_instance);
         assertEquals(true, output);
     }
 
@@ -57,7 +59,9 @@ public class ExampleUnitTest {
 
         MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
 
-        int output= ViewCourseDetail.check_number_of_students_in_course("MUSIC105", firebase_instance);
+        ViewCourseDetail vcd = new ViewCourseDetail();
+
+        int output= vcd.check_number_of_students_in_course("MUSIC105", firebase_instance);
         assertEquals(1, output);
 
     }
