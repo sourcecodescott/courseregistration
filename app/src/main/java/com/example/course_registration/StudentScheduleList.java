@@ -1,3 +1,7 @@
+/**
+ * author: Carter & Ali
+ * functionality: Showcase course schedule for registered classes
+ */
 package com.example.course_registration;
 
 import android.os.Bundle;
@@ -15,12 +19,17 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+
 public class StudentScheduleList extends AppCompatActivity {
 
     private RecyclerView courseRecyclerView;
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter databaseToRecycleView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +42,11 @@ public class StudentScheduleList extends AppCompatActivity {
         setUpRecyclerView(courseRecyclerView, databaseToRecycleView);
     }
 
+    /**
+     *
+     * @param view
+     * @param databaseToRecycleView
+     */
     private void setUpRecyclerView(RecyclerView view, FirestoreRecyclerAdapter databaseToRecycleView) {
         RecyclerView.LayoutManager gridManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         view.setLayoutManager(gridManager);
@@ -41,15 +55,21 @@ public class StudentScheduleList extends AppCompatActivity {
     }
 
 
-
+    /**
+     *
+     * @param db
+     * @return
+     */
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db){
         final Query query = db.collection("Courses").orderBy("start_time");
         FirestoreRecyclerOptions<course_schedule_course> options = new FirestoreRecyclerOptions.Builder<course_schedule_course>()
                 .setQuery(query, course_schedule_course.class)
                 .build();
 
+
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<course_schedule_course, ScheduleEntryViewHolder>(options){
             @Override
+
             public void onBindViewHolder(ScheduleEntryViewHolder holder, int position, final course_schedule_course model){
 
                 holder.courseName.setText(model.getCourseName());
@@ -57,8 +77,15 @@ public class StudentScheduleList extends AppCompatActivity {
                 holder.courseLocation.setText(model.getCourseLocation());
                 holder.courseDays.setText(model.getCourseDay());
                 holder.courseTime.setText(model.getCourseTime());
+
             }
 
+            /**
+             *
+             * @param group
+             * @param i
+             * @return
+             */
             @Override
             public ScheduleEntryViewHolder onCreateViewHolder(ViewGroup group, int i){
                 View view = LayoutInflater.from(group.getContext()).inflate(R.layout.course_schedule_entry, group, false);
@@ -66,8 +93,12 @@ public class StudentScheduleList extends AppCompatActivity {
             }
         };
         return adapter;
+
     }
+
+
     @Override
+
     protected void onStart() {
         super.onStart();
         databaseToRecycleView.startListening();
@@ -85,4 +116,5 @@ public class StudentScheduleList extends AppCompatActivity {
 
         databaseToRecycleView.stopListening();
     }
+
 }
