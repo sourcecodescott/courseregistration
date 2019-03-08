@@ -1,3 +1,7 @@
+/**
+ * author: Carter and Ali
+ * Espresso Test
+ */
 package com.example.course_registration;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
@@ -12,11 +16,13 @@ import org.junit.Test;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
+
 public class ScheduleInstrumentedTest {
 
 
 @Rule
 public ActivityTestRule startOnLogin = new ActivityTestRule(LoginActivity.class);
+
 
     @Test
     public void mainScheduleButton_leadsToStudentSchedule(){
