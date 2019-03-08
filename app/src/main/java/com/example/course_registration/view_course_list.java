@@ -56,9 +56,6 @@ public class view_course_list extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
-    //Creates a Firestore adapter to be used with a Recycler view.
-    //We will see adapter in more details after the midterm
-    //More info on this: https://github.com/firebase/FirebaseUI-Android/blob/master/firestore/README.md
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
     {
         final Query query = db.collection("Courses").orderBy("course_code").limit(50);
@@ -69,21 +66,13 @@ public class view_course_list extends AppCompatActivity {
 
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ViewHolder>(options)
         {
-            //For each item in the database connect it to the view
+
             @Override
             public void onBindViewHolder(ViewHolder holder, int position, final Course model)
             {
-
-
-
-
                 holder.coursename.setText(model.getCourse_code());
                 holder.coursecode.setText(model.getCourse_name());
 
-                //Set the on click for the button
-                //I find this ugly :) but it is how you will see in most examples
-                // You CAN use lambadas for the listeners
-                // e.g. setOnClickListener ((View v) -> ....
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -112,7 +101,6 @@ public class view_course_list extends AppCompatActivity {
 
     }
 
-    //Method called every time the activity starts.
     @Override
     protected void onStart() {
         super.onStart();
@@ -125,13 +113,10 @@ public class view_course_list extends AppCompatActivity {
         super.onResume();
     }
 
-    //Method called every time the activity stops
+
     @Override
     protected void onStop() {
         super.onStop();
-        //Tells the adapter to stop listening since we are not using this activity
-        //  anymore. Otherwise the adapter would still exist in the background draining battery
-        //  with useful cycles...
         adapter.stopListening();
     }
 
