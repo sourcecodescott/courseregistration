@@ -137,10 +137,18 @@ public class Course implements Serializable{
         this.course_name = course_name;
     }
 
+    /**
+     *
+     * @param course_time
+     */
     public void setCourse_time(String course_time) {
         this.course_time = course_time;
     }
 
+    /**
+     *
+     * @param program
+     */
     public void setProgram(String program) {
         this.program = program;
     }
