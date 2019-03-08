@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,25 +14,11 @@ import com.example.course_registration.model.Course;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.SetOptions;
-
-import com.example.course_registration.MockFirestoreInstance;
-import com.example.course_registration.RealFirestoreInstance;
+import java.lang.*;
 
 public class ViewCourseDetail extends AppCompatActivity {
 
@@ -161,9 +145,16 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, FirestoreInstance firebase_instance){
+    public boolean check_if_we_can_register_in_course(String student_id, String course_id, FirestoreInstance firebase_instance){
 
-        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+        CallBack ss = new CallBack() {
+            public void callback(Integer s) {
+                course_enrolled= findViewById(R.id.txtenrolled);
+                course_enrolled.setText("Enrolled: "+s);
+            };
+        };
+
+        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
         int  max_students = Integer.parseInt(firebase_instance.get_record_attribute("Courses", course_id, "max_students"));
         if (current_number_of_students >= max_students){
             return false; }
@@ -172,8 +163,23 @@ public class ViewCourseDetail extends AppCompatActivity {
         }
     }
 
-    public static int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
-        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+    public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
+//        Callback s = new Callback() {
+//            public Integer call(Integer s){
+//                course_enrolled= findViewById(R.id.txtenrolled);
+//                course_enrolled.setText("Enrolled: "+ s);
+//            };
+//        };
+
+        CallBack ss = new CallBack() {
+            public void callback(Integer counted) {
+                course_enrolled= findViewById(R.id.txtenrolled);
+                course_enrolled.setText("Enrolled: "+counted);
+            };
+        };
+
+        // Refactored
+        int current_number_of_students = (int) firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
         return current_number_of_students;
     }
 

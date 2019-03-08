@@ -5,7 +5,7 @@ public class FirestoreInstance {
         return "";
     }
 
-    public int count_rows_by_field(String collection_name, String field_name, String field_value) {
+    public int count_rows_by_field(String collection_name, String field_name, String field_value, CallBack ss) {
         return 0;
     }
 

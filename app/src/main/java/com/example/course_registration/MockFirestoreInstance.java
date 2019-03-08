@@ -1,7 +1,6 @@
 package com.example.course_registration;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 
 public class MockFirestoreInstance extends FirestoreInstance{
 
@@ -18,7 +17,7 @@ public class MockFirestoreInstance extends FirestoreInstance{
         return selected_document.get(attribute);
     }
 
-    public int count_rows_by_field(String collection_name, String field_name, String field_value) {
+    public int count_rows_by_field(String collection_name, String field_name, String field_value, CallBack ss) {
         HashMap<String, HashMap<String, String>> collection = database.get(collection_name);
         /*
             StudentRegisteredInCourse: {
