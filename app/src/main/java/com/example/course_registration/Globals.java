@@ -47,7 +47,7 @@ public class Globals {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public String getValue() {

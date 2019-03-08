@@ -23,7 +23,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-
+/**
+ * Author Juliano Franz
+ * Edited by Pascha and Dan
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -56,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         islogggedin();
     }
-
 
     void islogggedin()
     {
