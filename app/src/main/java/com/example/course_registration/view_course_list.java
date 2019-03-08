@@ -67,18 +67,18 @@ public class view_course_list extends AppCompatActivity {
                 .build();
 
 
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options)
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ViewHolder>(options)
         {
             //For each item in the database connect it to the view
             @Override
-            public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
+            public void onBindViewHolder(ViewHolder holder, int position, final Course model)
             {
 
 
 
 
-                holder.name.setText(model.getCourse_code());
-                holder.email.setText(model.getCourse_name());
+                holder.coursename.setText(model.getCourse_code());
+                holder.coursecode.setText(model.getCourse_name());
 
                 //Set the on click for the button
                 //I find this ugly :) but it is how you will see in most examples
@@ -99,11 +99,11 @@ public class view_course_list extends AppCompatActivity {
             }
 
             @Override
-            public ContactViewHolder onCreateViewHolder(ViewGroup group, int i)
+            public ViewHolder onCreateViewHolder(ViewGroup group, int i)
             {
                 View view = LayoutInflater.from(group.getContext())
                         .inflate(R.layout.contact_entry,group,false);
-                return new ContactViewHolder(view);
+                return new ViewHolder(view);
 
             }
         };

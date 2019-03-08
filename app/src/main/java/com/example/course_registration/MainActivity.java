@@ -38,12 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         txtStudentName = findViewById(R.id.textView2);
 
-
         getFirstandLastName();
-
-
-
-
 
     }
 

@@ -16,15 +16,15 @@ import com.example.course_registration.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder  {
 
-    public TextView name;
-    public TextView email;
+    public TextView coursename;
+    public TextView coursecode;
     public Button detailsButton;
 
     public ViewHolder(View view)
     {
         super(view);
-        name = view.findViewById(R.id.contactName);
-        email = view.findViewById(R.id.contactEmail);
+        coursename = view.findViewById(R.id.contactName);
+        coursecode = view.findViewById(R.id.contactEmail);
 
         detailsButton = view.findViewById(R.id.goDetails);
 
