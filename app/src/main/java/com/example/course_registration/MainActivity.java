@@ -24,12 +24,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- * Author Juliano Franz
- * Edited by Pascha and Dan
+ * Author Samath and Dan
+ * User Profile that displays different information for user
  *
  */
 public class MainActivity extends AppCompatActivity {
-
 
     private TextView txtStudentName;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,21 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
     //Method called every time the activity starts.
     @Override
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
         islogggedin();
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
         islogggedin();
     }
 
-    void islogggedin()
-    {
+    void islogggedin(){
         Intent intentmymy;
         intentmymy = getIntent();
 
@@ -70,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
-
-
-
     }
 
     //Method called every time the activity stops
@@ -84,19 +78,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void schedule(View v) {
-
-
-
     }
 
     public void courselist(View v) {
-
         Intent intent = new Intent(MainActivity.this,view_course_list.class);
-
         startActivity(intent);
 
     }
-
 
     public void getFirstandLastName() {
         coursebookRef.get()
@@ -104,10 +92,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-
                         Globals sharedData = Globals.getInstance();
                         final String global_username = sharedData.getUsername();
-
 
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             Student stu = documentSnapshot.toObject(Student.class);
@@ -119,16 +105,10 @@ public class MainActivity extends AppCompatActivity {
                             {
                                 txtStudentName.setText(stu.getName());
                             }
-
-
                         }
-
                     }
                 });
     }
-
-
-
 
 }
 
