@@ -45,9 +45,11 @@ public class view_course_list extends AppCompatActivity {
 
     }
 
-
-    //Connects our recycler view with the viewholder (how we want to show our model[data])
-    // and the firestore adapter
+    /**
+     *
+     * @param rv
+     * @param adapter
+     */
     private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter)
     {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
@@ -56,6 +58,11 @@ public class view_course_list extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
+    /**
+     *
+     * @param db
+     * @return
+     */
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
     {
         final Query query = db.collection("Courses").orderBy("course_code").limit(50);
@@ -98,7 +105,6 @@ public class view_course_list extends AppCompatActivity {
         };
 
         return adapter;
-
     }
 
     @Override
@@ -119,9 +125,5 @@ public class view_course_list extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
-
-
-
-
+    
 }
