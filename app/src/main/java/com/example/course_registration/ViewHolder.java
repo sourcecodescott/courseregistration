@@ -12,15 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.course_registration.R;
 
-
-public class ContactViewHolder extends RecyclerView.ViewHolder  {
+public class ViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView name;
     public TextView email;
     public Button detailsButton;
 
-    public ContactViewHolder(View view)
+    public ViewHolder(View view)
     {
         super(view);
         name = view.findViewById(R.id.contactName);
