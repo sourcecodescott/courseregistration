@@ -15,11 +15,6 @@ import java.util.HashMap;
 public class ExampleUnitTest {
 
     @Test
-    public void broken_unit_test() {
-        assertEquals(false, true);
-    }
-
-    @Test
     public void test_if_blocking_course_registration_on_full_course(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
