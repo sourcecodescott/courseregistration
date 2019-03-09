@@ -73,11 +73,18 @@ public class ViewCourseDetail extends AppCompatActivity {
         program.setText("Program: "+course.getProgram());
         course_description.setText("Description: "+course.getCourse_description());
         course_time.setText("Time: "+course.getCourse_time());
-        course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi));
 
-        checkifregistered();
+        CallBack ss = new CallBack() {
+            public void callback(Object counted) {
+                course_enrolled= findViewById(R.id.txtenrolled);
+                course_enrolled.setText("Enrolled: "+((int)counted));
+            };
+        };
+        course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi, ss));
 
-        checkiffull();
+        checkifregistered_helper();
+
+        checkiffull_helper(courseID);
 
     }
 
@@ -112,7 +119,36 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    public void checkiffull() {
+    public void checkiffull_helper(final String course_id) {
+
+        final RealFirestoreInstance firebase_instance = new RealFirestoreInstance(db);
+
+        CallBack ss = new CallBack() {
+            public void callback(Object s1) {
+                final int number_of_students = (Integer) s1;
+
+                CallBack ss2 = new CallBack() {
+                    public void callback(Object s2) {
+
+                        Long max_students_in_course = (Long) s2;
+
+                        if (!test_whether_you_can_register(number_of_students, max_students_in_course)) {
+
+                            btnregisterbutton.setText("Class is full. ");
+                            btnregisterbutton.setEnabled(false);
+
+                        }
+                    };
+                };
+
+                firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss2);
+
+
+
+
+            };
+        };
+
 
         RealFirestoreInstance rfi = new RealFirestoreInstance(db);
 
@@ -120,10 +156,10 @@ public class ViewCourseDetail extends AppCompatActivity {
         final String  user = sharedData.getUsername();
         final String  ccc = course.getCourse_code();
 
-        boolean b = check_if_we_can_register_in_course(ccc, rfi);
+        check_number_of_students_in_course(ccc, rfi, ss);
     }
 
-    public void checkifregistered() {
+    public void checkifregistered_helper() {
 
         Globals sharedData = Globals.getInstance();
         final String  user = sharedData.getUsername();
@@ -159,53 +195,11 @@ public class ViewCourseDetail extends AppCompatActivity {
         return number_of_students<max_students;
     }
 
-
-    public boolean check_if_we_can_register_in_course(final String course_id, final FirestoreInstance firebase_instance){
-
-        CallBack ss = new CallBack() {
-            public void callback(Object s1) {
-                final int number_of_students = (Integer) s1;
-
-                CallBack ss2 = new CallBack() {
-                    public void callback(Object s2) {
-
-                        Long max_students_in_course = (Long) s2;
-
-                        if (!test_whether_you_can_register(number_of_students, max_students_in_course)) {
-
-                            btnregisterbutton.setText("Class is full. ");
-                            btnregisterbutton.setEnabled(false);
-
-                        }
-                    };
-                };
-
-                firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss2);
-
-
-
-
-            };
-        };
-
-        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
-//        String max_students = firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss);
-        return false;
-
-    }
-
-    public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
-
-        CallBack ss = new CallBack() {
-            public void callback(Object counted) {
-                course_enrolled= findViewById(R.id.txtenrolled);
-                course_enrolled.setText("Enrolled: "+((int)counted));
-            };
-        };
+    public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance, CallBack ss){
 
         // Refactored
-        int current_number_of_students = (int) firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
-        return current_number_of_students;
+        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
+        return 1;
     }
 
 

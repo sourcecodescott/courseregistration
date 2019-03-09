@@ -31,6 +31,8 @@ public class MockFirestoreInstance extends FirestoreInstance{
             //System.out.println("Hello: "+ key);
         }
 
+        ss.callback(counter);
+
         return counter;
 
         //"Courses", "course", course_id

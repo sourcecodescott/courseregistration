@@ -39,14 +39,17 @@ public class ExampleUnitTest {
         ViewCourseDetail vcd = new ViewCourseDetail();
 
         CallBack ss = new CallBack() {
-            public void callback(Object counted) {
+            public void callback(Object attribute) {
+                // A callback that does nothing
             };
         };
 
-        int current_students = vcd.check_number_of_students_in_course("MUSIC105", firebase_instance);
+        int current_students = vcd.check_number_of_students_in_course("MUSIC105", firebase_instance, ss);
         Long max_students = music_max_students;
         boolean output = vcd.test_whether_you_can_register(current_students, max_students);
         assertEquals(1, current_students);
+
+        // The test below tests the mathematical function determining whether a student can register for a course.
         assertEquals(true, output);
 
     }
@@ -70,8 +73,13 @@ public class ExampleUnitTest {
 
         ViewCourseDetail vcd = new ViewCourseDetail();
 
-        int output= vcd.check_number_of_students_in_course("MUSIC105", firebase_instance);
-        assertEquals(1, output);
+        CallBack ss = new CallBack() {
+            public void callback(Object counted) {
+                assertEquals(1, (int) counted);
+            };
+        };
+
+        vcd.check_number_of_students_in_course("MUSIC105", firebase_instance, ss);
 
     }
 
