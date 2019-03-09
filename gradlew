@@ -6,7 +6,7 @@
 ##
 ##############################################################################
 
-echo "sdk.dir=$ANDROID_COMPILE_SDK" > local.properties
+echo "sdk.dir=~/Library/Android/sdk" > local.properties
 
 # Attempt to set APP_HOME
 # Resolve links: $0 may be a link
