@@ -19,7 +19,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void test_if_course_registration_function_works(){
+    public void test_if_blocking_course_registration_on_full_course(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
         HashMap<String, String> art100 = new HashMap<>();
@@ -55,7 +55,35 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void test_get_students_in_course() {
+    public void test_whether_we_can_get_field_of_a_record_from_database() {
+        HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
+        HashMap<String, HashMap<String, String>> collection = new HashMap<>();
+        HashMap<String, String> art100 = new HashMap<>();
+        Long music_max_students = new Long(90);
+        art100.put("max_students",music_max_students.toString());
+        collection.put("MUSIC105", art100);
+        fake_database.put("Courses", collection);
+
+        HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
+        HashMap<String, String> sric_one = new HashMap<>();
+        sric_one.put("course", "MUSIC105");
+        collection2.put("H3aeLS2Jenhz9PXbORsy", sric_one);
+        fake_database.put("StudentRegisteredInCourse", collection2);
+
+        MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
+
+        CallBack ss = new CallBack() {
+            public void callback(Object attribute) {
+                assertEquals("90", attribute);
+            };
+        };
+
+        firebase_instance.get_record_attribute("Courses", "MUSIC105", "max_students", ss);
+
+    }
+
+    @Test
+    public void test_function_that_counts_number_of_students_in_course() {
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
         HashMap<String, String> art100 = new HashMap<>();
