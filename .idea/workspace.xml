@@ -12,7 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb6e3db-676d-4f0f-9ab7-13632d2292bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,11 +71,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bat" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="gradle" value="1" />
           <entry key="gradlew" value="1" />
           <entry key="java" value="17" />
           <entry key="output" value="1" />
-          <entry key="properties" value="1" />
+          <entry key="properties" value="2" />
           <entry key="xml" value="3" />
           <entry key="yml" value="1" />
         </counts>
@@ -82,8 +85,8 @@
         <counts>
           <entry key="Groovy" value="1" />
           <entry key="JAVA" value="17" />
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Properties" value="1" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Properties" value="2" />
           <entry key="XML" value="3" />
           <entry key="YAML" value="1" />
         </counts>
@@ -92,6 +95,7 @@
         <counts>
           <entry key="gradlew" value="33" />
           <entry key="java" value="5514" />
+          <entry key="properties" value="1" />
           <entry key="xml" value="53" />
         </counts>
       </usages-collector>
@@ -99,6 +103,7 @@
         <counts>
           <entry key="JAVA" value="5514" />
           <entry key="PLAIN_TEXT" value="33" />
+          <entry key="Properties" value="1" />
           <entry key="XML" value="53" />
         </counts>
       </usages-collector>
@@ -159,8 +164,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gradlew">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -257,6 +271,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" />
+        <option value="$PROJECT_DIR$/local.properties" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/gradlew" />
       </list>
     </option>
@@ -660,9 +676,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="721" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24555735" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24555735" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -676,7 +693,7 @@
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32894737" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.503231" side_tool="true" weight="0.3305921" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3280757" />
-      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.49919224" visible="true" weight="0.32750398" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49919224" visible="true" weight="0.32750398" />
       <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -952,16 +969,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="8" />
+        <state relative-caret-position="15">
+          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gradlew">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
