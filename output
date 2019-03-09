@@ -1,0 +1,999 @@
+commit 75bfc844b657eef25e84d6e5a4d19a07a2e2c2ef
+Author: Mat <kallada@cs.dal.ca>
+Date:   Wed Mar 6 16:44:07 2019 -0400
+
+    Nick and Mat WIP
+
+diff --git a/.gradle/4.10.1/fileHashes/fileHashes.bin b/.gradle/4.10.1/fileHashes/fileHashes.bin
+index 5749b9d..55cdebf 100644
+Binary files a/.gradle/4.10.1/fileHashes/fileHashes.bin and b/.gradle/4.10.1/fileHashes/fileHashes.bin differ
+diff --git a/.gradle/4.10.1/fileHashes/fileHashes.lock b/.gradle/4.10.1/fileHashes/fileHashes.lock
+index c3f2c92..a4f2078 100644
+Binary files a/.gradle/4.10.1/fileHashes/fileHashes.lock and b/.gradle/4.10.1/fileHashes/fileHashes.lock differ
+diff --git a/.gradle/4.10.1/fileHashes/resourceHashesCache.bin b/.gradle/4.10.1/fileHashes/resourceHashesCache.bin
+index 12c4ee4..c30e354 100644
+Binary files a/.gradle/4.10.1/fileHashes/resourceHashesCache.bin and b/.gradle/4.10.1/fileHashes/resourceHashesCache.bin differ
+diff --git a/.gradle/4.10.1/javaCompile/classAnalysis.bin b/.gradle/4.10.1/javaCompile/classAnalysis.bin
+index f1e6a60..174638e 100644
+Binary files a/.gradle/4.10.1/javaCompile/classAnalysis.bin and b/.gradle/4.10.1/javaCompile/classAnalysis.bin differ
+diff --git a/.gradle/4.10.1/javaCompile/jarAnalysis.bin b/.gradle/4.10.1/javaCompile/jarAnalysis.bin
+index 206655a..ca5f33a 100644
+Binary files a/.gradle/4.10.1/javaCompile/jarAnalysis.bin and b/.gradle/4.10.1/javaCompile/jarAnalysis.bin differ
+diff --git a/.gradle/4.10.1/javaCompile/javaCompile.lock b/.gradle/4.10.1/javaCompile/javaCompile.lock
+index 4bb969a..fa59aad 100644
+Binary files a/.gradle/4.10.1/javaCompile/javaCompile.lock and b/.gradle/4.10.1/javaCompile/javaCompile.lock differ
+diff --git a/.gradle/4.10.1/javaCompile/taskHistory.bin b/.gradle/4.10.1/javaCompile/taskHistory.bin
+index b203bb9..b6d45a5 100644
+Binary files a/.gradle/4.10.1/javaCompile/taskHistory.bin and b/.gradle/4.10.1/javaCompile/taskHistory.bin differ
+diff --git a/.gradle/4.10.1/taskHistory/taskHistory.bin b/.gradle/4.10.1/taskHistory/taskHistory.bin
+index e8a4592..cafae2b 100644
+Binary files a/.gradle/4.10.1/taskHistory/taskHistory.bin and b/.gradle/4.10.1/taskHistory/taskHistory.bin differ
+diff --git a/.gradle/4.10.1/taskHistory/taskHistory.lock b/.gradle/4.10.1/taskHistory/taskHistory.lock
+index 92931ad..a8f4ccd 100644
+Binary files a/.gradle/4.10.1/taskHistory/taskHistory.lock and b/.gradle/4.10.1/taskHistory/taskHistory.lock differ
+diff --git a/.gradle/buildOutputCleanup/buildOutputCleanup.lock b/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+index edbb8a1..11b8c49 100644
+Binary files a/.gradle/buildOutputCleanup/buildOutputCleanup.lock and b/.gradle/buildOutputCleanup/buildOutputCleanup.lock differ
+diff --git a/.gradle/buildOutputCleanup/outputFiles.bin b/.gradle/buildOutputCleanup/outputFiles.bin
+index 8e57117..395dd06 100644
+Binary files a/.gradle/buildOutputCleanup/outputFiles.bin and b/.gradle/buildOutputCleanup/outputFiles.bin differ
+diff --git a/.idea/caches/gradle_models.ser b/.idea/caches/gradle_models.ser
+index 38d2478..b652bbb 100644
+Binary files a/.idea/caches/gradle_models.ser and b/.idea/caches/gradle_models.ser differ
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+index c3341b7..0349e66 100644
+--- a/.idea/workspace.xml
++++ b/.idea/workspace.xml
+@@ -6,16 +6,19 @@
+     </shared>
+   </component>
+   <component name="AndroidLogFilters">
+-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="HelloWorld" />
++    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="mytag" />
+     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="feb6e3db-676d-4f0f-9ab7-13632d2292bc" name="Default Changelist" comment="">
++      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/FirestoreInstance.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+@@ -23,11 +26,12 @@
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/MockFirestoreInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" afterDir="false" />
+     </list>
+     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+     <option name="SHOW_DIALOG" value="false" />
+@@ -83,31 +87,36 @@
+     <session id="1503134217">
+       <usages-collector id="statistics.file.extensions.open">
+         <counts>
+-          <entry key="java" value="10" />
++          <entry key="java" value="15" />
++          <entry key="xml" value="1" />
+         </counts>
+       </usages-collector>
+       <usages-collector id="statistics.file.types.open">
+         <counts>
+-          <entry key="JAVA" value="10" />
++          <entry key="JAVA" value="15" />
++          <entry key="XML" value="1" />
+         </counts>
+       </usages-collector>
+       <usages-collector id="statistics.file.extensions.edit">
+         <counts>
+-          <entry key="java" value="2232" />
++          <entry key="java" value="2724" />
++          <entry key="xml" value="28" />
+         </counts>
+       </usages-collector>
+       <usages-collector id="statistics.file.types.edit">
+         <counts>
+-          <entry key="JAVA" value="2232" />
++          <entry key="JAVA" value="2724" />
++          <entry key="XML" value="28" />
+         </counts>
+       </usages-collector>
+       <usages-collector id="statistics.lifecycle.project">
+         <counts>
+-          <entry key="project.closed" value="6" />
+-          <entry key="project.open.time.12" value="5" />
++          <entry key="project.closed" value="8" />
++          <entry key="project.open.time.12" value="6" />
++          <entry key="project.open.time.13" value="1" />
+           <entry key="project.open.time.14" value="1" />
+           <entry key="project.open.time.19" value="1" />
+-          <entry key="project.opened" value="7" />
++          <entry key="project.opened" value="9" />
+         </counts>
+       </usages-collector>
+     </session>
+@@ -117,8 +126,8 @@
+       <file pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MainActivity.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="465">
+-              <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
++            <state relative-caret-position="135">
++              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+                 <element signature="e#2011#2012#0" expanded="true" />
+@@ -131,8 +140,8 @@
+       <file pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="135">
+-              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
++            <state relative-caret-position="150">
++              <caret line="14" column="52" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="52" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+               </folding>
+@@ -140,11 +149,11 @@
+           </provider>
+         </entry>
+       </file>
+-      <file pinned="false" current-in-tab="true">
++      <file pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="170">
+-              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
++            <state relative-caret-position="750">
++              <caret line="57" column="53" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="53" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+               </folding>
+@@ -153,43 +162,58 @@
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/model/Course.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="198">
+-              <caret line="172" column="127" selection-start-line="172" selection-start-column="118" selection-end-line="172" selection-end-column="127" />
++            <state relative-caret-position="870">
++              <caret line="88" selection-start-line="88" selection-end-line="88" />
+               <folding>
+-                <element signature="imports" expanded="true" />
++                <element signature="e#1263#1264#0" expanded="true" />
++                <element signature="e#1297#1298#0" expanded="true" />
++                <element signature="e#1334#1335#0" expanded="true" />
++                <element signature="e#1367#1368#0" expanded="true" />
++                <element signature="e#1401#1402#0" expanded="true" />
++                <element signature="e#1431#1432#0" expanded="true" />
+               </folding>
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="515">
+-              <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+-              <folding>
+-                <element signature="imports" expanded="true" />
+-              </folding>
++        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml">
++          <provider selected="true" editor-type-id="android-designer2" />
++          <provider editor-type-id="text-editor">
++            <state relative-caret-position="285">
++              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/Student.java">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/view_course_list.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="75">
+-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
++            <state relative-caret-position="870">
++              <caret line="76" selection-start-line="76" selection-end-line="76" />
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/ExampleInstrumentedTest.java">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="150">
+-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
++            <state relative-caret-position="2115">
++              <caret line="175" column="59" selection-start-line="175" selection-start-column="59" selection-end-line="175" selection-end-column="78" />
++              <folding>
++                <element signature="imports" expanded="true" />
++              </folding>
++            </state>
++          </provider>
++        </entry>
++      </file>
++      <file pinned="false" current-in-tab="true">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java">
++          <provider selected="true" editor-type-id="text-editor">
++            <state relative-caret-position="155">
++              <caret line="59" lean-forward="true" selection-start-line="30" selection-end-line="59" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+               </folding>
+@@ -198,23 +222,22 @@
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/StudentRegisteredInCourse.java">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="75">
+-              <caret line="5" column="38" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="38" />
++            <state relative-caret-position="120">
++              <caret line="9" selection-start-line="9" selection-end-line="13" />
+               <folding>
+-                <element signature="e#405#406#0" expanded="true" />
+-                <element signature="e#434#435#0" expanded="true" />
++                <element signature="imports" expanded="true" />
+               </folding>
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
++        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/FirestoreInstance.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="15">
+-              <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
++            <state relative-caret-position="120">
++              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+             </state>
+           </provider>
+         </entry>
+@@ -231,6 +254,8 @@
+   <component name="FindInProjectRecents">
+     <findStrings>
+       <find>saveCourse</find>
++      <find>course_description</find>
++      <find>check_number_of_students_in_course</find>
+     </findStrings>
+   </component>
+   <component name="Git.Settings">
+@@ -243,19 +268,22 @@
+         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_acitivity_course_list.xml" />
+         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/view_course_list.java" />
+         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_list.xml" />
+-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml" />
+         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MainActivity.java" />
+         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+-        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java" />
+         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/StudentRegisterInCourse.java" />
+         <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/MockFirestoreInstance.java" />
+-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" />
+-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" />
+         <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" />
++        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml" />
++        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/model/Course.java" />
++        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" />
++        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/FirestoreInstance.java" />
++        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" />
++        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java" />
++        <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java" />
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectFrameBounds">
++  <component name="ProjectFrameBounds" extendedState="6">
+     <option name="y" value="23" />
+     <option name="width" value="1280" />
+     <option name="height" value="700" />
+@@ -265,7 +293,7 @@
+       <foldersAlwaysOnTop value="true" />
+     </navigator>
+     <panes>
+-      <pane id="PackagesPane" />
++      <pane id="AndroidView" />
+       <pane id="Scope">
+         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+           <expand>
+@@ -329,6 +357,35 @@
+               <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+               <item name="course_registration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+             </path>
++            <path>
++              <item name="courseregistration" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
++              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
++              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="example" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="course_registration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++            </path>
++            <path>
++              <item name="courseregistration" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
++              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
++              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++            </path>
++            <path>
++              <item name="courseregistration" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
++              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
++              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="res" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++              <item name="layout" type="9f88c78c:ScopeViewTreeModel$FileNode" />
++            </path>
+             <path>
+               <item name="courseregistration" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+@@ -378,6 +435,7 @@
+           <select />
+         </subPane>
+       </pane>
++      <pane id="PackagesPane" />
+       <pane id="ProjectPane">
+         <subPane>
+           <expand>
+@@ -441,12 +499,11 @@
+           <select />
+         </subPane>
+       </pane>
+-      <pane id="AndroidView" />
+     </panes>
+   </component>
+   <component name="PropertiesComponent">
+     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+-    <property name="device.picker.selection" value="ce05160571c5b93601" />
++    <property name="device.picker.selection" value="4.7_WXGA_API_28" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+   </component>
+@@ -467,7 +524,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="RunManager" selected="Android JUnit.ExampleUnitTest (1)">
++  <component name="RunManager" selected="Android App.app">
+     <configuration name="ExampleUnitTest (1)" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+       <module name="app" />
+       <extension name="coverage">
+@@ -583,12 +640,6 @@
+     <servers />
+   </component>
+   <component name="TestHistory">
+-    <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 14h 29m 34s.xml">
+-      <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
+-    </history-entry>
+-    <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 14h 33m 41s.xml">
+-      <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
+-    </history-entry>
+     <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 14h 35m 17s.xml">
+       <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
+     </history-entry>
+@@ -613,60 +664,77 @@
+     <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 14h 56m 12s.xml">
+       <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
+     </history-entry>
++    <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 16h 10m 08s.xml">
++      <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
++    </history-entry>
++    <history-entry file="ExampleUnitTest_(1) - 2019.03.06 at 16h 10m 22s.xml">
++      <configuration name="ExampleUnitTest (1)" configurationId="AndroidJUnit" />
++    </history-entry>
++  </component>
++  <component name="TodoView">
++    <todo-panel id="selected-file">
++      <is-autoscroll-to-source value="true" />
++    </todo-panel>
++    <todo-panel id="all">
++      <are-packages-shown value="true" />
++      <is-autoscroll-to-source value="true" />
++    </todo-panel>
+   </component>
+   <component name="ToolWindowManager">
+-    <frame x="0" y="23" width="1280" height="700" extended-state="0" />
++    <frame x="0" y="23" width="1280" height="696" extended-state="6" />
+     <editor active="true" />
+     <layout>
+       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+-      <window_info content_ui="combo" id="Project" order="1" weight="0.15670437" />
++      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24555735" />
+       <window_info id="Structure" order="2" side_tool="true" />
+       <window_info id="Favorites" order="3" side_tool="true" />
+       <window_info id="Build Variants" order="4" side_tool="true" />
+       <window_info id="Image Layers" order="5" />
+       <window_info id="Designer" order="6" />
+       <window_info id="Capture Tool" order="7" />
+-      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4983845" visible="true" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49757674" weight="0.32894737" />
+-      <window_info anchor="bottom" id="TODO" order="2" />
++      <window_info anchor="bottom" id="Find" />
++      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4983845" weight="0.18585527" />
++      <window_info active="true" anchor="bottom" id="Logcat" order="1" sideWeight="0.49757674" visible="true" weight="0.33112583" />
++      <window_info anchor="bottom" id="TODO" order="2" weight="0.32894737" />
+       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.32894737" />
+       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32894737" />
+       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5016155" side_tool="true" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Version Control" order="6" />
++      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32894737" />
+       <window_info anchor="bottom" id="Build" order="7" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
++      <window_info anchor="bottom" id="Android Profiler" order="8" />
+       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+       <window_info anchor="right" id="Capture Analysis" order="1" />
+       <window_info anchor="right" id="Gradle" order="2" />
+       <window_info anchor="right" id="Theme Preview" order="3" />
+       <window_info anchor="right" id="Palette&#9;" order="4" />
+-      <window_info anchor="right" id="Preview" order="5" />
++      <window_info anchor="right" id="Preview" order="5" weight="0.6235864" />
+     </layout>
+-    <layout-to-restore>
+-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15670437" />
+-      <window_info id="Structure" order="2" side_tool="true" />
+-      <window_info id="Favorites" order="3" side_tool="true" />
+-      <window_info id="Build Variants" order="4" side_tool="true" />
+-      <window_info id="Image Layers" order="5" />
+-      <window_info id="Designer" order="6" />
+-      <window_info id="Capture Tool" order="7" />
+-      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4983845" visible="true" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49757674" weight="0.32894737" />
+-      <window_info anchor="bottom" id="TODO" order="2" />
+-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5016155" side_tool="true" visible="true" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Version Control" order="6" />
+-      <window_info anchor="bottom" id="Build" order="7" weight="0.32894737" />
+-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+-      <window_info anchor="right" id="Capture Analysis" order="1" />
+-      <window_info anchor="right" id="Gradle" order="2" />
+-      <window_info anchor="right" id="Theme Preview" order="3" />
+-      <window_info anchor="right" id="Palette&#9;" order="4" />
+-      <window_info anchor="right" id="Preview" order="5" />
+-    </layout-to-restore>
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State>
++              <option name="RECENTLY_FILTERED_USER_GROUPS">
++                <collection />
++              </option>
++              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
++                <collection />
++              </option>
++              <option name="COLUMN_ORDER">
++                <list>
++                  <option value="0" />
++                  <option value="1" />
++                  <option value="2" />
++                  <option value="3" />
++                </list>
++              </option>
++            </State>
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsContentAnnotationSettings">
+     <option name="myLimit" value="2678400000" />
+@@ -693,21 +761,6 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml">
+-      <provider editor-type-id="android-designer2" />
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="408">
+-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+-        </state>
+-      </provider>
+-    </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/view_course_list.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="1513">
+-          <caret line="91" column="33" lean-forward="true" selection-start-line="89" selection-start-column="24" selection-end-line="92" selection-end-column="46" />
+-        </state>
+-      </provider>
+-    </entry>
+     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/LoginActivity.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="170">
+@@ -729,20 +782,13 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/model/Course.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="105">
+-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+-        </state>
+-      </provider>
+-    </entry>
+     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
++      <provider editor-type-id="android-manifest" />
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="225">
+           <caret line="15" selection-start-line="15" selection-end-line="15" />
+         </state>
+       </provider>
+-      <provider editor-type-id="android-manifest" />
+     </entry>
+     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/StudentRegisterInCourse.java" />
+     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+@@ -757,87 +803,131 @@
+       </provider>
+     </entry>
+     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/MockFirestoreInstance.java" />
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MainActivity.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/Student.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="465">
+-          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
++        <state relative-caret-position="75">
++          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/ExampleInstrumentedTest.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="150">
++          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/StudentRegisteredInCourse.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="75">
++          <caret line="5" column="38" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="38" />
+           <folding>
+-            <element signature="imports" expanded="true" />
+-            <element signature="e#2011#2012#0" expanded="true" />
+-            <element signature="e#2041#2042#0" expanded="true" />
++            <element signature="e#405#406#0" expanded="true" />
++            <element signature="e#434#435#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="15">
++          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MainActivity.java">
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="135">
+-          <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
++          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+           <folding>
+             <element signature="imports" expanded="true" />
++            <element signature="e#2011#2012#0" expanded="true" />
++            <element signature="e#2041#2042#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/Student.java">
++    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="75">
+-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="24" />
++        <state relative-caret-position="150">
++          <caret line="14" column="52" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="52" />
++          <folding>
++            <element signature="imports" expanded="true" />
++          </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/ExampleInstrumentedTest.java">
++    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="150">
+-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
++        <state relative-caret-position="750">
++          <caret line="57" column="53" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="53" />
+           <folding>
+             <element signature="imports" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/StudentRegisteredInCourse.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/model/Course.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="75">
+-          <caret line="5" column="38" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="38" />
++        <state relative-caret-position="870">
++          <caret line="88" selection-start-line="88" selection-end-line="88" />
+           <folding>
+-            <element signature="e#405#406#0" expanded="true" />
+-            <element signature="e#434#435#0" expanded="true" />
++            <element signature="e#1263#1264#0" expanded="true" />
++            <element signature="e#1297#1298#0" expanded="true" />
++            <element signature="e#1334#1335#0" expanded="true" />
++            <element signature="e#1367#1368#0" expanded="true" />
++            <element signature="e#1401#1402#0" expanded="true" />
++            <element signature="e#1431#1432#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
++    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_view_course_detail.xml">
++      <provider selected="true" editor-type-id="android-designer2" />
++      <provider editor-type-id="text-editor">
++        <state relative-caret-position="285">
++          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/view_course_list.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="15">
+-          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
++        <state relative-caret-position="870">
++          <caret line="76" selection-start-line="76" selection-end-line="76" />
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="515">
+-          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
++        <state relative-caret-position="2115">
++          <caret line="175" column="59" selection-start-line="175" selection-start-column="59" selection-end-line="175" selection-end-column="78" />
+           <folding>
+             <element signature="imports" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="198">
+-          <caret line="172" column="127" selection-start-line="172" selection-start-column="118" selection-end-line="172" selection-end-column="127" />
++        <state relative-caret-position="120">
++          <caret line="9" selection-start-line="9" selection-end-line="13" />
+           <folding>
+             <element signature="imports" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java">
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/FirestoreInstance.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="170">
+-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
++        <state relative-caret-position="120">
++          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="155">
++          <caret line="59" lean-forward="true" selection-start-line="30" selection-end-line="59" />
+           <folding>
+             <element signature="imports" expanded="true" />
+           </folding>
+diff --git a/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java b/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java
+index 1ed7f68..2262c59 100644
+--- a/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java
++++ b/app/src/androidTest/java/com/example/course_registration/MainActivityTest.java
+@@ -5,8 +5,8 @@ import android.content.Context;
+ import org.junit.Test;
+ 
+ import static org.junit.Assert.*;
+-import com.android.courseregistration.activity.MainActivity;
+-
++//import com.android.courseregistration.activity.MainActivity;
++//
+ public class MainActivityTest {
+ 
+     @Test
+diff --git a/app/src/main/java/com/example/course_registration/FirestoreInstance.java b/app/src/main/java/com/example/course_registration/FirestoreInstance.java
+new file mode 100644
+index 0000000..84bd63f
+--- /dev/null
++++ b/app/src/main/java/com/example/course_registration/FirestoreInstance.java
+@@ -0,0 +1,13 @@
++package com.example.course_registration;
++
++public class FirestoreInstance {
++    public String get_record_attribute(String collection_name, String course_id, String attribute) {
++        return "";
++    }
++
++    public int count_rows_by_field(String collection_name, String field_name, String field_value) {
++        return 0;
++    }
++
++
++}
+diff --git a/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java b/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java
+index ee1d422..8e3008c 100644
+--- a/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java
++++ b/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java
+@@ -3,7 +3,7 @@ package com.example.course_registration;
+ import java.util.HashMap;
+ import java.util.Hashtable;
+ 
+-public class MockFirestoreInstance {
++public class MockFirestoreInstance extends FirestoreInstance{
+ 
+     private HashMap<String, HashMap<String, HashMap<String, String>>> database;
+ 
+diff --git a/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java b/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java
+new file mode 100644
+index 0000000..2516a11
+--- /dev/null
++++ b/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java
+@@ -0,0 +1,103 @@
++package com.example.course_registration;
++
++import java.util.HashMap;
++import java.util.ArrayList;
++import java.util.List;
++import com.google.android.gms.tasks.OnSuccessListener;
++import com.google.firebase.firestore.CollectionReference;
++import com.google.firebase.firestore.FirebaseFirestore;
++import com.google.firebase.firestore.QueryDocumentSnapshot;
++import com.google.firebase.firestore.QuerySnapshot;
++import com.google.firebase.firestore.Query;
++
++
++
++public class RealFirestoreInstance extends FirestoreInstance{
++
++    private FirebaseFirestore db = FirebaseFirestore.getInstance();
++    private CollectionReference studentRegistrationRef;
++
++    private List<String> document_names;
++    private List<String> document_ids;
++
++
++    public RealFirestoreInstance (FirebaseFirestore db) {
++        this.db = db;
++    }
++
++
++    public String get_record_attribute(String collection_name, String course_id, String attribute) {
++
++//        studentRegistrationRef = db.collection(collection_name);
++//
++//        studentRegistrationRef.get()
++//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
++//                    @Override
++//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
++//                        String data = "";
++//                        document_names = new ArrayList<String>();
++//                        document_ids = new ArrayList<String>();
++//
++//                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
++//
++////                            Course course = documentSnapshot.toObject(Course.class);
++////
++////                            course.setDocumentId(documentSnapshot.getId());
++////
++////                            String documentId = course.getDocumentId();
++////                            String title = course.getCourse_name();
++////                            String description = course.getCourse_description();
++////
++////                            data +=  "\nCourse Code: " + documentId + "\nTitle: " + title + "\n\n";
++////                            document_names.add(title);
++////                            document_ids.add(documentId);
++//
++//                        }
++//
++//                    }
++//
++//                });
++
++        return "ds";
++
++        //final Query query = db.collection(collection_name).get(course_id);
++    }
++
++    public int count_rows_by_field(String collection_name, String field_name, String field_value) {
++
++//        CollectionReference query = db.collection("StudentRegisteredInCourse");
++
++//        query.get()
++//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
++//                    @Override
++//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
++//                        String data = "";
++//                        document_names = new ArrayList<String>();
++//                        document_ids = new ArrayList<String>();
++//
++//                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
++//
++////                            System.out.println("HELLO");
++////                            Course course = documentSnapshot.toObject(Course.class);
++////
++////                            course.setDocumentId(documentSnapshot.getId());
++////
++////                            String documentId = course.getDocumentId();
++////                            String title = course.getCourse_name();
++////                            String description = course.getCourse_description();
++////
++////                            data +=  "\nCourse Code: " + documentId + "\nTitle: " + title + "\n\n";
++////                            document_names.add(title);
++////                            document_ids.add(documentId);
++//
++//                        }
++//
++//                    }
++//
++//                });
++
++        return 0;
++
++    }
++
++}
+diff --git a/app/src/main/java/com/example/course_registration/ViewCourseDetail.java b/app/src/main/java/com/example/course_registration/ViewCourseDetail.java
+index f1b4d36..f8996d1 100644
+--- a/app/src/main/java/com/example/course_registration/ViewCourseDetail.java
++++ b/app/src/main/java/com/example/course_registration/ViewCourseDetail.java
+@@ -34,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
+ import com.google.firebase.firestore.SetOptions;
+ 
+ import com.example.course_registration.MockFirestoreInstance;
++import com.example.course_registration.RealFirestoreInstance;
+ 
+ public class ViewCourseDetail extends AppCompatActivity {
+ 
+@@ -47,6 +48,7 @@ public class ViewCourseDetail extends AppCompatActivity {
+     private TextView course_description;
+     private TextView course_time;
+     private TextView course_code;
++    private TextView course_enrolled;
+ 
+     private Button btnregisterbutton;
+ 
+@@ -72,6 +74,7 @@ public class ViewCourseDetail extends AppCompatActivity {
+         course_code = findViewById(R.id.txtCourseCode);
+         program = findViewById(R.id.txtprogram);
+         course_description = findViewById(R.id.txtcourse_description);
++        course_enrolled= findViewById(R.id.txtenrolled);
+         course_time = findViewById(R.id.txtcourse_time);
+         btnregisterbutton = findViewById(R.id.btnResgister);
+ 
+@@ -79,10 +82,9 @@ public class ViewCourseDetail extends AppCompatActivity {
+ 
+ 
+ 
+-
+         intent = getIntent();
+ 
+-
++        RealFirestoreInstance rfi = new RealFirestoreInstance(db);
+ 
+         course = (Course)intent.getSerializableExtra("contact");
+ 
+@@ -93,6 +95,7 @@ public class ViewCourseDetail extends AppCompatActivity {
+         program.setText("Program: "+course.getProgram());
+         course_description.setText("Description: "+course.getCourse_description());
+         course_time.setText("Time: "+course.getCourse_time());
++        course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi));
+ 
+         checkifregistered();
+ 
+@@ -158,7 +161,7 @@ public class ViewCourseDetail extends AppCompatActivity {
+     }
+ 
+ 
+-    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, MockFirestoreInstance firebase_instance){
++    public static boolean check_if_we_can_register_in_course(String student_id, String course_id, FirestoreInstance firebase_instance){
+ 
+         int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+         int  max_students = Integer.parseInt(firebase_instance.get_record_attribute("Courses", course_id, "max_students"));
+@@ -169,7 +172,7 @@ public class ViewCourseDetail extends AppCompatActivity {
+         }
+     }
+ 
+-    public static int check_number_of_students_in_course(String course_id, MockFirestoreInstance firebase_instance){
++    public static int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
+         int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id);
+         return current_number_of_students;
+     }
+diff --git a/app/src/main/res/layout/activity_view_course_detail.xml b/app/src/main/res/layout/activity_view_course_detail.xml
+index e76c404..5151825 100644
+--- a/app/src/main/res/layout/activity_view_course_detail.xml
++++ b/app/src/main/res/layout/activity_view_course_detail.xml
+@@ -24,10 +24,41 @@
+         android:inputType="textPersonName" android:ems="10" android:layout_marginStart="8dp"/>
+ 
+ 
+-    -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" app:layout_constraintBottom_toBottomOf="parent" android:orientation="horizontal" android:layout_marginBottom="8dp">
++    <TextView
++        android:id="@+id/txtenrolled"
++        android:layout_width="368dp"
++        android:layout_height="46dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginTop="108dp"
++        android:layout_marginBottom="8dp"
++        android:ems="10"
++        android:hint="Students Enrolled"
++        android:inputType="textPersonName"
++        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/txtcourse_time"
++        app:layout_constraintVertical_bias="0.0" />
+ 
+-    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="Register" android:id="@+id/btnResgister" android:onClick="register" android:layout_weight="1"/>
++    -
+ 
+-</LinearLayout>
++    <LinearLayout
++        android:id="@+id/linearLayout"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginBottom="8dp"
++        android:orientation="horizontal"
++        app:layout_constraintBottom_toBottomOf="parent">
++
++        <Button
++            android:id="@+id/btnResgister"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            android:onClick="register"
++            android:text="Register" />
++
++    </LinearLayout>
+ 
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+diff --git a/app/src/test/java/com/example/course_registration/ExampleUnitTest.java b/app/src/test/java/com/example/course_registration/ExampleUnitTest.java
+index a8cbfd8..1b85471 100644
+--- a/app/src/test/java/com/example/course_registration/ExampleUnitTest.java
++++ b/app/src/test/java/com/example/course_registration/ExampleUnitTest.java
+@@ -48,7 +48,7 @@ public class ExampleUnitTest {
+         art100.put("max_students", "90");
+         collection.put("MUSIC105", art100);
+         fake_database.put("Courses", collection);
+-        
++
+         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
+         HashMap<String, String> sric_one = new HashMap<>();
+         sric_one.put("course", "MUSIC105");
