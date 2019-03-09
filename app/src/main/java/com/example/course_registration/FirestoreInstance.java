@@ -1,7 +1,7 @@
 package com.example.course_registration;
 
 public class FirestoreInstance {
-    public String get_record_attribute(String collection_name, String course_id, String attribute) {
+    public String get_record_attribute(String collection_name, String course_id, String attribute, CallBack ss) {
         return "";
     }
 

@@ -33,7 +33,7 @@ public class RealFirestoreInstance extends FirestoreInstance{
         void call(Integer s);
     }
 
-    public String get_record_attribute(String collection_name, String course_id, String attribute) {
+    public String get_record_attribute(final String collection_name, final String course_id, final String attribute, final CallBack callback) {
 
         studentRegistrationRef = db.collection(collection_name);
 
@@ -45,6 +45,7 @@ public class RealFirestoreInstance extends FirestoreInstance{
                         document_names = new ArrayList<String>();
                         document_ids = new ArrayList<String>();
 
+                        Object found = "0";
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
                             Log.d("myTag", "HELLO");
@@ -59,8 +60,15 @@ public class RealFirestoreInstance extends FirestoreInstance{
 //                            data +=  "\nCourse Code: " + documentId + "\nTitle: " + title + "\n\n";
 //                            document_names.add(title);
 //                            document_ids.add(documentId);
+                            if (documentSnapshot.getId().equals(course_id)){
+                                found = documentSnapshot.get(attribute);
+
+                            }
+
 
                         }
+
+                        callback.callback(found);
 
                     }
 

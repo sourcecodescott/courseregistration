@@ -19,27 +19,36 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void test_if_we_can_register_for_course(){
+    public void test_if_course_registration_function_works(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
         HashMap<String, String> art100 = new HashMap<>();
-        art100.put("max_students", "90");
+        Long music_max_students = new Long(90);
+        art100.put("max_students",music_max_students.toString());
         collection.put("MUSIC105", art100);
         fake_database.put("Courses", collection);
-
 
         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
         HashMap<String, String> sric_one = new HashMap<>();
         sric_one.put("course", "MUSIC105");
-        collection.put("H3aeLS2Jenhz9PXbORsy", sric_one);
+        collection2.put("H3aeLS2Jenhz9PXbORsy", sric_one);
         fake_database.put("StudentRegisteredInCourse", collection2);
 
         MockFirestoreInstance firebase_instance = new MockFirestoreInstance(fake_database);
 
         ViewCourseDetail vcd = new ViewCourseDetail();
 
-        boolean output= vcd.check_if_we_can_register_in_course("Fld9C5XdTAPhPT85WkFl", "MUSIC105", firebase_instance);
+        CallBack ss = new CallBack() {
+            public void callback(Object counted) {
+            };
+        };
+
+        int current_students = vcd.check_number_of_students_in_course("MUSIC105", firebase_instance);
+        Long max_students = music_max_students;
+        boolean output = vcd.test_whether_you_can_register(current_students, max_students);
+        assertEquals(1, current_students);
         assertEquals(true, output);
+
     }
 
     @Test

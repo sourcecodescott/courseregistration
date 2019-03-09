@@ -77,6 +77,8 @@ public class ViewCourseDetail extends AppCompatActivity {
 
         checkifregistered();
 
+        checkiffull();
+
     }
 
     public void register(View v) {
@@ -102,12 +104,24 @@ public class ViewCourseDetail extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(ViewCourseDetail.this, "You Successfully registered for "+regcourse, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewCourseDetail.this, "You Successfully registered for " + regcourse, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 });
+
     }
 
+
+    public void checkiffull() {
+
+        RealFirestoreInstance rfi = new RealFirestoreInstance(db);
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  ccc = course.getCourse_code();
+
+        boolean b = check_if_we_can_register_in_course(ccc, rfi);
+    }
 
     public void checkifregistered() {
 
@@ -125,14 +139,14 @@ public class ViewCourseDetail extends AppCompatActivity {
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
 
-                           String courseisReg = isreg.getCourse();
+                            String courseisReg = isreg.getCourse();
                             String studentisReg = isreg.getStudent();
 
-                           if(courseisReg.equals(ccc) && studentisReg.equals(user))
-                           {
-                               btnregisterbutton.setText("You are registered for this course.");
-                               btnregisterbutton.setEnabled(false);
-                          }
+                            if(courseisReg.equals(ccc) && studentisReg.equals(user))
+                            {
+                                btnregisterbutton.setText("You are registered for this course.");
+                                btnregisterbutton.setEnabled(false);
+                            }
 
 
                         }
@@ -141,37 +155,51 @@ public class ViewCourseDetail extends AppCompatActivity {
                 });
     }
 
+    public boolean test_whether_you_can_register(Integer number_of_students, Long max_students){
+        return number_of_students<max_students;
+    }
 
-    public boolean check_if_we_can_register_in_course(String student_id, String course_id, FirestoreInstance firebase_instance){
+
+    public boolean check_if_we_can_register_in_course(final String course_id, final FirestoreInstance firebase_instance){
 
         CallBack ss = new CallBack() {
-            public void callback(Integer s) {
-                course_enrolled= findViewById(R.id.txtenrolled);
-                course_enrolled.setText("Enrolled: "+s);
+            public void callback(Object s1) {
+                final int number_of_students = (Integer) s1;
+
+                CallBack ss2 = new CallBack() {
+                    public void callback(Object s2) {
+
+                        Long max_students_in_course = (Long) s2;
+
+                        if (!test_whether_you_can_register(number_of_students, max_students_in_course)) {
+
+                            btnregisterbutton.setText("Class is full. ");
+                            btnregisterbutton.setEnabled(false);
+
+                        }
+                    };
+                };
+
+                firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss2);
+
+
+
+
             };
         };
 
-        int current_number_of_students = firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
-        int  max_students = Integer.parseInt(firebase_instance.get_record_attribute("Courses", course_id, "max_students"));
-        if (current_number_of_students >= max_students){
-            return false; }
-        else{
-            return true;
-        }
+        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
+//        String max_students = firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss);
+        return false;
+
     }
 
     public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance){
-//        Callback s = new Callback() {
-//            public Integer call(Integer s){
-//                course_enrolled= findViewById(R.id.txtenrolled);
-//                course_enrolled.setText("Enrolled: "+ s);
-//            };
-//        };
 
         CallBack ss = new CallBack() {
-            public void callback(Integer counted) {
+            public void callback(Object counted) {
                 course_enrolled= findViewById(R.id.txtenrolled);
-                course_enrolled.setText("Enrolled: "+counted);
+                course_enrolled.setText("Enrolled: "+((int)counted));
             };
         };
 
