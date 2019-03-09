@@ -14,7 +14,10 @@ public class MockFirestoreInstance extends FirestoreInstance{
     public String get_record_attribute(String collection_name, String course_id, String attribute, CallBack ss){
         HashMap<String, HashMap<String, String>> this_collection_hash_map = database.get(collection_name);
         HashMap<String, String> selected_document = this_collection_hash_map.get(course_id);
-        return selected_document.get(attribute);
+
+        ss.callback(selected_document.get(attribute));
+
+        return "1";
     }
 
     public int count_rows_by_field(String collection_name, String field_name, String field_value, CallBack ss) {
@@ -33,7 +36,7 @@ public class MockFirestoreInstance extends FirestoreInstance{
 
         ss.callback(counter);
 
-        return counter;
+        return 0;
 
         //"Courses", "course", course_id
 
