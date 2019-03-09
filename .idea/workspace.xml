@@ -12,6 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="feb6e3db-676d-4f0f-9ab7-13632d2292bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +104,7 @@
         <counts>
           <entry key="gradle" value="6" />
           <entry key="gradlew" value="33" />
-          <entry key="java" value="5544" />
+          <entry key="java" value="5567" />
           <entry key="properties" value="1" />
           <entry key="xml" value="53" />
           <entry key="yml" value="11" />
@@ -104,7 +113,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="5544" />
+          <entry key="JAVA" value="5567" />
           <entry key="PLAIN_TEXT" value="33" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="53" />
@@ -132,8 +141,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="120">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,8 +153,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="250">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -244,6 +253,7 @@
       <find>testDebugUnitTest</find>
       <find>runner</find>
       <find>ugrad</find>
+      <find>ExampleUnitTestExampleUnitTest</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -274,6 +284,7 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/EnrollmentAmountUnitTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java" />
       </list>
     </option>
@@ -635,12 +646,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ExampleUnitTest - 2019.03.08 at 20h 39m 51s.xml">
-      <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="ExampleUnitTest - 2019.03.08 at 20h 43m 03s.xml">
-      <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="ExampleUnitTest - 2019.03.08 at 20h 47m 18s.xml">
       <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
     </history-entry>
@@ -665,6 +670,12 @@
     <history-entry file="ExampleUnitTest - 2019.03.09 at 13h 26m 38s.xml">
       <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="ExampleUnitTest - 2019.03.09 at 13h 45m 54s.xml">
+      <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="ExampleUnitTest - 2019.03.09 at 13h 48m 01s.xml">
+      <configuration name="ExampleUnitTest" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -680,16 +691,16 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.24555735" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.24555735" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4983845" weight="0.36248013" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4983845" visible="true" weight="0.36248013" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49676898" weight="0.3290938" />
-      <window_info anchor="bottom" id="TODO" order="2" weight="0.3280507" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32750398" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4983845" weight="0.32894737" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32750398" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.503231" side_tool="true" weight="0.3305921" />
@@ -977,15 +988,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="250">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ExampleUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
