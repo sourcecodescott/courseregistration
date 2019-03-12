@@ -14,7 +14,10 @@ import android.util.Log;
 import java.lang.*;
 
 
-
+/**
+ * @authors Nicholas Brisson & Mat Kallada
+ * This class creates an instance of the real database on firestore
+ */
 public class RealFirestoreInstance extends FirestoreInstance{
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -23,7 +26,10 @@ public class RealFirestoreInstance extends FirestoreInstance{
     private List<String> document_names;
     private List<String> document_ids;
 
-
+    /**
+     * Create new instance of the database
+     * @param db the actual database variable
+     */
     public RealFirestoreInstance (FirebaseFirestore db) {
         this.db = db;
     }
@@ -33,6 +39,14 @@ public class RealFirestoreInstance extends FirestoreInstance{
         void call(Integer s);
     }
 
+    /**
+     *
+     * @param collection_name the identifying name of the appropriate collection
+     * @param course_id the course code that identifies the course we are viewing
+     * @param attribute
+     * @param callback use callback in order to return the number of students
+     * @return the record
+     */
     public String get_record_attribute(final String collection_name, final String course_id, final String attribute, final CallBack callback) {
 
         studentRegistrationRef = db.collection(collection_name);
@@ -48,18 +62,7 @@ public class RealFirestoreInstance extends FirestoreInstance{
                         Object found = "0";
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
-                            Log.d("myTag", "HELLO");
-//                            Course course = documentSnapshot.toObject(Course.class);
 //
-//                            course.setDocumentId(documentSnapshot.getId());
-//
-//                            String documentId = course.getDocumentId();
-//                            String title = course.getCourse_name();
-//                            String description = course.getCourse_description();
-//
-//                            data +=  "\nCourse Code: " + documentId + "\nTitle: " + title + "\n\n";
-//                            document_names.add(title);
-//                            document_ids.add(documentId);
                             if (documentSnapshot.getId().equals(course_id)){
                                 found = documentSnapshot.get(attribute);
 
@@ -75,10 +78,16 @@ public class RealFirestoreInstance extends FirestoreInstance{
                 });
 
         return "ds";
-
-        //final Query query = db.collection(collection_name).get(course_id);
     }
 
+    /**
+     *  This method returns the amount of student instances that are in a course
+     * @param collection_name the identifying name of the appropriate collection
+     * @param field_name name of the field
+     * @param field_value value of that field (student name)
+     * @param callback callback for return
+     * @return the amount of students in the course
+     */
     public int count_rows_by_field(String collection_name, final String field_name, final String field_value, final CallBack callback) {
 
         CollectionReference query = db.collection(collection_name);
@@ -101,17 +110,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
                                   counter++;
                               }
 
-//                            Course course = documentSnapshot.toObject(Course.class);
-//
-//                            course.setDocumentId(documentSnapshot.getId());
-//
-//                            String documentId = course.getDocumentId();
-//                            String title = course.getCourse_name();
-//                            String description = course.getCourse_description();
-//
-//                            data +=  "\nCourse Code: " + documentId + "\nTitle: " + title + "\n\n";
-//                            document_names.add(title);
-//                            document_ids.add(documentId);
 
                         }
 

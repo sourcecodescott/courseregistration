@@ -7,17 +7,30 @@ import static org.junit.Assert.*;
 
 import java.util.HashMap;
 
+/**
+ * @authors Nicholas Brisson & Mat Kallada
+ * Unit testing for the course details functions that displays the number of students
+ * registered in a course and determines if there is room for a student to register.
+ */
 public class ExampleUnitTest {
 
+
     @Test
+    /**
+     * Test if the function that blocks a student from a registering for a full course
+     * works. This entails returning the current amount of registered students in a course
+     * from the mock database.
+     */
     public void test_if_blocking_course_registration_on_full_course(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
         HashMap<String, String> art100 = new HashMap<>();
         Long music_max_students = new Long(90);
+
         art100.put("max_students",music_max_students.toString());
         collection.put("MUSIC105", art100);
         fake_database.put("Courses", collection);
+
 
         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
         HashMap<String, String> sric_one = new HashMap<>();
@@ -45,6 +58,10 @@ public class ExampleUnitTest {
 
     }
 
+    /**
+     * Test method that checks if we are able to retrieve the max amount of students
+     * from the mock database.
+     */
     @Test
     public void test_whether_we_can_get_field_of_a_record_from_database() {
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
@@ -73,6 +90,10 @@ public class ExampleUnitTest {
 
     }
 
+    /**
+     * Test if we are able to query the amount of students currently enrolled in
+     * the current course from the mock database
+     */
     @Test
     public void test_function_that_counts_number_of_students_in_course() {
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
