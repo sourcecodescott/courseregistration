@@ -16,6 +16,7 @@ public class Course implements Serializable{
     private String course_time;
     private String program;
     private String course_code;
+    private int max_students;
 
 
 
