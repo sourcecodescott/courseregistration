@@ -20,6 +20,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.*;
 
+
 /**
  * @authors Nicholas Brisson & Mat Kallada
  * This class will query the firebase database and
@@ -27,7 +28,9 @@ import java.lang.*;
  */
 public class ViewCourseDetail extends AppCompatActivity {
 
-    private FirebaseFirestore db;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference coursebookRef = db.collection("Courses");
+    //private FirebaseFirestore db;
 
 
     private TextView name;
@@ -45,7 +48,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     private Course course;
 
     private String courseID;
-    private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
+    private DocumentReference noteRef = db.collection("StudentRegisteredInCourse").document();
 
     private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
 
@@ -57,7 +60,6 @@ public class ViewCourseDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_view_course_detail);
 
 
