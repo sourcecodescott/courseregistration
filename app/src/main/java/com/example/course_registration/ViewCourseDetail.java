@@ -45,6 +45,9 @@ public class ViewCourseDetail extends AppCompatActivity {
     private Course course;
 
     private String courseID;
+    private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
+
+    private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
 
     /**
      * This method will run once the activity is activated
@@ -56,6 +59,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
         setContentView(R.layout.activity_view_course_detail);
+
 
 
         name = findViewById(R.id.txtCourseName);
