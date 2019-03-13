@@ -70,6 +70,7 @@ public class view_course_list extends AppCompatActivity {
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options)
         {
             //For each item in the database connect it to the view
+
             @Override
             public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
             {
