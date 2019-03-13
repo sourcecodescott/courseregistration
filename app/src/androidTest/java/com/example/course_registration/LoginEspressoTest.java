@@ -1,5 +1,6 @@
 package com.example.course_registration;
 
+import android.content.Intent;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -32,7 +33,7 @@ import static com.google.protobuf.WireFormat.FieldType.MESSAGE;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class CheckIfRegisterTest {
+public class LoginEspressoTest {
     private static String MESSAGE = "bobsimpson";
 
     @Rule
@@ -58,7 +59,12 @@ public class CheckIfRegisterTest {
 
         onView(withId(R.id.btnLogin)).perform(click());
 
-       // intended(toPackage("com.example.course_registration.MainActivity"));
+        Intent intent = new Intent();
+        intent.putExtra("key","value");
+
+
+
+       //intended(toPackage("com.example.course_registration.MainActivity"));
 
 
         //onView(withId(R.id.btnRegister)).check(matches(isEnabled()));
