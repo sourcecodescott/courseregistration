@@ -64,7 +64,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_description = findViewById(R.id.txtcourse_description);
         course_enrolled= findViewById(R.id.txtenrolled);
         course_time = findViewById(R.id.txtcourse_time);
-        btnregisterbutton = findViewById(R.id.btnResgister);
+        btnregisterbutton = findViewById(R.id.btnRegister);
 
 
 

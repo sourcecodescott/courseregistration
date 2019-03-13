@@ -1,6 +1,7 @@
 package com.example.course_registration;
 
 import android.content.Context;
+import android.support.test.InstrumentationRegistry;
 
 import org.junit.Test;
 
