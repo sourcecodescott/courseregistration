@@ -13,11 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.course_registration.model.Course;
 import com.example.course_registration.model.course_schedule_course;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.ArrayList;
 
 
 public class StudentScheduleList extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class StudentScheduleList extends AppCompatActivity {
     private RecyclerView courseRecyclerView;
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter databaseToRecycleView;
+    private ArrayList<String> courseStudentIn;
 
     /**
      *
@@ -35,6 +39,7 @@ public class StudentScheduleList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_schedule_list);
 
+        courseStudentIn = new ArrayList<String>();
         courseRecyclerView = findViewById(R.id.courseScheduleRecycler);
         database = FirebaseFirestore.getInstance();
 
@@ -62,21 +67,19 @@ public class StudentScheduleList extends AppCompatActivity {
      */
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db){
         final Query query = db.collection("Courses").orderBy("start_time");
-        FirestoreRecyclerOptions<course_schedule_course> options = new FirestoreRecyclerOptions.Builder<course_schedule_course>()
-                .setQuery(query, course_schedule_course.class)
+        FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
+                .setQuery(query, Course.class)
                 .build();
 
 
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<course_schedule_course, ScheduleEntryViewHolder>(options){
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course, ScheduleEntryViewHolder>(options){
             @Override
 
-            public void onBindViewHolder(ScheduleEntryViewHolder holder, int position, final course_schedule_course model){
+            public void onBindViewHolder(ScheduleEntryViewHolder holder, int position, final Course model){
 
-                holder.courseName.setText(model.getCourseName());
-                holder.courseType.setText(model.getCourseProgram());
-                holder.courseLocation.setText(model.getCourseLocation());
-                holder.courseDays.setText(model.getCourseDay());
-                holder.courseTime.setText(model.getCourseTime());
+                holder.courseName.setText(model.getCourse_name());
+                holder.courseType.setText(model.getProgram());
+                holder.courseTime.setText(model.getCourse_time());
 
             }
 
