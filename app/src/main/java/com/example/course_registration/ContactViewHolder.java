@@ -26,6 +26,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder  {
         name = view.findViewById(R.id.contactName);
         email = view.findViewById(R.id.contactEmail);
 
+
         detailsButton = view.findViewById(R.id.goDetails);
 
     }

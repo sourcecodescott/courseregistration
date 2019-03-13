@@ -19,6 +19,7 @@ public class Course implements Serializable{
     private int max_students;
 
 
+
     public Course() {
         //public no-arg constructor needed
     }
