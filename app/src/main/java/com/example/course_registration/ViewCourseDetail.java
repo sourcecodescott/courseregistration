@@ -63,7 +63,6 @@ public class ViewCourseDetail extends AppCompatActivity {
         setContentView(R.layout.activity_view_course_detail);
 
 
-
         name = findViewById(R.id.txtCourseName);
         course_day = findViewById(R.id.txtcourse_day);
         course_code = findViewById(R.id.txtCourseCode);
@@ -72,10 +71,6 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_enrolled= findViewById(R.id.txtenrolled);
         course_time = findViewById(R.id.txtcourse_time);
         btnregisterbutton = findViewById(R.id.btnRegister);
-
-
-
-
 
         intent = getIntent();
 
@@ -111,16 +106,10 @@ public class ViewCourseDetail extends AppCompatActivity {
      * @param v
      */
     public void register(View v) {
-
         Globals sharedData = Globals.getInstance();
         saveCourse(courseID, sharedData.getUsername());
 
-
-
-
-
     }
-
     /**
      * This class will allow the student to register for the course they
      * are viewing.
