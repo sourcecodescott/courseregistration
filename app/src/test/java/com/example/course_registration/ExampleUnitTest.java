@@ -1,11 +1,10 @@
 package com.example.course_registration;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
-
-
 
 import java.util.HashMap;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @authors Nicholas Brisson & Mat Kallada
@@ -24,11 +23,11 @@ public class ExampleUnitTest {
     public void test_if_blocking_course_registration_on_full_course(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
-        HashMap<String, String> art100 = new HashMap<>();
+        HashMap<String, String> music105 = new HashMap<>();
         Long music_max_students = new Long(90);
 
-        art100.put("max_students",music_max_students.toString());
-        collection.put("MUSIC105", art100);
+        music105.put("max_students",music_max_students.toString());
+        collection.put("MUSIC105", music105);
         fake_database.put("Courses", collection);
 
 
@@ -66,10 +65,10 @@ public class ExampleUnitTest {
     public void test_whether_we_can_get_field_of_a_record_from_database() {
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
-        HashMap<String, String> art100 = new HashMap<>();
+        HashMap<String, String> music105 = new HashMap<>();
         Long music_max_students = new Long(90);
-        art100.put("max_students",music_max_students.toString());
-        collection.put("MUSIC105", art100);
+        music105.put("max_students",music_max_students.toString());
+        collection.put("MUSIC105", music105);
         fake_database.put("Courses", collection);
 
         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
@@ -98,9 +97,9 @@ public class ExampleUnitTest {
     public void test_function_that_counts_number_of_students_in_course() {
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
-        HashMap<String, String> art100 = new HashMap<>();
-        art100.put("max_students", "90");
-        collection.put("MUSIC105", art100);
+        HashMap<String, String> music105 = new HashMap<>();
+        music105.put("max_students", "90");
+        collection.put("MUSIC105", music105);
         fake_database.put("Courses", collection);
 
         HashMap<String, HashMap<String, String>> collection2 = new HashMap<>();
