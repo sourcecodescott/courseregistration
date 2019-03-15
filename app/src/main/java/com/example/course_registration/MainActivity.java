@@ -12,9 +12,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-
+/**
+ * @author Samath and Dan
+ * Main activity displays user information and options for user to view
+ */
 public class MainActivity extends AppCompatActivity {
-
 
     private TextView txtStudentName;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -24,35 +26,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         txtStudentName = findViewById(R.id.textView2);
-
         getFirstandLastName();
-
-
-
-
 
     }
 
-    //Method called every time the activity starts.
+    /**
+     * Method called everytime the activity starts
+     */
     @Override
     protected void onStart() {
         super.onStart();
         islogggedin();
     }
 
+    /**
+     * Method called to resume activity
+     */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-
         islogggedin();
     }
 
-
-    void islogggedin()
-    {
+    void islogggedin() {
         Intent intentmymy;
         intentmymy = getIntent();
 
@@ -60,36 +57,37 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
-
-
-
     }
 
-    //Method called every time the activity stops
+    /**
+     * Method called whenever method is stopped
+     */
     @Override
     protected void onStop() {
         super.onStop();
     }
 
-
-
+    /**
+     * Student scehdule Activity
+     * @param v
+     */
     public void schedule(View v) {
         Intent intent = new Intent(MainActivity.this, StudentScheduleList.class);
-
         startActivity(intent);
-
-
     }
 
+    /**
+     * Student courselist to add and drop courses
+     * @param v
+     */
     public void courselist(View v) {
-
         Intent intent = new Intent(MainActivity.this,view_course_list.class);
-
         startActivity(intent);
-
     }
 
-
+    /**
+     * Retrieve student name 
+     */
     public void getFirstandLastName() {
         coursebookRef.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -106,22 +104,13 @@ public class MainActivity extends AppCompatActivity {
 
                             String username = stu.getUsername();
 
-
-                            if(username.equals(global_username))
-                            {
+                            if(username.equals(global_username)) {
                                 txtStudentName.setText(stu.getName());
                             }
-
-
                         }
-
                     }
                 });
     }
-
-
-
-
 }
 
 
