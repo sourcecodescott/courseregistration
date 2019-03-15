@@ -1,10 +1,8 @@
 package com.example.course_registration;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,8 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.*;
-
 /**
  * @authors Nicholas Brisson & Mat Kallada
  * This class will query the firebase database and
@@ -27,8 +23,8 @@ import java.lang.*;
  */
 public class ViewCourseDetail extends AppCompatActivity {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference coursebookRef = db.collection("Courses");
+    private FirebaseFirestore db ;
+    private CollectionReference coursebookRef;
 
 
     private TextView name;
@@ -46,9 +42,9 @@ public class ViewCourseDetail extends AppCompatActivity {
     private Course course;
 
     private String courseID;
-    private DocumentReference noteRef = db.collection("StudentRegisteredInCourse").document();
+    private DocumentReference noteRef;
 
-    private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
+    private CollectionReference checkregistration;
 
     /**
      * This method will run once the activity is activated
@@ -57,6 +53,12 @@ public class ViewCourseDetail extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        db = FirebaseFirestore.getInstance();
+        coursebookRef = db.collection("Courses");
+
+        noteRef = db.collection("StudentRegisteredInCourse").document();
+        checkregistration = db.collection("StudentRegisteredInCourse");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_course_detail);
 
@@ -163,8 +165,12 @@ public class ViewCourseDetail extends AppCompatActivity {
 
                         if (!test_whether_you_can_register(number_of_students, max_students_in_course)) {
 
-                            btnregisterbutton.setText("Class is full. ");
-                            btnregisterbutton.setEnabled(false);
+                            if (btnregisterbutton.getTag() == "drop"){
+                                // Do nothing if the user is in the course!
+                            }else{
+                                btnregisterbutton.setText("Class is full. ");
+                                btnregisterbutton.setEnabled(false);
+                            }
 
                         }
                     };
@@ -212,6 +218,7 @@ public class ViewCourseDetail extends AppCompatActivity {
                             if(courseisReg.equals(ccc) && studentisReg.equals(user))
                             {
                                btnregisterbutton.setText("Drop Course.");
+                               btnregisterbutton.setTag("drop");
                                regesteredID = isreg.getId();
                                regStatus = true;
                             }
