@@ -20,7 +20,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.lang.*;
 
-
 /**
  * @authors Nicholas Brisson & Mat Kallada
  * This class will query the firebase database and
@@ -30,7 +29,6 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference coursebookRef = db.collection("Courses");
-    //private FirebaseFirestore db;
 
 
     private TextView name;
@@ -173,9 +171,6 @@ public class ViewCourseDetail extends AppCompatActivity {
                 };
 
                 firebase_instance.get_record_attribute("Courses", course_id, "max_students", ss2);
-
-
-
 
             };
         };

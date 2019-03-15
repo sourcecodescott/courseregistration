@@ -71,26 +71,31 @@ public class view_course_list extends AppCompatActivity {
 
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,CourseViewHolder>(options) {
             /**
-             * Creating the courseviewholder to dispaly all courses 
+             * Creating the courseviewholder to dispaly all courses
              * @param holder
              * @param position
              * @param model
              */
             @Override
             public void onBindViewHolder(CourseViewHolder holder, int position, final Course model) {
-                holder.name.setText(model.getCourse_code());
-                holder.email.setText(model.getCourse_name());
+                holder.coursename.setText(model.getCourse_code());
+                holder.courseinfo.setText(model.getCourse_name());
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(view_course_list.this,ViewCourseDetail.class);
                         intent.putExtra("contact",model);
                         startActivity(intent);
-
                     }
                 });
             }
 
+            /**
+             * Return course viewholder to display the different course information
+             * @param group
+             * @param i
+             * @return
+             */
             @Override
             public CourseViewHolder onCreateViewHolder(ViewGroup group, int i) {
                 View view = LayoutInflater.from(group.getContext())
@@ -101,17 +106,26 @@ public class view_course_list extends AppCompatActivity {
         return adapter;
     }
 
+    /**
+     * Iniitates activity and starts listening when activity starts
+     */
     @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
     }
 
+    /**
+     * Resumes activity
+     */
     @Override
     protected void onResume() {
         super.onResume();
     }
 
+    /**
+     * End activity and stop listenign to user input
+     */
     @Override
     protected void onStop() {
         super.onStop();

@@ -15,8 +15,8 @@ import android.widget.TextView;
  */
 public class CourseViewHolder extends RecyclerView.ViewHolder  {
 
-    public TextView name;
-    public TextView email;
+    public TextView coursename;
+    public TextView courseinfo;
     public Button detailsButton;
 
     /**
@@ -26,8 +26,8 @@ public class CourseViewHolder extends RecyclerView.ViewHolder  {
     public CourseViewHolder(View view)
     {
         super(view);
-        name = view.findViewById(R.id.contactName);
-        email = view.findViewById(R.id.contactEmail);
+        coursename = view.findViewById(R.id.contactName);
+        courseinfo = view.findViewById(R.id.contactEmail);
         detailsButton = view.findViewById(R.id.goDetails);
 
     }
