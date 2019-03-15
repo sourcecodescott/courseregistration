@@ -6,7 +6,10 @@ import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 
-
+/**
+ * @author Dan and Pascha
+ * Course class sets different student information
+ */
 
 public class Course implements Serializable{
     private String documentId;
@@ -24,6 +27,14 @@ public class Course implements Serializable{
         //public no-arg constructor needed
     }
 
+    /**
+     * Set Course information
+     * @param course_day
+     * @param course_description
+     * @param course_name
+     * @param course_time
+     * @param program
+     */
     public Course(String course_day, String course_description,String course_name,String course_time,String program) {
         this.course_day = course_day;
         this.course_description = course_description;
@@ -32,6 +43,10 @@ public class Course implements Serializable{
         this.program = course_description;
     }
 
+    /**
+     *
+     * @param course_code
+     */
     public void setCourse_code(String course_code) {
         this.course_code = course_code;
     }
