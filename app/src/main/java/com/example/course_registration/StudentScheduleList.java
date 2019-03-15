@@ -31,6 +31,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * @author Carter and Ali
+ * Schedule list to display information of students schedule.
+ */
 
 public class StudentScheduleList extends AppCompatActivity {
 
@@ -63,7 +67,7 @@ public class StudentScheduleList extends AppCompatActivity {
     }
 
     /**
-     *
+     *Setting up recyclervie to dispaly schedule
      * @param view
      * @param databaseToRecycleView
      */
@@ -75,17 +79,25 @@ public class StudentScheduleList extends AppCompatActivity {
         view.setAdapter(databaseToRecycleView);
     }
 
+    /**
+     * number of students in course
+     * @param s
+     * @param target
+     */
     private void addToArrayList(String s, ArrayList<String> target){
         courseStudentIn.add(s);
         System.out.println(courseStudentIn + " ");
         System.out.println(s);
-
     }
 
+    /**
+     * Pulls information form database to grab classes the student is registered in
+     *
+     * @param db
+     */
     private void findStudentCourses(FirebaseFirestore db){
 
         CollectionReference studentInClass = db.collection("StudentRegisteredInCourse");
-
         studentInClass
                 .whereEqualTo("student", "bobsimpson")
                 .get()
