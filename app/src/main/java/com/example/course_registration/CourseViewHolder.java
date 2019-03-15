@@ -9,19 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
-
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-
 /**
  * @author Dan and Pascha
  * Course View holder to display course information
  */
-public class ContactViewHolder extends RecyclerView.ViewHolder  {
+public class CourseViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView name;
     public TextView email;
@@ -31,7 +23,7 @@ public class ContactViewHolder extends RecyclerView.ViewHolder  {
      * Used in recyclerview to showcase the infomation on the coursepage
      * @param view
      */
-    public ContactViewHolder(View view)
+    public CourseViewHolder(View view)
     {
         super(view);
         name = view.findViewById(R.id.contactName);

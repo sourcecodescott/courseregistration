@@ -62,10 +62,10 @@ public class view_course_list extends AppCompatActivity {
                 .build();
 
 
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options) {
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,CourseViewHolder>(options) {
 
             @Override
-            public void onBindViewHolder(ContactViewHolder holder, int position, final Course model) {
+            public void onBindViewHolder(CourseViewHolder holder, int position, final Course model) {
                 holder.name.setText(model.getCourse_code());
                 holder.email.setText(model.getCourse_name());
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +80,10 @@ public class view_course_list extends AppCompatActivity {
             }
 
             @Override
-            public ContactViewHolder onCreateViewHolder(ViewGroup group, int i) {
+            public CourseViewHolder onCreateViewHolder(ViewGroup group, int i) {
                 View view = LayoutInflater.from(group.getContext())
                         .inflate(R.layout.contact_entry,group,false);
-                return new ContactViewHolder(view);
+                return new CourseViewHolder(view);
             }
         };
         return adapter;

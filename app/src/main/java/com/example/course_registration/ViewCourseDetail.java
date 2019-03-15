@@ -62,7 +62,6 @@ public class ViewCourseDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_course_detail);
 
-
         name = findViewById(R.id.txtCourseName);
         course_day = findViewById(R.id.txtcourse_day);
         course_code = findViewById(R.id.txtCourseCode);
@@ -93,11 +92,8 @@ public class ViewCourseDetail extends AppCompatActivity {
             };
         };
         course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi, ss));
-
         checkifregistered_helper();
-
         checkiffull_helper(courseID);
-
     }
 
     /**
