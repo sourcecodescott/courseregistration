@@ -12,11 +12,20 @@ public class Student {
     private String studentId;
     private String username;
 
-
+    /**
+     * No Arg constructor
+     */
     public Student() {
-        //public no-arg constructor needed
+
     }
 
+    /**
+     * Student parameteres to define a student information
+     * @param name
+     * @param password
+     * @param studentId
+     * @param username
+     */
     public Student (String name, String password,String studentId,String username) {
         this.name = name;
         this.password= password;

@@ -2,7 +2,9 @@ package com.example.course_registration;
 
 import com.google.firebase.firestore.Exclude;
 
-
+/**
+ *
+ */
 public class StudentRegisteredInCourse {
 
     private String course;
