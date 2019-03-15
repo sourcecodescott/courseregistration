@@ -18,7 +18,8 @@ import android.widget.TextView;
 
 
 /**
- *
+ * @author Dan and Pascha
+ * Course View holder to display course information
  */
 public class ContactViewHolder extends RecyclerView.ViewHolder  {
 

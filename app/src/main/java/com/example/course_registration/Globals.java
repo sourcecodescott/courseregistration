@@ -1,5 +1,9 @@
 package com.example.course_registration;
 
+/**
+ * @author Samath
+ * Global variables that will be used across the application
+ */
 
 public class Globals {
 
@@ -11,6 +15,10 @@ public class Globals {
         return instance;
     }
 
+    /**
+     * assign instance to global instance
+     * @param instance
+     */
     public static void setInstance(Globals instance) {
         Globals.instance = instance;
     }

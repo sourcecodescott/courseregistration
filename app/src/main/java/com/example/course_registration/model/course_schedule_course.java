@@ -2,6 +2,10 @@ package com.example.course_registration.model;
 
 import java.io.Serializable;
 
+/**
+ * @author Ali and Carter
+ * Course schedule model class with getters and setters
+ */
 public class course_schedule_course implements Serializable {
     private String courseCode;
     private String courseName;

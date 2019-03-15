@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 /**
  * @author Ali and Carter
- * Viewholder class to dispaly course schdule 
+ * Viewholder class to dispaly course schdule
  */
 public class ScheduleEntryViewHolder extends RecyclerView.ViewHolder{
 
