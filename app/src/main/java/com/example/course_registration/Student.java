@@ -2,6 +2,10 @@ package com.example.course_registration;
 
 import com.google.firebase.firestore.Exclude;
 
+/**
+ * @author Dan and Pascha
+ * Student class to display student information that is used across the board
+ */
 public class Student {
     private String name;
     private String password;
@@ -18,7 +22,6 @@ public class Student {
         this.password= password;
         this.studentId = studentId;
         this.username = username;
-
     }
 
     public void setUsername(String username) {

@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Retrieve student name 
+     * Retrieve student name
      */
     public void getFirstandLastName() {
         coursebookRef.get()
