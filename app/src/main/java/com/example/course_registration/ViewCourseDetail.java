@@ -38,10 +38,12 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.Date;
 import java.util.*;
 
+
+
+
 public class ViewCourseDetail extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference coursebookRef = db.collection("Courses");
 
 
     private TextView name;
@@ -57,11 +59,13 @@ public class ViewCourseDetail extends AppCompatActivity {
     private Course course;
 
     private String courseID;
-    private String conflict;
+    private String conflict = "";
     private int iscon = 0;
+    private Course course_Get;
+    String course_Code;
 
 
-    private DocumentReference noteRef = noteRef = db.collection("StudentRegisteredInCourse").document();
+    private DocumentReference noteRef = db.collection("StudentRegisteredInCourse").document();
 
     private CollectionReference checkregistration = db.collection("StudentRegisteredInCourse");
 
@@ -99,22 +103,41 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_description.setText("Description: "+course.getCourse_description());
         course_time.setText("Time: "+course.getCourse_time());
 
+       course_Code = course.getCourse_code();
+
         checkifregistered();
 
     }
 
-    public void register(View v) {
+    public void checkifregistered() {
 
-       Globals sharedData = Globals.getInstance();
-        saveCourse(courseID, sharedData.getUsername());
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  ccc = course.getCourse_code();
+
+        checkregistration.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(courseisReg.equals(ccc) && studentisReg.equals(user))
+                            {
+                                btnregisterbutton.setText("You are registered for this course.");
+                                btnregisterbutton.setEnabled(false);
+                            }
 
 
-        Check_For_Conflicts();
+                        }
 
+                    }
+                });
     }
-
-
-
 
     public void saveCourse(String course1, String student) {
 
@@ -132,96 +155,17 @@ public class ViewCourseDetail extends AppCompatActivity {
                 });
     }
 
-
-    public void checkifregistered() {
-
-        Globals sharedData = Globals.getInstance();
-        final String  user = sharedData.getUsername();
-        final String  ccc = course.getCourse_code();
-
-        checkregistration.get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
-
-                           String courseisReg = isreg.getCourse();
-                            String studentisReg = isreg.getStudent();
-
-                           if(courseisReg.equals(ccc) && studentisReg.equals(user))
-                           {
-                               btnregisterbutton.setText("You are registered for this course.");
-                               btnregisterbutton.setEnabled(false);
-                          }
-
-
-                        }
-
-                    }
-                });
-    }
-
-
-    public void Check_For_Conflicts() {
-
-        Globals sharedData = Globals.getInstance();
-        final String  user = sharedData.getUsername();
-        final String  ccc = course.getCourse_code();
-        checkregistration.get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
-
-                            String courseisReg = isreg.getCourse();
-                            String studentisReg = isreg.getStudent();
-
-                            if(studentisReg.equals(user))
-                            {
-                                Course cc = getCourseByName(courseisReg);
-
-                                if(isTimeConflict(course.getStart_time(),course.getEnd_time(),course.getCourse_day(),cc.getStart_time(),cc.getEnd_time(),cc.getCourse_day()) == true)
-                                {
-                                    conflict += "Course Name: "+ course.getCourse_name()+" Start Time: "+course.getStart_time()+" End Time: "+course.getEnd_time()+" Days "+ course.getCourse_day();
-                                    conflict += "\n";
-                                    conflict += "Course Name: "+ cc.getCourse_name()+" Start Time: "+cc.getStart_time()+" End Time: "+cc.getEnd_time()+" Days "+ cc.getCourse_day();
-                                    conflict += "--------------------------------------------------------------------------------------------------\n";
-                                    iscon++;
-                                }
-                            }
-
-
-                        }
-
-                    }
-                });
-
-        if(iscon > 0)
-        {
-
-            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-            dlgAlert.setMessage(conflict);
-            dlgAlert.setTitle("Schedule Conflict");
-            dlgAlert.setPositiveButton("OK", null);
-            dlgAlert.setCancelable(true);
-            dlgAlert.create().show();
-        }
-
-
-    }
-
-
-    public Course getCourseByName(String cName)
+    public void showMessage(String message)
     {
-        Course c = new Course();
-        return c;
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        dlgAlert.setMessage(message);
+        dlgAlert.setTitle("Schedule Conflict with the following...");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
     }
 
-    static boolean isTimeConflict(String course_1_StartTime, String course_1_EndTime, String course_1_Days, String course_2_StartTime,String course_2_EndTime, String course_2_Days)
+    public boolean isTimeConflict(String course_1_StartTime, String course_1_EndTime, String course_1_Days, String course_2_StartTime,String course_2_EndTime, String course_2_Days)
     {
         String interval1_time1 = course_1_StartTime;
         String interval1_time2 = course_1_EndTime;
@@ -249,7 +193,6 @@ public class ViewCourseDetail extends AppCompatActivity {
                 {
                     if(time1.intersects(time2) == true)
                     {
-                       // System.out.println("They Overlap");
                         m=true;
                     }
 
@@ -263,8 +206,96 @@ public class ViewCourseDetail extends AppCompatActivity {
 
         return m;
     }
+    public void getCourse(String cName) {
+
+        Course cToReturn;
 
 
+        DocumentReference mycourse = db.collection("Courses").document(cName);
+
+        mycourse.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                if (e != null) {
+                    Toast.makeText(ViewCourseDetail.this, "Error while loading!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                if (documentSnapshot.exists()) {
+                    Course cour = documentSnapshot.toObject(Course.class);
+                    SendCourse(cour);
+                } else {
+                    //showMessage("NOT FOUND");
+                }
+
+
+            }
+        });
+    }
+
+    private void updateCounter()
+    {
+
+    }
+
+    public void Check_For_Conflicts() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  ccc = course.getCourse_code();
+        checkregistration.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(studentisReg.equals(user))
+                            {
+                                getCourse(courseisReg);
+                                //IT WORKS BUT WHY DO I HAVE TO PREE TWICE FOR IT TO WORK???!!!??!
+                            }
+                        }
+
+                    }
+                });
+
+
+        if(iscon > 0)
+        {
+            showMessage(conflict);
+            iscon = 0;
+            conflict = "";
+        }
+
+
+    }
+
+
+    void SendCourse(Course other_cour)
+    {
+        iscon++;
+        if(isTimeConflict(course.getStart_time(),course.getEnd_time(),course.getCourse_day(),other_cour.getStart_time(),other_cour.getEnd_time(),other_cour.getCourse_day()) == true) {
+            conflict += "Course Code: " + other_cour.getCourse_code() + "\nStart Time: " + other_cour.getStart_time() + "\nEnd Time: " + other_cour.getEnd_time() + "\nDays: " + other_cour.getCourse_day();
+            conflict += "\n-------------------------------------------------------\n";
+
+        }
+
+    }
+
+    public void register(View v) {
+        //getCourse(course_Code);
+        Check_For_Conflicts();
+
+        //Globals sharedData = Globals.getInstance();
+        //saveCourse(courseID, sharedData.getUsername());
+
+    }
 
 
 }

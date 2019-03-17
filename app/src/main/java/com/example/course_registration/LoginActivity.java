@@ -44,7 +44,24 @@ public class LoginActivity extends AppCompatActivity  {
 
 
     public void login(View v) {
-        coursebookRef.get()
+
+
+        Globals sharedData = Globals.getInstance();
+        sharedData.setUsername("bobsimpson");
+        //sharedData.setUsername("squidward");
+
+        sharedData.setValue("success");
+
+        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+
+        intent.putExtra("success","success");
+
+        Toast.makeText(LoginActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+
+
+
+        /*coursebookRef.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -88,7 +105,7 @@ public class LoginActivity extends AppCompatActivity  {
                         }
                         //textViewData.setText(data);
                     }
-                });
+                });*/
     }
 
 }
