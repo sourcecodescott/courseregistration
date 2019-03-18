@@ -39,4 +39,5 @@ debugTests:
   stage: test
   script:
     - ./gradlew test --info
+    - adb devices
     - ./gradlew connectedAndroidTest
