@@ -102,7 +102,9 @@ public class ViewCourseDetail extends AppCompatActivity {
                 course_enrolled.setText("Enrolled: "+((int)counted));
             };
         };
-        course_enrolled.setText("Enrolled: "+this.check_number_of_students_in_course(courseID, rfi, ss));
+
+
+        this.check_number_of_students_in_course(courseID, rfi, ss);
         checkifregistered_helper();
         checkiffull_helper(courseID);
     }
