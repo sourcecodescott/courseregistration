@@ -38,8 +38,8 @@ stages:
 debugTests:
   stage: test
   script:
-    - ./gradlew test --info
-    - echo "no" | avdmanager --verbose create avd --force --name x86 --device "4in WVGA (Nexus S)" --package "system-images;android-24;google_apis;x86" --tag "google_apis" --abi "x86"
+#    - ./gradlew test --info
+    - echo "no" | $ANDROID_HOME/tools/bin/avdmanager--verbose create avd --force --name x86 --device "4in WVGA (Nexus S)" --package "system-images;android-24;google_apis;x86" --tag "google_apis" --abi "x86"
     - adb devices
     - adb list
     - ./gradlew connectedAndroidTest
