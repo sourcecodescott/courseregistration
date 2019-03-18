@@ -39,3 +39,4 @@ debugTests:
   stage: test
   script:
     - ./gradlew test --info
+    - ./gradlew connectedAndroidTest
