@@ -102,8 +102,6 @@ public class ViewCourseDetail extends AppCompatActivity {
                 course_enrolled.setText("Enrolled: "+((int)counted));
             };
         };
-
-
         this.check_number_of_students_in_course(courseID, rfi, ss);
         checkifregistered_helper();
         checkiffull_helper(courseID);
