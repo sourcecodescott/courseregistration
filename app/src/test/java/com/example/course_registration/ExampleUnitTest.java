@@ -122,9 +122,5 @@ public class ExampleUnitTest {
 
     }
 
-    @Test
-    public void test_failing() {
-        assertEquals(1, 2);
-    }
 
 }
