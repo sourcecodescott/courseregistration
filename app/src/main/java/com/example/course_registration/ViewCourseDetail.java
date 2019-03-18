@@ -1,5 +1,6 @@
 package com.example.course_registration;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.course_registration.model.Course;
+import com.example.course_registration.model.Interval;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -43,6 +48,11 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     private String courseID;
     private DocumentReference noteRef;
+
+    private String conflict = "";
+    private int iscon = 0;
+    int thiscounter = 0;
+    boolean isconflictexist = false;
 
     private CollectionReference checkregistration;
 
@@ -84,6 +94,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         program.setText("Program: "+course.getProgram());
         course_description.setText("Description: "+course.getCourse_description());
         course_time.setText("Time: "+course.getCourse_time());
+        btnregisterbutton.setTag("default");
 
         CallBack ss = new CallBack() {
             public void callback(Object counted) {
@@ -96,16 +107,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         checkiffull_helper(courseID);
     }
 
-    /**
-     * This method activates the registration process once the user clicks on
-     * the register button. It will reference the saveCourse method below.
-     * @param v
-     */
-    public void register(View v) {
-        Globals sharedData = Globals.getInstance();
-        saveCourse(courseID, sharedData.getUsername());
 
-    }
     /**
      * This class will allow the student to register for the course they
      * are viewing.
@@ -253,6 +255,246 @@ public class ViewCourseDetail extends AppCompatActivity {
         firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
         return 1;
     }
+
+
+
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This function will display a dialog box if a schedule conflict exist
+     * @param message is the text that will be displayed
+     */
+    public void showMessage(String message)
+    {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        dlgAlert.setMessage(message);
+        dlgAlert.setTitle("Unable to Add Course. There is a Scheduling Conflict with the following...");
+        dlgAlert.setPositiveButton("OK", null);
+        dlgAlert.setCancelable(true);
+        dlgAlert.create().show();
+    }
+
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This function will calculate if there is a conflict between the current course and
+     * every other course the student already register for.
+     * @param course_1_Days days that the course is offered
+     * @param course_1_StartTime The time the course starts
+     * @param course_1_EndTime The time the course ends
+     */
+    public boolean isTimeConflict(String course_1_StartTime, String course_1_EndTime, String course_1_Days, String course_2_StartTime,String course_2_EndTime, String course_2_Days)
+    {
+        String interval1_time1 = course_1_StartTime;
+        String interval1_time2 = course_1_EndTime;
+        Interval time1 = new Interval(Double.parseDouble(interval1_time1.replace(':', '.')), Double.parseDouble(interval1_time2.replace(':', '.')));
+
+        String interval2_time1 = course_2_StartTime;
+        String interval2_time2 = course_2_EndTime;
+        Interval time2 = new Interval(Double.parseDouble(interval2_time1.replace(':', '.')), Double.parseDouble(interval2_time2.replace(':', '.')));
+
+
+
+
+
+        String s1=course_1_Days;
+        String s2=course_2_Days;
+        boolean m = false;
+        for(int i=0;i<s1.length();i++){
+            char c=s1.charAt(i);
+
+            for(int j=0;j<s2.length();j++){
+                char c2=s2.charAt(j);
+
+                if(c == c2)
+                {
+                    if(time1.intersects(time2) == true)
+                    {
+                        m=true;
+                    }
+
+                }
+            }
+            if(m == true)
+            {
+                break;
+            }
+        }
+
+        return m;
+    }
+
+
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * Get a particular course by name
+     * @param cName the name of the course you want to retrieve
+     */
+    public void getCourse(String cName) {
+
+        DocumentReference mycourse = db.collection("Courses").document(cName);
+
+        mycourse.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
+                if (e != null) {
+                    Toast.makeText(ViewCourseDetail.this, "Error while loading!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                thiscounter++;
+
+                if (documentSnapshot.exists()) {
+                    Course cour = documentSnapshot.toObject(Course.class);
+                    SendCourse(cour);
+                }
+
+                if (thiscounter == iscon)
+                {
+
+                    if(isconflictexist == true)
+                    {
+                        showMessage(conflict);
+                    }
+                    else
+                    {
+                        Globals sharedData = Globals.getInstance();
+                        saveCourse(courseID, sharedData.getUsername());
+                        btnregisterbutton.setTag("drop");
+                    }
+
+
+                    iscon = 0;
+                    conflict = "";
+                    thiscounter = 0;
+                    isconflictexist = false;
+
+                }
+
+            }
+
+        });
+    }
+
+
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This is the main function that is responsible for checking for schedule conflicts.
+     */
+    public void Check_For_Conflicts() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+
+
+
+
+        checkregistration.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            //thread.start();
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(studentisReg.equals(user))
+                            {
+                                getCourse(courseisReg);
+
+                                iscon++;
+                            }
+                        }
+
+
+
+                    }
+                });
+
+
+
+
+
+    }
+
+
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * Helper method that is used by course conflict method.
+     */
+    void SendCourse(Course other_cour)
+    {
+        if(isTimeConflict(course.getStart_time(),course.getEnd_time(),course.getCourse_day(),other_cour.getStart_time(),other_cour.getEnd_time(),other_cour.getCourse_day()) == true) {
+            conflict += "Course Code: " + other_cour.getCourse_code() + "\nStart Time: " + other_cour.getStart_time() + "\nEnd Time: " + other_cour.getEnd_time() + "\nDays: " + other_cour.getCourse_day();
+            conflict += "\n-------------------------------------------------------\n";
+            isconflictexist = true;
+        }
+
+
+
+    }
+
+
+    /**
+     * This method activates the registration process once the user clicks on
+     * the register button. It will reference the saveCourse method below if the user
+     * is already registered for the course and if the username is not already regsiered it will
+     * check if there is a conflict before registering for the course.
+     * @param v
+     */
+    public void register(View v) {
+
+        if(btnregisterbutton.getTag().equals("drop"))
+        {
+            Globals sharedData = Globals.getInstance();
+            saveCourse(courseID, sharedData.getUsername());
+            btnregisterbutton.setTag("add");
+        }
+        else
+        {
+            Check_For_Conflicts();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
