@@ -1,5 +1,11 @@
 package com.example.course_registration.model;
 
+
+/**
+ * Author: Samath & Dan
+ * Helper Class for Course Conflict
+ */
+
 public class Interval {
     private final double min;
     private final double max;
