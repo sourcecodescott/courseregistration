@@ -48,6 +48,7 @@ debugTests:
     - $ANDROID_HOME/tools/bin/sdkmanager  "system-images;android-23;google_apis;x86"
     - echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --package 'system-images;android-23;google_apis;x86'
     - adb devices
+    - cd $ANDROID_HOME/tools/
     - $ANDROID_HOME/tools/emulator -list-avds
     - $ANDROID_HOME/tools/emulator -avd testAVD
 #    - $ANDROID_HOME/tools/android list targets
