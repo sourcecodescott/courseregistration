@@ -24,7 +24,7 @@ import com.google.firebase.firestore.Query;
  * Coruse list information to display course information and a button to display course details
  */
 public class view_course_list extends AppCompatActivity {
-
+    private int counter = 1;
     private RecyclerView recyclerView;
     private Button addContactButton;
     private FirebaseFirestore database;
@@ -68,8 +68,8 @@ public class view_course_list extends AppCompatActivity {
                 .setQuery(query,Course.class)
                 .build();
 
-
         FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,CourseViewHolder>(options) {
+
             /**
              * Creating the courseviewholder to dispaly all courses
              * @param holder
@@ -80,6 +80,8 @@ public class view_course_list extends AppCompatActivity {
             public void onBindViewHolder(CourseViewHolder holder, int position, final Course model) {
                 holder.coursename.setText(model.getCourse_code());
                 holder.courseinfo.setText(model.getCourse_name());
+                holder.detailsButton.setText("Details" + counter);
+                counter++;
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -120,6 +122,7 @@ public class view_course_list extends AppCompatActivity {
      */
     @Override
     protected void onResume() {
+        counter = 1;
         super.onResume();
     }
 
