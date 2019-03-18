@@ -44,8 +44,8 @@ debugTests:
     - ls $ANDROID_HOME/tools
     - ls $ANDROID_HOME/tools/bin
     - ls $ANDROID_HOME/platform-tools
-    - $ANDROID_HOME/tools/android create avd -n my_android1.5
-    - echo "no" | $ANDROID_HOME/tools/bin/avdmanager --verbose create avd --force --name x86 --device "4in WVGA (Nexus S)" --package "system-images;android-24;google_apis;x86" --tag "google_apis" --abi "x86"
+#    - $ANDROID_HOME/tools/android create avd -n my_android1.5
+    - echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-23;google_apis;x86_64'
     - adb devices
     - adb list
     - ./gradlew connectedAndroidTest
