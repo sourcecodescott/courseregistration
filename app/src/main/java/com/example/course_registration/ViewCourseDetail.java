@@ -51,8 +51,8 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     private String conflict = "";
     private int iscon = 0;
-    private Course course_Get;
-    String course_Code;
+    int thiscounter = 0;
+    boolean isconflictexist = false;
 
     private CollectionReference checkregistration;
 
@@ -258,7 +258,11 @@ public class ViewCourseDetail extends AppCompatActivity {
 
 
 
-
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This function will display a dialog box if a schedule conflict exist
+     * @param message is the text that will be displayed
+     */
     public void showMessage(String message)
     {
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
@@ -269,6 +273,14 @@ public class ViewCourseDetail extends AppCompatActivity {
         dlgAlert.create().show();
     }
 
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This function will calculate if there is a conflict between the current course and
+     * every other course the student already register for.
+     * @param course_1_Days days that the course is offered
+     * @param course_1_StartTime The time the course starts
+     * @param course_1_EndTime The time the course ends
+     */
     public boolean isTimeConflict(String course_1_StartTime, String course_1_EndTime, String course_1_Days, String course_2_StartTime,String course_2_EndTime, String course_2_Days)
     {
         String interval1_time1 = course_1_StartTime;
@@ -290,7 +302,6 @@ public class ViewCourseDetail extends AppCompatActivity {
             char c=s1.charAt(i);
 
             for(int j=0;j<s2.length();j++){
-
                 char c2=s2.charAt(j);
 
                 if(c == c2)
@@ -312,12 +323,12 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-    int thiscounter = 0;
-    boolean isconflictexist = false;
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * Get a particular course by name
+     * @param cName the name of the course you want to retrieve
+     */
     public void getCourse(String cName) {
-
-        Course cToReturn;
-
 
         DocumentReference mycourse = db.collection("Courses").document(cName);
 
@@ -333,15 +344,10 @@ public class ViewCourseDetail extends AppCompatActivity {
                 if (documentSnapshot.exists()) {
                     Course cour = documentSnapshot.toObject(Course.class);
                     SendCourse(cour);
-                } else {
-                    //showMessage("NOT FOUND");
                 }
-
-                //Toast.makeText(ViewCourseDetail.this, "LOWER Counter: "+thiscounter, Toast.LENGTH_SHORT).show();
 
                 if (thiscounter == iscon)
                 {
-                    //Toast.makeText(ViewCourseDetail.this, "HELLO WORLD"+iscon, Toast.LENGTH_SHORT).show();
 
                     if(isconflictexist == true)
                     {
@@ -365,16 +371,17 @@ public class ViewCourseDetail extends AppCompatActivity {
             }
 
         });
-
-
     }
 
 
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * This is the main function that is responsible for checking for schedule conflicts.
+     */
     public void Check_For_Conflicts() {
 
         Globals sharedData = Globals.getInstance();
         final String  user = sharedData.getUsername();
-        final String  ccc = course.getCourse_code();
 
 
 
@@ -394,10 +401,8 @@ public class ViewCourseDetail extends AppCompatActivity {
                             if(studentisReg.equals(user))
                             {
                                 getCourse(courseisReg);
-                                //IT WORKS BUT WHY DO I HAVE TO PREE TWICE FOR IT TO WORK???!!!??!
 
                                 iscon++;
-                                //Toast.makeText(ViewCourseDetail.this, "TOP Counter: "+iscon, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -413,7 +418,10 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
 
-
+    /**
+     * @authors Samath Scott & Dan Parsons
+     * Helper method that is used by course conflict method.
+     */
     void SendCourse(Course other_cour)
     {
         if(isTimeConflict(course.getStart_time(),course.getEnd_time(),course.getCourse_day(),other_cour.getStart_time(),other_cour.getEnd_time(),other_cour.getCourse_day()) == true) {
@@ -429,7 +437,9 @@ public class ViewCourseDetail extends AppCompatActivity {
 
     /**
      * This method activates the registration process once the user clicks on
-     * the register button. It will reference the saveCourse method below.
+     * the register button. It will reference the saveCourse method below if the user
+     * is already registered for the course and if the username is not already regsiered it will
+     * check if there is a conflict before registering for the course.
      * @param v
      */
     public void register(View v) {
