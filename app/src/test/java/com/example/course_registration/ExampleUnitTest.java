@@ -14,12 +14,12 @@ import static org.junit.Assert.assertEquals;
 public class ExampleUnitTest {
 
 
-    @Test
     /**
      * Test if the function that blocks a student from a registering for a full course
      * works. This entails returning the current amount of registered students in a course
      * from the mock database.
      */
+    @Test
     public void test_if_blocking_course_registration_on_full_course(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
         HashMap<String, HashMap<String, String>> collection = new HashMap<>();
@@ -120,6 +120,11 @@ public class ExampleUnitTest {
 
         vcd.check_number_of_students_in_course("MUSIC105", firebase_instance, ss);
 
+    }
+
+    @Test
+    public void test_failing() {
+        assertEquals(1, 2);
     }
 
 }
