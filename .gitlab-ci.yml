@@ -38,4 +38,4 @@ stages:
 debugTests:
   stage: test
   script:
-    - ./gradlew clean test --debug
+    - ./gradlew test --info
