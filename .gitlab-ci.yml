@@ -51,7 +51,7 @@ debugTests:
     - adb devices
     - cd $ANDROID_HOME/tools/
     - $ANDROID_HOME/tools/emulator -list-avds
-    - $ANDROID_HOME/tools/emulator -avd testAVD
+    - $ANDROID_HOME/tools/emulator -avd testAVD -use-system-libs
 #    - $ANDROID_HOME/tools/android list targets
 #    - $ANDROID_HOME/tools/emulator -avd
     - ./gradlew connectedAndroidTest
