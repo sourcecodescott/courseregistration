@@ -44,6 +44,7 @@ debugTests:
     - ls $ANDROID_HOME/tools
     - ls $ANDROID_HOME/tools/bin
     - ls $ANDROID_HOME/platform-tools
+    - ls $ANDROID_SDK_TOOLS
 #    - $ANDROID_HOME/tools/android create avd -n my_android1.5
     - $ANDROID_HOME/tools/bin/sdkmanager  "system-images;android-23;google_apis;x86"
     - echo no | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --package 'system-images;android-23;google_apis;x86'
