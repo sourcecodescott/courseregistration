@@ -1,10 +1,19 @@
 package com.example.course_registration;
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -120,6 +129,41 @@ public class ExampleUnitTest {
         };
 
         vcd.check_number_of_students_in_course("MUSIC105", firebase_instance, ss);
+
+    }
+    //tests particular method in studentschedulelist - checkOrder functions correctly in ordering classes
+    @Test
+    public void test_function_that_courses_ordered_correctly(){
+        HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
+        HashMap<String, HashMap<String, String>> collection = new HashMap<>();
+        HashMap<String, String>  art100 = new HashMap<>();
+        art100.put("start_time", "9:30");
+        collection.put("MUSIC105", art100);
+        fake_database.put("Courses", collection);
+        HashMap<String, String> music200 = new HashMap<>();
+        music200.put("start_time", "10:00");
+        collection.put("MUSIC200", music200);
+        fake_database.put("Courses", collection);
+        HashMap<String, String> csci350 = new HashMap<>();
+        csci350.put("start_time", "7:00");
+        collection.put("CSCI350", csci350);
+        HashMap<String, String> chem200 = new HashMap<>();
+        chem200.put("start_time", "13:00");
+        collection.put("CHEM200", chem200);
+        fake_database.put("Courses", collection);
+
+        ArrayList<String> mockArrayList = new ArrayList<String>();
+        mockArrayList.add(art100.get("start_time"));
+        mockArrayList.add(music200.get("start_time"));
+        mockArrayList.add(csci350.get("start_time"));
+        mockArrayList.add(chem200.get("start_time"));
+
+        StudentScheduleList ssl = new StudentScheduleList();
+        ssl.checkOrder(mockArrayList);
+        int rightOrder[] = {2, 0, 1, 3};
+        assertArrayEquals(rightOrder, ssl.checkOrder(mockArrayList));
+
+
 
     }
 

@@ -177,4 +177,63 @@ public class StudentScheduleList extends AppCompatActivity {
         databaseToRecycleView.stopListening();
     }
 
+    //takes in arraylist of course times and returns an array of integers representing the positions
+    //of those elements correctly ordered
+    //not used in main body of code yet
+    public int[] checkOrder(ArrayList<String> listTimes){
+        System.out.println(listTimes);
+        ArrayList<String> listClone = new ArrayList<String>();
+        ArrayList<Integer> positionInList = new ArrayList<Integer>();
+        for(int i = 0; i < listTimes.size(); i++){
+            listClone.add(listTimes.get(i));
+            positionInList.add(i);
+        }
+
+        int sizeof = listTimes.size();
+        int indexinArray = 0;
+        int currentMinIndex = 0;
+        int toIndex[] = new int[sizeof];
+        for(int j = 0; j < listTimes.size(); j++){
+            for(int i = 0; i < listClone.size(); i++){
+                if(i == 0){
+                    currentMinIndex = 0;
+                }
+                else if(compareTimes(listClone.get(currentMinIndex), listClone.get(i)) == 0){
+                    currentMinIndex = i;
+                }
+            }
+            System.out.println(currentMinIndex);
+            toIndex[indexinArray] = positionInList.get(currentMinIndex);
+            indexinArray++;
+            listClone.remove(currentMinIndex);
+            positionInList.remove(currentMinIndex);
+
+        }
+
+
+        return toIndex;
+    }
+    //takes two strings representing time as parameters
+    //time is formatted as X:YZ or WX:YZ and is 24-hour
+    //returns an integer: 1 if time1 is earlier than time2, 0 otherwise
+    public int compareTimes(String time1, String time2){
+        if(time1.length() > time2.length()){
+            return 0;
+        }
+        else if(time2.length() > time1.length()){
+            return 1;
+        }
+        else{
+            for(int i = 0; i < time1.length(); i++){
+                if(time1.charAt(i) > time2.charAt(i)){
+                    return 0;
+                }
+                else if(time2.charAt(i) > time1.charAt(i)){
+                    return 1;
+                }
+            }
+        }
+        return 1;
+
+    }
 }
