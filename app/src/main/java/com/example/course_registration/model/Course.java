@@ -1,12 +1,11 @@
 package com.example.course_registration.model;
 
-import com.google.firebase.firestore.Exclude;
-
-
-
 import java.io.Serializable;
 
-
+/**
+ * @author Dan and Pascha
+ * Course class sets different student information
+ */
 
 public class Course implements Serializable{
     private String documentId;
@@ -16,6 +15,8 @@ public class Course implements Serializable{
     private String course_time;
     private String program;
     private String course_code;
+    private String start_time;
+    private String end_time;
     private int max_students;
 
 
@@ -24,6 +25,14 @@ public class Course implements Serializable{
         //public no-arg constructor needed
     }
 
+    /**
+     * Set Course information
+     * @param course_day
+     * @param course_description
+     * @param course_name
+     * @param course_time
+     * @param program
+     */
     public Course(String course_day, String course_description,String course_name,String course_time,String program) {
         this.course_day = course_day;
         this.course_description = course_description;
@@ -32,6 +41,10 @@ public class Course implements Serializable{
         this.program = course_description;
     }
 
+    /**
+     *
+     * @param course_code
+     */
     public void setCourse_code(String course_code) {
         this.course_code = course_code;
     }
@@ -86,6 +99,22 @@ public class Course implements Serializable{
 
     public void setProgram(String program) {
         this.program = program;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
     }
 
 

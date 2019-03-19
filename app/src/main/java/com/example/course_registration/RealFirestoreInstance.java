@@ -1,17 +1,13 @@
 package com.example.course_registration;
 
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.Query;
-import android.util.Log;
 
-import java.lang.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -32,11 +28,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
      */
     public RealFirestoreInstance (FirebaseFirestore db) {
         this.db = db;
-    }
-
-
-    public interface Callback {
-        void call(Integer s);
     }
 
     /**
@@ -62,7 +53,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
                         Object found = "0";
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
 
-//
                             if (documentSnapshot.getId().equals(course_id)){
                                 found = documentSnapshot.get(attribute);
 
@@ -77,7 +67,7 @@ public class RealFirestoreInstance extends FirestoreInstance{
 
                 });
 
-        return "ds";
+        return "Asychronous Job Succcess";
     }
 
     /**
@@ -102,9 +92,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
 
                         Integer counter = 0;
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-
-                              Log.d("myTag", "HELLO"  + documentSnapshot.get("course"));
-                              Log.d("myTag", "HELLO"  + documentSnapshot.get("student"));
 
                               if (documentSnapshot.get(field_name).equals(field_value)){
                                   counter++;

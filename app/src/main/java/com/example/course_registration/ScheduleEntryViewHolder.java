@@ -4,6 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * @author Ali and Carter
+ * Viewholder class to dispaly course schdule
+ */
 public class ScheduleEntryViewHolder extends RecyclerView.ViewHolder{
 
     public TextView courseName;
@@ -12,6 +16,10 @@ public class ScheduleEntryViewHolder extends RecyclerView.ViewHolder{
     public TextView courseDays;
     public TextView courseTime;
 
+    /**
+     * Disaply student view of courses
+     * @param scheduleView
+     */
     public ScheduleEntryViewHolder(View scheduleView){
         super(scheduleView);
         courseName = scheduleView.findViewById(R.id.scheduleCourseName);

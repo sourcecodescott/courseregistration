@@ -4,6 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.course_registration"
+        multiDexEnabled true
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -32,9 +33,9 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
     implementation 'com.google.firebase:firebase-firestore:17.1.5'
+    implementation 'com.android.support:multidex:1.0.3'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

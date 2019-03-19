@@ -1,7 +1,5 @@
 package com.example.course_registration;
 
-
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 import com.example.course_registration.model.Course;
 
 
@@ -22,117 +19,119 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+/**
+ * @author Dan and Pascha
+ * Coruse list information to display course information and a button to display course details
+ */
 public class view_course_list extends AppCompatActivity {
-
+    private int counter = 1;
     private RecyclerView recyclerView;
     private Button addContactButton;
-
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter adapter;
 
-
-
+    /**
+     * return instance with course information
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_course_list);
-
         recyclerView = findViewById(R.id.contactlist);
         database = FirebaseFirestore.getInstance();
-
         adapter = setUpAdapter(database);
         setUpRecyclerView(recyclerView,adapter);
 
     }
 
-
-    //Connects our recycler view with the viewholder (how we want to show our model[data])
-    // and the firestore adapter
-    private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter)
-    {
+    /**
+     * Paramaters for Recyclerview
+     * @param rv
+     * @param adapter
+     */
+    private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter) {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(manager);
         rv.setItemAnimator(new DefaultItemAnimator());
         rv.setAdapter(adapter);
     }
 
-    //Creates a Firestore adapter to be used with a Recycler view.
-    //We will see adapter in more details after the midterm
-    //More info on this: https://github.com/firebase/FirebaseUI-Android/blob/master/firestore/README.md
-    private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db)
-    {
+    /**
+     * Settng up the reference ot the firstore database to created the viewholder.
+     * @param db
+     * @return
+     */
+    private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db) {
         final Query query = db.collection("Courses").orderBy("course_code").limit(50);
         FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
                 .setQuery(query,Course.class)
                 .build();
 
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,CourseViewHolder>(options) {
 
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ContactViewHolder>(options)
-        {
-            //For each item in the database connect it to the view
-
+            /**
+             * Creating the courseviewholder to dispaly all courses
+             * @param holder
+             * @param position
+             * @param model
+             */
             @Override
-            public void onBindViewHolder(ContactViewHolder holder, int position, final Course model)
-            {
-
-
-
-
-                holder.name.setText(model.getCourse_code());
-                holder.email.setText(model.getCourse_name());
-
-                //Set the on click for the button
-                //I find this ugly :) but it is how you will see in most examples
-                // You CAN use lambadas for the listeners
-                // e.g. setOnClickListener ((View v) -> ....
+            public void onBindViewHolder(CourseViewHolder holder, int position, final Course model) {
+                holder.coursename.setText(model.getCourse_code());
+                holder.courseinfo.setText(model.getCourse_name());
+                holder.detailsButton.setText("Details" + counter);
+                counter++;
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(view_course_list.this,ViewCourseDetail.class);
-
                         intent.putExtra("contact",model);
                         startActivity(intent);
-
-
-
                     }
                 });
             }
 
+            /**
+             * Return course viewholder to display the different course information
+             * @param group
+             * @param i
+             * @return
+             */
             @Override
-            public ContactViewHolder onCreateViewHolder(ViewGroup group, int i)
-            {
+            public CourseViewHolder onCreateViewHolder(ViewGroup group, int i) {
                 View view = LayoutInflater.from(group.getContext())
                         .inflate(R.layout.contact_entry,group,false);
-                return new ContactViewHolder(view);
-
+                return new CourseViewHolder(view);
             }
         };
-
         return adapter;
-
     }
 
-    //Method called every time the activity starts.
+    /**
+     * Iniitates activity and starts listening when activity starts
+     */
     @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
     }
 
+    /**
+     * Resumes activity
+     */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
+        counter = 1;
         super.onResume();
     }
 
-    //Method called every time the activity stops
+    /**
+     * End activity and stop listenign to user input
+     */
     @Override
     protected void onStop() {
         super.onStop();
-        //Tells the adapter to stop listening since we are not using this activity
-        //  anymore. Otherwise the adapter would still exist in the background draining battery
-        //  with useful cycles...
         adapter.stopListening();
     }
 
