@@ -37,7 +37,7 @@ tools:context="com.example.course_registration.MainActivity">
 </LinearLayout>
 
     -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
-    app:layout_constraintTop_toBottomOf="@+id/b1container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b2container">
+    app:layout_constraintTop_toBottomOf="@+id/b2container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b3container">
 
  <Button
         android:id="@+id/btn_schedule"
@@ -46,6 +46,20 @@ tools:context="com.example.course_registration.MainActivity">
         android:layout_weight="1"
         android:onClick="schedule"
         android:text="Schedule" />
+
+</LinearLayout>
+
+
+    -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
+    app:layout_constraintTop_toBottomOf="@+id/b1container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b2container">
+
+    <Button
+        android:id="@+id/btn_program_requirements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="program_requirements"
+        android:text="Program Requirements" />
 
 </LinearLayout>
 

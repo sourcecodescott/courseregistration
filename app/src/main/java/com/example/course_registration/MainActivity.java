@@ -1,5 +1,7 @@
 package com.example.course_registration;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -74,6 +76,37 @@ public class MainActivity extends AppCompatActivity {
     public void schedule(View v) {
         Intent intent = new Intent(MainActivity.this, StudentScheduleList.class);
         startActivity(intent);
+    }
+
+    /**
+     * Student Program requirements to view program requirements
+     * @param v
+     */
+    public void program_requirements(View v) {
+
+        final String[] items = {
+                "ART",
+                "CS",
+                "ENG",
+                "MUSIC"
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Choose a Program")
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MainActivity.this, ProgramRequirementsActivity.class);
+
+                        Bundle b = new Bundle();
+                        b.putString("program", items[which]);
+                        intent.putExtras(b);
+
+                        startActivity(intent);
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     /**

@@ -8,6 +8,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 
 
 /**
@@ -106,7 +108,40 @@ public class RealFirestoreInstance extends FirestoreInstance{
 
                 });
 
-        return 0;
+        return 1;
+
+    }
+
+    public int obtain_all_document_with_attribute_equals_to(String collection_name, final String field_name, final String field_value, final CallBack callback){
+        CollectionReference query = db.collection(collection_name);
+
+        query.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        String data = "";
+                        document_names = new ArrayList<String>();
+                        document_ids = new ArrayList<String>();
+
+                        ArrayList<Map<String, Object>> objs = new ArrayList<Map<String, Object>>();
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+
+                            if (documentSnapshot.get(field_name).equals(field_value)){
+                                objs.add(documentSnapshot.getData());
+                            }
+
+
+                        }
+
+                        callback.callback(objs);
+
+                    }
+
+                });
+
+        // Successfully called the async function
+        return 1;
 
     }
 
