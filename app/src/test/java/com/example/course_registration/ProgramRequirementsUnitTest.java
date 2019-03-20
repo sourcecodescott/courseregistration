@@ -5,13 +5,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 public class ProgramRequirementsUnitTest {
-
-
-    @Test
-    public void purposely_failing_test() {
-        assertEquals("dasasd", "dasa233");
-    }
-
+    
     @Test
     public void test_if_generated_string_for_program_requirements_is_correct(){
         HashMap<String, HashMap<String, HashMap<String, String>>> fake_database = new HashMap<>();
