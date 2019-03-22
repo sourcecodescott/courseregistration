@@ -13,7 +13,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d36fcfc1-a58a-4009-8de2-a78cdbf98283" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/passwrod_reset.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,26 +177,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="2" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="3" />
+          <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="2" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="3" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="19" />
-          <entry key="txt" value="14" />
+          <entry key="txt" value="52" />
+          <entry key="xml" value="70" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="19" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="PLAIN_TEXT" value="52" />
+          <entry key="XML" value="70" />
         </counts>
       </usages-collector>
     </session>
@@ -215,10 +229,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/passwrod_reset.xml">
           <provider editor-type-id="text-editor" />
           <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/CourseDetailsEnrolledTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1033">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -243,7 +276,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="51" lean-forward="true" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+              <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -261,7 +294,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_program_requirements.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -310,7 +343,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/model/Interval.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/ScheduleConflictTest.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/CourseDetailsEnrolledTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/FirestoreInstance.java" />
@@ -322,6 +354,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/course_registration/MockFirestoreInstance.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/com/example/course_registration/ProgramRequirementsUnitTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/passwrod_reset.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -614,7 +647,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/samat/Documents/GitHub/courseregistration/app/src/main/java/com/example/course_registration/LoginActivity.java" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="4.7_WXGA_API_28" />
+    <property name="device.picker.selection" value="Pixel_API_Q" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/courseregistration" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -642,7 +675,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android JUnit.ProgramRequirementsUnitTest">
+  <component name="RunManager" selected="Android Instrumented Tests.CourseDetailsEnrolle...">
     <configuration name="ExampleUnitTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
@@ -886,8 +919,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Android JUnit.ProgramRequirementsUnitTest" />
         <item itemvalue="Android Instrumented Tests.CourseDetailsEnrolle..." />
+        <item itemvalue="Android JUnit.ProgramRequirementsUnitTest" />
         <item itemvalue="Android Instrumented Tests.ScheduleConflictTest" />
         <item itemvalue="Android JUnit.ExampleUnitTest" />
       </list>
@@ -922,9 +955,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProgramRequirementsUnitTest - 2019.03.20 at 19h 14m 08s.xml">
-      <configuration name="ProgramRequirementsUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="ProgramRequirementsUnitTest - 2019.03.20 at 19h 17m 26s.xml">
       <configuration name="ProgramRequirementsUnitTest" configurationId="AndroidJUnit" />
     </history-entry>
@@ -952,6 +982,9 @@
     <history-entry file="ProgramRequirementsUnitTest - 2019.03.20 at 19h 25m 08s.xml">
       <configuration name="ProgramRequirementsUnitTest" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="CourseDetailsEnrolle___ - 2019.03.22 at 15h 30m 28s.xml">
+      <configuration name="CourseDetailsEnrolle..." configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -964,6 +997,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -976,8 +1010,8 @@
       <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49676898" weight="0.32894737" />
       <window_info anchor="bottom" id="TODO" order="1" sideWeight="0.49919224" weight="0.32894737" />
       <window_info anchor="bottom" id="Android Profiler" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.80290794" visible="true" weight="0.32730263" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.80290794" weight="0.32730263" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.19709209" side_tool="true" visible="true" weight="0.32611465" />
       <window_info anchor="bottom" id="Version Control" order="6" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49919224" weight="0.32730263" />
@@ -1199,14 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="50" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/ViewCourseDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1233,13 +1259,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1620">
           <caret line="124" column="10" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/CourseDetailsEnrolledTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
@@ -1287,7 +1306,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_program_requirements.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
@@ -1295,13 +1314,28 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/course_registration/RealFirestoreInstance.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="51" lean-forward="true" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/passwrod_reset.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/course_registration/CourseDetailsEnrolledTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1033">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="61" column="46" lean-forward="true" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
 </project>
