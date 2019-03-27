@@ -109,6 +109,8 @@ public class Course implements Serializable{
         return start_time;
     }
 
+    public int getMax_students() {return max_students;}
+
     public void setEnd_time(String end_time) {
         this.end_time = end_time;
     }

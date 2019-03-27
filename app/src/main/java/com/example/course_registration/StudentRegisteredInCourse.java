@@ -1,7 +1,5 @@
 package com.example.course_registration;
 
-import com.google.firebase.firestore.Exclude;
-
 /**
  * @author Greg and Pascha
  * REturn the students registered in a course to calcuakte hwo many people are in course
@@ -11,6 +9,7 @@ public class StudentRegisteredInCourse {
     private String course;
     private String student;
     private String id;
+    private String regStatus;
 
     /**
      * set parameters for regsitered in coursse, student and course
@@ -33,6 +32,9 @@ public class StudentRegisteredInCourse {
         return student;
     }
 
+    public String getRegStatus() {return regStatus;}
+
+    public void setRegStatus(String regStatus) {this.regStatus = regStatus;}
     /**
      * return the id of peoron in course
      * @return

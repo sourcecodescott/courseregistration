@@ -53,6 +53,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     private int iscon = 0;
     int thiscounter = 0;
     boolean isconflictexist = false;
+    boolean iscoursefull = false;
 
     private CollectionReference checkregistration;
 
@@ -99,7 +100,13 @@ public class ViewCourseDetail extends AppCompatActivity {
         CallBack ss = new CallBack() {
             public void callback(Object counted) {
                 course_enrolled= findViewById(R.id.txtenrolled);
+                /*if((int)counted > course.getMax_students()) {
+                    counted = course.getMax_students();
+                }*/
                 course_enrolled.setText("Enrolled: "+((int)counted));
+                /*if(counted == course.getMax_students()) {
+                    iscoursefull = true;
+                }*/
             };
         };
         this.check_number_of_students_in_course(courseID, rfi, ss);
@@ -127,9 +134,15 @@ public class ViewCourseDetail extends AppCompatActivity {
                     }
             });
         }
+
         else {
+            String regStatus = "Full";
+            if(iscoursefull) {
+                regStatus = "Wait";
+            }
             StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1, student);
             final String regcourse = course.getCourse_code();
+            ccc.setRegStatus(regStatus);
             ccc.setId(noteRef.getId());
             noteRef.set(ccc)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -170,8 +183,9 @@ public class ViewCourseDetail extends AppCompatActivity {
                             if (btnregisterbutton.getTag() == "drop"){
                                 // Do nothing if the user is in the course!
                             }else{
-                                btnregisterbutton.setText("Class is full. ");
-                                btnregisterbutton.setEnabled(false);
+                                iscoursefull = true;
+                                btnregisterbutton.setText("Register for waitlist. ");
+                                //btnregisterbutton.setEnabled(false);
                             }
 
                         }
