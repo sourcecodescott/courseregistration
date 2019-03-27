@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void password_reset(View v) {
-        Intent intent = new Intent(MainActivity.this, Password.class);
+        Intent intent = new Intent(MainActivity.this, resetUserPassword.class);
         startActivity(intent);
     }
     /**

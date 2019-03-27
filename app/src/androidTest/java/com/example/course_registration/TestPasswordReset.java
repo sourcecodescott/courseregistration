@@ -134,7 +134,7 @@ public class TestPasswordReset {
         }
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btn_schedule), withText("Schedule"),
+                allOf(withId(R.id.btn_schedule), withText("Password Reset"),
                         childAtPosition(
                                 allOf(withId(R.id.b3container),
                                         childAtPosition(
