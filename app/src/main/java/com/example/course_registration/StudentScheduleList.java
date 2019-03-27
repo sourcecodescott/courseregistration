@@ -5,188 +5,187 @@
 package com.example.course_registration;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.course_registration.model.Course;
-import com.example.course_registration.model.course_schedule_course;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 
 /**
- * @author Carter and Ali
+ * @author Pascha and Samath
  * Schedule list to display information of students schedule.
  */
 
 public class StudentScheduleList extends AppCompatActivity {
 
-    private static final String TAG = "StudentScheduleList";
-    private RecyclerView courseRecyclerView;
+    private int counter = 1;
+    private RecyclerView recyclerView;
     private FirebaseFirestore database;
-    private FirestoreRecyclerAdapter databaseToRecycleView;
-    private static ArrayList<String> courseStudentIn = new ArrayList<String>();
+    private FirestoreRecyclerAdapter adapter;
+
+    private CollectionReference MyCourselist;
 
 
-    /**
-     *
-     * @param savedInstanceState
-     */
+
+    private CollectionReference reg_courses;
+    private FirebaseFirestore db ;
+
+    public void Get_Courses_Registered_In() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+
+        reg_courses.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(studentisReg.equals(user))
+                            {
+                                DocumentReference mycourse = db.collection("Courses").document(courseisReg);
+                                MyCourselist.add(mycourse);
+                            }
+                        }
+
+                        adapter = setUpAdapter(database);
+                        setUpRecyclerView(recyclerView,adapter);
+                    }
+                });
+
+
+
+
+
+    }
+    
+    
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_schedule_list);
 
-       // courseStudentIn = new ArrayList<String>();
+        db = FirebaseFirestore.getInstance();
+        reg_courses = db.collection("StudentRegisteredInCourse");
 
-        courseRecyclerView = findViewById(R.id.courseScheduleRecycler);
+        recyclerView = findViewById(R.id.contactlist);
         database = FirebaseFirestore.getInstance();
-        findStudentCourses(database);
+        Get_Courses_Registered_In();
 
 
-        databaseToRecycleView = setUpAdapter(database);
-        setUpRecyclerView(courseRecyclerView, databaseToRecycleView);
-        System.out.println(courseStudentIn);
+
     }
 
     /**
-     *Setting up recyclervie to dispaly schedule
-     * @param view
-     * @param databaseToRecycleView
+     * Paramaters for Recyclerview
+     * @param rv
+     * @param adapter
      */
-    private void setUpRecyclerView(RecyclerView view, FirestoreRecyclerAdapter databaseToRecycleView) {
-
-        RecyclerView.LayoutManager gridManager = new LinearLayoutManager(getApplicationContext());
-        view.setLayoutManager(gridManager);
-        view.setItemAnimator(new DefaultItemAnimator());
-        view.setAdapter(databaseToRecycleView);
+    private void setUpRecyclerView(RecyclerView rv, FirestoreRecyclerAdapter adapter) {
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(manager);
+        rv.setItemAnimator(new DefaultItemAnimator());
+        rv.setAdapter(adapter);
     }
 
     /**
-     * number of students in course
-     * @param s
-     * @param target
-     */
-    private void addToArrayList(String s, ArrayList<String> target){
-        courseStudentIn.add(s);
-        System.out.println(courseStudentIn + " ");
-        System.out.println(s);
-    }
-
-    /**
-     * Pulls information form database to grab classes the student is registered in
-     *
-     * @param db
-     */
-    private void findStudentCourses(FirebaseFirestore db){
-
-        CollectionReference studentInClass = db.collection("StudentRegisteredInCourse");
-        studentInClass
-                .whereEqualTo("student", "bobsimpson")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                Object item = document.get("course");
-                                addToArrayList(item.toString(), courseStudentIn);
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        System.out.println(courseStudentIn);
-    }
-
-    private int checkArrayContains(String toCheck){
-        if(courseStudentIn.contains(toCheck)){
-            System.out.println("contains" + toCheck);
-            return 1;
-        }
-        return 0;
-    }
-
-    /**
-     *
+     * Settng up the reference ot the firstore database to created the viewholder.
      * @param db
      * @return
      */
-    private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db){
-        final Query query = db.collection("Courses")
-                .orderBy("start_time");
+    private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db) {
+
+
+        final Query query = MyCourselist;
+
         FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
-                .setQuery(query, Course.class)
+                .setQuery(query,Course.class)
                 .build();
 
+        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course,ScheduleViewHolder>(options) {
 
-        FirestoreRecyclerAdapter adapter = new FirestoreRecyclerAdapter<Course, ScheduleEntryViewHolder>(options){
+            /**
+             * Creating the courseviewholder to dispaly all courses
+             * @param holder
+             * @param position
+             * @param model
+             */
             @Override
+            public void onBindViewHolder(ScheduleViewHolder holder, int position, final Course model) {
+                holder.coursename.setText("Course Code: " +model.getCourse_code());
+                holder.courseinfo.setText("Name: "+model.getCourse_name());
+                holder.startTime.setText("Start Time: "+model.getStart_time());
+                holder.endTime.setText("End Time: "+model.getEnd_time());
+                holder.days.setText("Days: "+model.getCourse_day());
+                
 
-            public void onBindViewHolder(ScheduleEntryViewHolder holder, int position, final Course model){
-                if(checkArrayContains(model.getCourse_code()) == 1) {
-
-
-                    holder.courseName.setText(model.getCourse_name());
-                    holder.courseType.setText(model.getProgram());
-                    holder.courseTime.setText(model.getCourse_time());
-                }
             }
 
             /**
-             *
+             * Return course viewholder to display the different course information
              * @param group
              * @param i
              * @return
              */
             @Override
-            public ScheduleEntryViewHolder onCreateViewHolder(ViewGroup group, int i){
-                View view = LayoutInflater.from(group.getContext()).inflate(R.layout.course_schedule_entry, group, false);
-                return new ScheduleEntryViewHolder(view);
+            public ScheduleViewHolder onCreateViewHolder(ViewGroup group, int i) {
+                View view = LayoutInflater.from(group.getContext())
+                        .inflate(R.layout.view_schedule_helper,group,false);
+                return new ScheduleViewHolder(view);
             }
         };
         return adapter;
-
     }
 
 
-    @Override
 
+    /**
+     * Iniitates activity and starts listening when activity starts
+     */
+    @Override
     protected void onStart() {
         super.onStart();
-        databaseToRecycleView.startListening();
+        adapter.startListening();
     }
 
+    /**
+     * Resumes activity
+     */
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
+        counter = 1;
         super.onResume();
     }
 
+    /**
+     * End activity and stop listenign to user input
+     */
     @Override
     protected void onStop() {
         super.onStop();
-
-        databaseToRecycleView.stopListening();
+        adapter.stopListening();
     }
+
 
 }
