@@ -109,5 +109,36 @@ public class RealFirestoreInstance extends FirestoreInstance{
         return 0;
 
     }
+    public int count_rows_by_field(String collection_name, final String field_name, final String field_value, final String condition, final CallBack callback) {
+
+        CollectionReference query = db.collection(collection_name);
+
+        query.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        String data = "";
+                        document_names = new ArrayList<String>();
+                        document_ids = new ArrayList<String>();
+
+                        Integer counter = 0;
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+
+                            if (documentSnapshot.get(field_name).equals(field_value) && documentSnapshot.get(condition).equals("Full")){
+                                counter++;
+                            }
+
+
+                        }
+
+                        callback.callback(counter);
+
+                    }
+
+                });
+
+        return 0;
+
+    }
 
 }

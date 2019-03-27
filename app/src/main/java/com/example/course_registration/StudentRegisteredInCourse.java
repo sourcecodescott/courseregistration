@@ -9,7 +9,7 @@ public class StudentRegisteredInCourse {
     private String course;
     private String student;
     private String id;
-    private String regStatus;
+    private String regType;
 
     /**
      * set parameters for regsitered in coursse, student and course
@@ -32,9 +32,9 @@ public class StudentRegisteredInCourse {
         return student;
     }
 
-    public String getRegStatus() {return regStatus;}
+    public String getregType() {return regType;}
 
-    public void setRegStatus(String regStatus) {this.regStatus = regStatus;}
+    public void setRegType(String regType) {this.regType = regType;}
     /**
      * return the id of peoron in course
      * @return

@@ -136,13 +136,13 @@ public class ViewCourseDetail extends AppCompatActivity {
         }
 
         else {
-            String regStatus = "Full";
+            String regType = "Full";
             if(iscoursefull) {
-                regStatus = "Wait";
+                regType = "Wait";
             }
             StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1, student);
             final String regcourse = course.getCourse_code();
-            ccc.setRegStatus(regStatus);
+            ccc.setRegStatus(regType);
             ccc.setId(noteRef.getId());
             noteRef.set(ccc)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -266,7 +266,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance, CallBack ss){
 
         // Refactored
-        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, ss);
+        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, "regStatus",  ss);
         return 1;
     }
 
