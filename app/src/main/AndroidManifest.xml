@@ -13,6 +13,11 @@
             android:name=".ProgramRequirementsActivity"
             android:label="@string/title_activity_program_requirements"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".resetUserPassword"
+            android:label="resetUserPassword"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".StudentScheduleList" />
         <activity android:name=".view_course_list" />
         <activity android:name=".ViewCourseDetail" />
