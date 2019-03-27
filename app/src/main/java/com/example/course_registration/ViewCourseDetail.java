@@ -142,7 +142,7 @@ public class ViewCourseDetail extends AppCompatActivity {
             }
             StudentRegisteredInCourse ccc = new StudentRegisteredInCourse(course1, student);
             final String regcourse = course.getCourse_code();
-            ccc.setRegStatus(regType);
+            ccc.setRegType(regType);
             ccc.setId(noteRef.getId());
             noteRef.set(ccc)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
