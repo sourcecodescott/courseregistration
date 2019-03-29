@@ -15,6 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Random;
+
 /**
  * @author Nick and Ali
  * A login screen that offers login via email/password.
@@ -32,6 +34,7 @@ public class LoginActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("Login");
 
         textViewData = findViewById(R.id.text_view_data);
         txtusername= findViewById(R.id.txtUsername);
@@ -63,6 +66,11 @@ public class LoginActivity extends AppCompatActivity  {
                                 Globals sharedData = Globals.getInstance();
                                 sharedData.setUsername(username);
                                 sharedData.setValue("success");
+
+                                Random rand = new Random();
+
+
+                                sharedData.setHiddentoken(Integer.toString(rand.nextInt(100000)));
 
                                 successorfail = true;
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);

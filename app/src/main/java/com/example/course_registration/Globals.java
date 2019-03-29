@@ -25,6 +25,7 @@ public class Globals {
 
     private String notification_index;
     private String username;
+    private String hiddentoken;
 
 
     private Globals() {
@@ -46,5 +47,13 @@ public class Globals {
 
     public void setValue(String notification_index) {
         this.notification_index = notification_index;
+    }
+
+    public String getHiddentoken() {
+        return hiddentoken;
+    }
+
+    public void setHiddentoken(String hiddentoken) {
+        this.hiddentoken = hiddentoken;
     }
 }

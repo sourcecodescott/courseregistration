@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,10 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference coursebookRef = db.collection("Student");
 
+    private CollectionReference reg_courses = db.collection("StudentRegisteredInCourse");
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Main Menu");
         txtStudentName = findViewById(R.id.textView2);
         getFirstandLastName();
 
@@ -51,6 +57,36 @@ public class MainActivity extends AppCompatActivity {
         islogggedin();
     }
 
+    public void setHiddenToken() {
+
+        Globals sharedData = Globals.getInstance();
+        final String  user = sharedData.getUsername();
+        final String  token = sharedData.getHiddentoken();
+
+
+
+        reg_courses.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                            String courseisReg = isreg.getCourse();
+                            String studentisReg = isreg.getStudent();
+
+                            if(studentisReg.equals(user))
+                            {
+                                DocumentReference mycourse = db.collection("Courses").document(courseisReg);
+                                mycourse.update("hiddentoken",token);
+                            }
+                        }
+                    }
+
+                });
+    }
+
     void islogggedin() {
         Intent intentmymy;
         intentmymy = getIntent();
@@ -58,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         if(intentmymy.hasExtra("success") == false) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
+        }
+        else
+        {
+            setHiddenToken();
         }
     }
 
