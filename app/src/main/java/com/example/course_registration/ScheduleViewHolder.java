@@ -1,7 +1,6 @@
 package com.example.course_registration;
 
 
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +26,7 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder  {
         endTime = view.findViewById(R.id.txt_end_time);
         days = view.findViewById(R.id.txt_days);
         btndrop = view.findViewById(R.id.btndrop);
-        btndrop.setBackgroundColor(Color.RED);
+        //btndrop.setBackgroundColor(Color.RED);
 
     }
 

@@ -37,63 +37,50 @@ public class StudentScheduleList extends AppCompatActivity {
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter adapter;
 
-    private CollectionReference MyCourselist;
 
 
 
     private CollectionReference reg_courses;
+
+
     private FirebaseFirestore db ;
-
-    public void Get_Courses_Registered_In() {
-
-        Globals sharedData = Globals.getInstance();
-        final String  user = sharedData.getUsername();
-
-        reg_courses.get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
-
-                            String courseisReg = isreg.getCourse();
-                            String studentisReg = isreg.getStudent();
-
-                            if(studentisReg.equals(user))
-                            {
-                                DocumentReference mycourse = db.collection("Courses").document(courseisReg);
-                                MyCourselist.add(mycourse);
-                            }
-                        }
-
-                        adapter = setUpAdapter(database);
-                        setUpRecyclerView(recyclerView,adapter);
-                    }
-                });
+    String regesteredID;
 
 
 
 
+    public void dbsetup(String token)
+    {
 
+        database = FirebaseFirestore.getInstance();
+
+
+        adapter = setUpAdapter(database);
+        setUpRecyclerView(recyclerView,adapter);
     }
-    
-    
-    
+
+
+
+
+
+
+
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_schedule_list);
+        setTitle("Your Current Schedule");
 
         db = FirebaseFirestore.getInstance();
         reg_courses = db.collection("StudentRegisteredInCourse");
 
-        recyclerView = findViewById(R.id.contactlist);
         database = FirebaseFirestore.getInstance();
-        Get_Courses_Registered_In();
 
+        recyclerView = findViewById(R.id.contactlist);
 
+        adapter = setUpAdapter(database);
+        setUpRecyclerView(recyclerView,adapter);
 
     }
 
@@ -116,9 +103,9 @@ public class StudentScheduleList extends AppCompatActivity {
      */
     private FirestoreRecyclerAdapter setUpAdapter(FirebaseFirestore db) {
 
+        Globals sharedData = Globals.getInstance();
 
-        final Query query = MyCourselist;
-
+        final Query query = db.collection("Courses").whereEqualTo("hiddentoken",sharedData.getHiddentoken());
         FirestoreRecyclerOptions<Course> options = new FirestoreRecyclerOptions.Builder<Course>()
                 .setQuery(query,Course.class)
                 .build();
@@ -138,9 +125,64 @@ public class StudentScheduleList extends AppCompatActivity {
                 holder.startTime.setText("Start Time: "+model.getStart_time());
                 holder.endTime.setText("End Time: "+model.getEnd_time());
                 holder.days.setText("Days: "+model.getCourse_day());
+                holder.btndrop.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        deleteHelper(model.getCourse_code());
+                        //mydb.collection("StudentRegisteredInCourse").document(regesteredID).delete();
+                    }
+                });
                 
 
             }
+
+
+
+            public void deleteHelper(final String cCode) {
+
+                Globals sharedData = Globals.getInstance();
+                final String  user = sharedData.getUsername();
+                final String  ccc = cCode;
+
+
+                CollectionReference checkregistration = reg_courses;
+
+                checkregistration.get()
+                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                            @Override
+                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                    StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
+
+                                    String courseisReg = isreg.getCourse();
+                                    String studentisReg = isreg.getStudent();
+
+                                    if(courseisReg.equals(ccc) && studentisReg.equals(user))
+                                    {
+                                        FirebaseFirestore myydb ;
+                                        myydb = FirebaseFirestore.getInstance();
+                                        myydb.collection("StudentRegisteredInCourse").document(isreg.getId()).delete()
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+
+                                                        FirebaseFirestore mydb = FirebaseFirestore.getInstance();
+                                                        DocumentReference mycourse = mydb.collection("Courses").document(cCode);
+                                                        mycourse.update("hiddentoken","");
+                                                    }
+                                                });
+                                    }
+
+
+                                }
+
+                            }
+                        });
+            }
+
+
 
             /**
              * Return course viewholder to display the different course information

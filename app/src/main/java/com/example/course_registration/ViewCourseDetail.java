@@ -96,6 +96,8 @@ public class ViewCourseDetail extends AppCompatActivity {
         course_time.setText("Time: "+course.getCourse_time());
         btnregisterbutton.setTag("default");
 
+        setTitle(course.getCourse_name());
+
         CallBack ss = new CallBack() {
             public void callback(Object counted) {
                 course_enrolled= findViewById(R.id.txtenrolled);
@@ -122,6 +124,11 @@ public class ViewCourseDetail extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
+
+                    FirebaseFirestore mydb = FirebaseFirestore.getInstance();
+                    DocumentReference mycourse = mydb.collection("Courses").document(regcourse);
+                     mycourse.update("hiddentoken","");
+
                     Toast.makeText(ViewCourseDetail.this, "You have successfully dropped " + regcourse, Toast.LENGTH_SHORT).show();
                     finish();
                     }
@@ -378,6 +385,8 @@ public class ViewCourseDetail extends AppCompatActivity {
      * @authors Samath Scott & Dan Parsons
      * This is the main function that is responsible for checking for schedule conflicts.
      */
+
+    boolean is_any_course_choosen_yet = false;
     public void Check_For_Conflicts() {
 
         Globals sharedData = Globals.getInstance();
@@ -391,6 +400,7 @@ public class ViewCourseDetail extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
+
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             StudentRegisteredInCourse isreg = documentSnapshot.toObject(StudentRegisteredInCourse.class);
 
@@ -400,10 +410,17 @@ public class ViewCourseDetail extends AppCompatActivity {
 
                             if(studentisReg.equals(user))
                             {
+                                is_any_course_choosen_yet = true;
                                 getCourse(courseisReg);
-
                                 iscon++;
                             }
+                        }
+
+                        if(is_any_course_choosen_yet == false)
+                        {
+                            Globals sharedData = Globals.getInstance();
+                            saveCourse(courseID, sharedData.getUsername());
+                            btnregisterbutton.setTag("drop");
                         }
 
 
@@ -452,6 +469,7 @@ public class ViewCourseDetail extends AppCompatActivity {
         }
         else
         {
+
             Check_For_Conflicts();
         }
 

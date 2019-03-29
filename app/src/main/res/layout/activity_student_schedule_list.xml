@@ -7,18 +7,15 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".StudentScheduleList">
 
-    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="20sp" android:text="Your Current Schedule" android:layout_marginEnd="7dp"
-        android:layout_marginTop="8dp" android:id="@+id/helpertxt"/>
+
+
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contactlist"
         android:layout_width="match_parent"
-        android:layout_height="679dp"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/helpertxt">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
     </android.support.v7.widget.RecyclerView>
 

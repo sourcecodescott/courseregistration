@@ -38,6 +38,7 @@ public class view_course_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_course_list);
+        setTitle("Course List");
         recyclerView = findViewById(R.id.contactlist);
         database = FirebaseFirestore.getInstance();
         adapter = setUpAdapter(database);
