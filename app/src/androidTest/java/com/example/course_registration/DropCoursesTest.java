@@ -125,7 +125,7 @@ public class DropCoursesTest {
         }
 
         ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.goDetails), withText("Details1"),
+                allOf(withId(1),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
@@ -164,7 +164,7 @@ public class DropCoursesTest {
         }
 
         ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.goDetails), withText("Details1"),
+                allOf(withId(1),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
