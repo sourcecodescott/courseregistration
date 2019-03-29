@@ -257,7 +257,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     }
 
     /**
-     * This method checks the current amount of enrolled students in a course
+     * This method checks the current amount of full enrolled students in a course
      * @param course_id the course code identifier
      * @param firebase_instance the instance data of the firebase
      * @param ss callback so that we are able to return the number of students live
@@ -266,7 +266,7 @@ public class ViewCourseDetail extends AppCompatActivity {
     public int check_number_of_students_in_course(String course_id, FirestoreInstance firebase_instance, CallBack ss){
 
         // Refactored
-        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, "regStatus",  ss);
+        firebase_instance.count_rows_by_field("StudentRegisteredInCourse", "course", course_id, "regType",  ss);
         return 1;
     }
 
