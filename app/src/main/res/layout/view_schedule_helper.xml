@@ -1,3 +1,20 @@
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardMaxElevation="5dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardBackgroundColor="#E1E1E1">
+
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -41,10 +58,6 @@
 
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="_____________________________________"/>
     </LinearLayout>
 
     <LinearLayout
@@ -68,3 +81,5 @@
 
 
 </LinearLayout>
+
+</android.support.v7.widget.CardView>
