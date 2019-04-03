@@ -16,16 +16,7 @@
         <activity
             android:name=".ProgramRequirementsActivity"
             android:label="@string/title_activity_program_requirements"
-<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar" />
-=======
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity
-            android:name=".resetUserPassword"
-            android:label="resetUserPassword"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> 90f360690a3a49fde1a0809ea32d5a555492b52a
         <activity android:name=".StudentScheduleList" />
         <activity android:name=".view_course_list" />
         <activity android:name=".ViewCourseDetail" />
