@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity  {
                                 Globals sharedData = Globals.getInstance();
                                 sharedData.setUsername(username);
                                 sharedData.setValue("success");
+                                sharedData.setPassword(password);
 
                                 successorfail = true;
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
