@@ -119,14 +119,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Student scehdule Password Reset
-     * @param v
-     */
-    public void password_reset(View v) {
-        Intent intent = new Intent(MainActivity.this, resetUserPassword.class);
-        startActivity(intent);
-    }
-    /**
      * Student Program requirements to view program requirements
      * @param v
      */

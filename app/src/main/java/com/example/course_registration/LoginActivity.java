@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity  {
                                 Globals sharedData = Globals.getInstance();
                                 sharedData.setUsername(username);
                                 sharedData.setValue("success");
-                                sharedData.setPassword(password);
 
                                 Random rand = new Random();
 
