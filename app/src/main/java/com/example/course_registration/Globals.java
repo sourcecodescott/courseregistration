@@ -25,7 +25,11 @@ public class Globals {
 
     private String notification_index;
     private String username;
+<<<<<<< HEAD
     private String hiddentoken;
+=======
+    private String password;
+>>>>>>> iteration3_password_reset
 
 
     private Globals() {
@@ -40,6 +44,10 @@ public class Globals {
         this.username = username;
     }
 
+    public void setPassword(String password){
+        this.password = password;
+    }
+
     public String getValue() {
         return notification_index;
     }
@@ -49,11 +57,16 @@ public class Globals {
         this.notification_index = notification_index;
     }
 
+<<<<<<< HEAD
     public String getHiddentoken() {
         return hiddentoken;
     }
 
     public void setHiddentoken(String hiddentoken) {
         this.hiddentoken = hiddentoken;
+=======
+    public String getPassword() {
+        return password;
+>>>>>>> iteration3_password_reset
     }
 }
