@@ -64,9 +64,9 @@ public class MockFirestoreInstance extends FirestoreInstance{
         ss.callback(counter);
 
         return 0;
-
-
     }
+
+
 
 
     public int obtain_all_document_with_attribute_equals_to(String collection_name, final String field_name, final String field_value, final CallBack callback){

@@ -81,7 +81,7 @@ public class view_course_list extends AppCompatActivity {
             public void onBindViewHolder(CourseViewHolder holder, int position, final Course model) {
                 holder.coursename.setText(model.getCourse_code());
                 holder.courseinfo.setText(model.getCourse_name());
-                holder.detailsButton.setText("Details" + counter);
+                holder.detailsButton.setId(counter);
                 counter++;
                 holder.detailsButton.setOnClickListener(new View.OnClickListener() {
                     @Override
