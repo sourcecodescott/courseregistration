@@ -71,7 +71,7 @@ tools:context="com.example.course_registration.MainActivity">
 </LinearLayout>
 
     -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
-    app:layout_constraintTop_toBottomOf="@+id/b3container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b4container">
+    app:layout_constraintTop_toBottomOf="@+id/b2container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b4container">
 
     <Button
         android:id="@+id/btn_password_reset"
