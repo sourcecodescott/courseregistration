@@ -29,7 +29,6 @@ public class Globals {
     private String hiddentoken;
 
 
-    private String hiddentoken;
 
     private String password;
 
