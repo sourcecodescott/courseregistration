@@ -16,6 +16,9 @@ public class FirestoreInstance {
     public int obtain_all_document_with_attribute_equals_to(String collection_name, String field_name, String field_value, CallBack ss) {
         return 1;
     }
+    public int count_rows_by_field(String collection_name, String field_name, String field_value, String condition, CallBack ss) {
+        return 0;
+    }
 
 
 }
