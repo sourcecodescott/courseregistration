@@ -8,6 +8,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="com.example.course_registration.MainActivity">
 
+
 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,6 @@ tools:context="com.example.course_registration.MainActivity">
 
 
 
-
 -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
     app:layout_constraintTop_toBottomOf="@+id/textView3" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b1container">
 
@@ -30,14 +30,15 @@ tools:context="com.example.course_registration.MainActivity">
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="courselist"
-        android:text="Course List" />
+        android:text="Course List"
+        android:drawableBottom="@drawable/clipboard"/>
 
 
 
 </LinearLayout>
 
     -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
-    app:layout_constraintTop_toBottomOf="@+id/b1container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b2container">
+    app:layout_constraintTop_toBottomOf="@+id/b1container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b3container">
 
  <Button
         android:id="@+id/btn_schedule"
@@ -45,8 +46,39 @@ tools:context="com.example.course_registration.MainActivity">
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="schedule"
-        android:text="Schedule" />
+        android:text="Schedule"
+        android:drawableBottom="@drawable/calendar"/>
 
 </LinearLayout>
+
+
+    -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
+    app:layout_constraintTop_toBottomOf="@+id/b3container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b2container">
+
+    <Button
+        android:id="@+id/btn_program_requirements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="program_requirements"
+        android:text="Program Requirements" />
+
+</LinearLayout>
+
+
+    -<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent"
+    app:layout_constraintTop_toBottomOf="@+id/b2container" android:orientation="horizontal" android:layout_marginBottom="8dp" android:id="@+id/b4container">
+
+    <Button
+        android:id="@+id/btn_password_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="password_reset"
+        android:text="Password Reset" />
+
+</LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

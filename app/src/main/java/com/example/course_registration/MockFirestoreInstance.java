@@ -1,6 +1,8 @@
 package com.example.course_registration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @authors Nicholas Brisson & Mat Kallada
@@ -62,9 +64,30 @@ public class MockFirestoreInstance extends FirestoreInstance{
         ss.callback(counter);
 
         return 0;
-
-
     }
 
+
+
+
+    public int obtain_all_document_with_attribute_equals_to(String collection_name, final String field_name, final String field_value, final CallBack callback){
+
+        ArrayList<Map<String, Object>> objs = new ArrayList<Map<String, Object>>();
+
+        HashMap<String, HashMap<String,String>> ds = database.get(collection_name);
+        for(Map.Entry<String, HashMap<String,String>> entry : ds.entrySet()) {
+
+            String key = entry.getKey();
+            HashMap value = entry.getValue();
+
+            if (value.get(field_name).equals(field_value)){
+                objs.add(value);
+            }
+        }
+
+        callback.callback(objs);
+
+
+        return 1;
+    }
 
 }

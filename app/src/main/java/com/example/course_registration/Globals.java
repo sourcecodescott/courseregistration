@@ -26,6 +26,11 @@ public class Globals {
     private String notification_index;
     private String username;
 
+    private String hiddentoken;
+
+    private String password;
+
+
 
     private Globals() {
 
@@ -39,6 +44,10 @@ public class Globals {
         this.username = username;
     }
 
+    public void setPassword(String password){
+        this.password = password;
+    }
+
     public String getValue() {
         return notification_index;
     }
@@ -46,5 +55,18 @@ public class Globals {
 
     public void setValue(String notification_index) {
         this.notification_index = notification_index;
+    }
+
+
+    public String getHiddentoken() {
+        return hiddentoken;
+    }
+
+    public void setHiddentoken(String hiddentoken) {
+        this.hiddentoken = hiddentoken;
+    }
+    public String getPassword() {
+        return password;
+
     }
 }

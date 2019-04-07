@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentScheduleList"></activity>
+        <activity
+            android:name=".resetUserPassword"
+            android:label="reset_user_password"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ProgramRequirementsActivity"
+            android:label="@string/title_activity_program_requirements"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".StudentScheduleList" />
         <activity android:name=".view_course_list" />
         <activity android:name=".ViewCourseDetail" />
         <activity android:name=".LoginActivity" />
@@ -24,3 +32,4 @@
     </application>
 
 </manifest>
+
