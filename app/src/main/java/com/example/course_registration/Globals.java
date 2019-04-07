@@ -28,10 +28,7 @@ public class Globals {
 
     private String hiddentoken;
 
-
-
     private String password;
-
 
 
 
@@ -47,6 +44,10 @@ public class Globals {
         this.username = username;
     }
 
+    public void setPassword(String password){
+        this.password = password;
+    }
+
     public String getValue() {
         return notification_index;
     }
@@ -57,19 +58,15 @@ public class Globals {
     }
 
 
-
-
     public String getHiddentoken() {
         return hiddentoken;
     }
 
     public void setHiddentoken(String hiddentoken) {
         this.hiddentoken = hiddentoken;
-
     }
     public String getPassword() {
         return password;
-
 
     }
 }
