@@ -48,7 +48,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        String data = "";
                         document_names = new ArrayList<String>();
                         document_ids = new ArrayList<String>();
 
@@ -88,7 +87,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        String data = "";
                         document_names = new ArrayList<String>();
                         document_ids = new ArrayList<String>();
 
@@ -119,7 +117,6 @@ public class RealFirestoreInstance extends FirestoreInstance{
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        String data = "";
                         document_names = new ArrayList<String>();
                         document_ids = new ArrayList<String>();
 

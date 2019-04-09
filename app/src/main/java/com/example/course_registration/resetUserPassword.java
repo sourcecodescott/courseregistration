@@ -52,11 +52,9 @@ public class resetUserPassword extends AppCompatActivity {
      * @param v
      */
     public void resetPassword(View v){
-        TextView userEnteredPassword = findViewById(R.id.passConfirm);
         TextView userNewPassword = findViewById(R.id.newPass);
-        String enteredPassword = userEnteredPassword.getText().toString();
         String newPassword = userNewPassword.getText().toString();
-        if(confirmPasswordsMatch(enteredPassword, currentPassword) == 1){
+        if(confirmPasswordsMatch() == 1){
             updateUserPassword(newPassword);
             Toast.makeText(resetUserPassword.this, "Password updated.", Toast.LENGTH_SHORT).show();
             myglobe.setPassword(newPassword);
@@ -86,11 +84,9 @@ public class resetUserPassword extends AppCompatActivity {
     /**
      * This method checks if the passwords match and returns an integer. 1 is a success
      * and 0 is a fail. 
-     * @param confirmpassword
-     * @param currpassword
      * @return
      */
-    public int confirmPasswordsMatch(String confirmpassword, String currpassword){
+    public int confirmPasswordsMatch(){
         TextView userEnteredPassword = findViewById(R.id.passConfirm);
         String enteredPassword =userEnteredPassword.getText().toString();
         if (currentPassword.equals(enteredPassword)){

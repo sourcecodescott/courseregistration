@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity  {
         textViewData = findViewById(R.id.text_view_data);
         txtusername= findViewById(R.id.txtUsername);
         txtpassword = findViewById(R.id.txtPassword);
-        //loadCourses();
+
 
     }
 
@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity  {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        String data = "";
                         boolean successorfail = false;
 
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
