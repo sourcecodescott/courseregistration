@@ -10,12 +10,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Map;
 
-
+/**
+ * authors: Mat & Dan
+ * This class has the implementation for the program requirements activity
+ */
 public class ProgramRequirementsActivity extends AppCompatActivity {
 
+    /**
+     * database connection
+     */
     private FirebaseFirestore db ;
 
     @Override
+    /**
+     * set the view (UI) for the program requirements activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_requirements);
@@ -42,6 +51,17 @@ public class ProgramRequirementsActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is where all of the heavy lifting is done for the program requirements
+     * activity. It fetches the courses from the database and then filters to show only
+     * the courses that are in the given program.
+     *
+     * @param program this is the parameter that filters the courses for the
+     *                selected program.
+     * @param s2
+     * @param firebase_instance
+     * @return
+     */
     public String create_course_requirements_text(String program, final CallBack s2, FirestoreInstance firebase_instance){
 
         CallBack ss = new CallBack() {

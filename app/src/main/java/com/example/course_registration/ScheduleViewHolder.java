@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+/**
+ * This class sets up the view for the schedule activity
+ * authors: Pascha & Samath
+ */
 public class ScheduleViewHolder extends RecyclerView.ViewHolder  {
 
     public TextView coursename;
@@ -26,7 +29,7 @@ public class ScheduleViewHolder extends RecyclerView.ViewHolder  {
         endTime = view.findViewById(R.id.txt_end_time);
         days = view.findViewById(R.id.txt_days);
         btndrop = view.findViewById(R.id.btndrop);
-      
+
 
     }
 

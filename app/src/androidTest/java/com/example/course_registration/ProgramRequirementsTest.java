@@ -24,6 +24,13 @@ import static org.hamcrest.core.StringContains.containsString;
 
 
 @RunWith(AndroidJUnit4.class)
+/**
+ * This class is an espresso test for the program requirements
+ * activity. It will first login to the test user and then click
+ * on the program requirements button on the main activity (landing page)
+ * and then click on the CS program to make sure all of the courses in
+ * the CS program show up.
+ */
 public class ProgramRequirementsTest {
 
 
