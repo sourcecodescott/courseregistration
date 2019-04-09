@@ -29,6 +29,13 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
+/**
+ * Authors: Nick & Carter
+ *
+ * This class is the espresso test that was generated before
+ * implementing the code for the password reset.
+ * It will try to open the UI for the password reset activity.
+ */
 public class ResetPasswordEspressoTest {
 
     @Rule

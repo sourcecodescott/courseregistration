@@ -8,6 +8,16 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Authors: Nick & Carter
+ *
+ * This class contains the implementation for the password reset feature
+ *
+ * It will first query the database to check if the user's typed password
+ * matches the password found in the database for that user. If so, it will
+ * update the password to the new password provided by the user. If not, it will
+ * not allow the change.
+ */
 public class resetUserPassword extends AppCompatActivity {
 
 
@@ -18,6 +28,9 @@ public class resetUserPassword extends AppCompatActivity {
 
 
     @Override
+    /**
+     * Set the content view (UI)
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_user_password);
@@ -27,6 +40,17 @@ public class resetUserPassword extends AppCompatActivity {
 
     }
 
+    /**
+     * This method is where the core of the change password will take place.
+     * It first reads the current password provided from the user ('userEnteredPassword')
+     * and makes sure that it matches the one in the database. If it does, it will first
+     * update the user's password in the database using the 'updateUserPassword' method seen below.
+     * It will then set the globals password value seen in the 'Globals.java' file to the
+     * updated password. Finally, it notifies the user of the update success or fail if the password
+     * provided initially didnt't match the existing one on the server.
+     *
+     * @param v
+     */
     public void resetPassword(View v){
         TextView userEnteredPassword = findViewById(R.id.passConfirm);
         TextView userNewPassword = findViewById(R.id.newPass);
@@ -45,6 +69,10 @@ public class resetUserPassword extends AppCompatActivity {
 
     }
 
+    /**
+     * This method updates the password on the database to the new one.
+     * @param s
+     */
     public void updateUserPassword(String s){
         db.collection("Student").document(currentUser)
                 .update(
@@ -55,6 +83,13 @@ public class resetUserPassword extends AppCompatActivity {
 
     }
 
+    /**
+     * This method checks if the passwords match and returns an integer. 1 is a success
+     * and 0 is a fail. 
+     * @param confirmpassword
+     * @param currpassword
+     * @return
+     */
     public int confirmPasswordsMatch(String confirmpassword, String currpassword){
         TextView userEnteredPassword = findViewById(R.id.passConfirm);
         String enteredPassword =userEnteredPassword.getText().toString();
