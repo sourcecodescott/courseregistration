@@ -44,28 +44,8 @@ public class StudentScheduleList extends AppCompatActivity {
 
 
     private FirebaseFirestore db ;
-    String regesteredID;
 
 
-
-
-    public void dbsetup(String token)
-    {
-
-        database = FirebaseFirestore.getInstance();
-
-
-        adapter = setUpAdapter(database);
-        setUpRecyclerView(recyclerView,adapter);
-    }
-
-
-
-
-
-
-
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +110,7 @@ public class StudentScheduleList extends AppCompatActivity {
                     public void onClick(View v) {
 
                         deleteHelper(model.getCourse_code());
-                        //mydb.collection("StudentRegisteredInCourse").document(regesteredID).delete();
+
                     }
                 });
                 

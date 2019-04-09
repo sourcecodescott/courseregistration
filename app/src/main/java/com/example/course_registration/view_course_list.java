@@ -1,19 +1,16 @@
 package com.example.course_registration;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.course_registration.model.Course;
-
-
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,7 +23,6 @@ import com.google.firebase.firestore.Query;
 public class view_course_list extends AppCompatActivity {
     private int counter = 1;
     private RecyclerView recyclerView;
-    private Button addContactButton;
     private FirebaseFirestore database;
     private FirestoreRecyclerAdapter adapter;
 
